@@ -3,18 +3,20 @@ package Ferme.Dto;
 import java.io.Serializable;
 
 public class Cliente implements Serializable {
-   public String runCliente;
-   public String digitoVerif;
-   public int estado;
-   public String nombre;
-   public String apellido;
-   public String correo;
-   public String contrasena;
+
+    public String runCliente;
+    public String digitoVerif;
+    public int estado;
+    public String nombre;
+    public String apellido;
+    public String correo;
+    public String contrasena;
+    public Direccion direccion;
 
     public Cliente() {
     }
 
-    public Cliente(String runCliente, String digitoVerif, int estado, String nombre, String apellido, String correo, String contrasena) {
+    public Cliente(String runCliente, String digitoVerif, int estado, String nombre, String apellido, String correo, String contrasena, Direccion direccion) {
         this.runCliente = runCliente;
         this.digitoVerif = digitoVerif;
         this.estado = estado;
@@ -22,6 +24,15 @@ public class Cliente implements Serializable {
         this.apellido = apellido;
         this.correo = correo;
         this.contrasena = contrasena;
+        this.direccion = direccion;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
     }
 
     public String getRunCliente() {
@@ -53,7 +64,7 @@ public class Cliente implements Serializable {
     }
 
     public void setNombre(String nombre) {
-         this.nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getApellido() {
@@ -84,6 +95,5 @@ public class Cliente implements Serializable {
     public String toString() {
         return "Cliente{" + "runCliente=" + runCliente + ", digitoVerif=" + digitoVerif + ", estado=" + estado + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", contrasena=" + contrasena + '}';
     }
-   
-   
+
 }

@@ -1,8 +1,9 @@
-
 package Ferme.Dto;
+
 import java.io.Serializable;
 
-public class OrdenesCompra implements Serializable{
+public class OrdenesCompra implements Serializable {
+
     public String fecha;
     public int cantidad;
 
@@ -30,9 +31,6 @@ public class OrdenesCompra implements Serializable{
         this.cantidad = cantidad;
     }
 
-    @Override
-    public String toString() {
-        return "OrdenesCompra{" + "fecha=" + fecha + ", cantidad=" + cantidad + '}';
-    }
-    
+   
+
 }

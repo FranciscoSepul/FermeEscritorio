@@ -1,9 +1,9 @@
-
 package Ferme.Dto;
 
 import java.io.Serializable;
 
-public class Producto implements Serializable{
+public class Producto implements Serializable {
+
     public String nombre;
     public int stock;
     public int precioUni;
@@ -41,10 +41,5 @@ public class Producto implements Serializable{
         this.precioUni = precioUni;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" + "nombre=" + nombre + ", stock=" + stock + ", precioUni=" + precioUni + '}';
-    }
-    
-    
+
 }

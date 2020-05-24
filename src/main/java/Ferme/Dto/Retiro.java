@@ -1,9 +1,9 @@
-
 package Ferme.Dto;
 
 import java.io.Serializable;
 
-public class Retiro implements Serializable{
+public class Retiro implements Serializable {
+
     public String nombreRetiro;
 
     public Retiro() {
@@ -21,10 +21,6 @@ public class Retiro implements Serializable{
         this.nombreRetiro = nombreRetiro;
     }
 
-    @Override
-    public String toString() {
-        return "Retiro{" + "nombreRetiro=" + nombreRetiro + '}';
-    }
     
-    
+
 }

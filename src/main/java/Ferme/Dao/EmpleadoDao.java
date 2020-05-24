@@ -1,0 +1,126 @@
+package Ferme.Dao;
+
+import Ferme.Dto.Direccion;
+import Ferme.Dto.Empleado;
+import Ferme.Dto.Sucursal;
+import FermeEscritoriodb.Conexion;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import oracle.jdbc.OracleTypes;
+
+public class EmpleadoDao implements Crud {
+
+    Empleado emp = new Empleado();
+    Sucursal suc = new Sucursal();
+    Direccion direc = new Direccion();
+    ResultSet rs = null;
+    Connection con = null;
+    CallableStatement call = null;
+    String query = "";
+
+    @Override
+    public List Listar() {
+
+        ArrayList list = new ArrayList();
+        query = "{call LISTARTODOSEMPLEADOS(?)}";
+        try {
+            con = Conexion.getConexion();
+            call = con.prepareCall(query);
+            call.registerOutParameter(1, OracleTypes.CURSOR);
+            call.execute();
+            rs = (ResultSet) call.getObject(1);
+
+            while (rs.next()) {
+                emp.setApellido(rs.getString("apellido"));
+                emp.setContrasena("contrasena");
+                emp.setDigitoVerificador(rs.getString("digitoverif"));
+                emp.setEstado(rs.getInt("estado"));
+                emp.setNombre(rs.getString("nombree"));
+                emp.setRunEmpleado(rs.getString("runempleado"));
+                emp.setCorreo(rs.getString("correoemple"));
+                direc.setComuna(rs.getString("comuna"));
+                direc.setNumero(rs.getString("numero"));
+                direc.setNumeroDepto(rs.getString("numerodepto"));
+                direc.setPasaje(rs.getString("pasaje"));
+                direc.setRegion(rs.getInt("region"));
+                suc.setNombre(rs.getString("NOMBRES"));
+                suc.setNumFono(rs.getString("telefono"));
+                emp.setSucursal(suc);
+                emp.setDireccion(direc);
+                list.add(emp);
+
+            }
+        } catch (SQLException e) {
+            System.out.println("error al listar" + e.getMessage());
+        }
+        return list;
+    }
+
+    public Empleado BuscarEmpleado(String rut) {
+
+        try {
+            query = "{call LISTAREMPLEADO(?,?)}";
+            con = Conexion.getConexion();
+
+            call = con.prepareCall(query);
+            call.registerOutParameter(1, OracleTypes.CURSOR);
+            call.setString(2, rut);
+            call.execute();
+
+            rs = (ResultSet) call.getObject(1);
+
+            while (rs.next()) {
+                emp.setApellido(rs.getString("apellido"));
+                emp.setContrasena("contrasena");
+                emp.setDigitoVerificador(rs.getString("digitoverif"));
+                emp.setEstado(rs.getInt("estado"));
+                emp.setNombre(rs.getString("nombree"));
+                emp.setRunEmpleado(rs.getString("runempleado"));
+                emp.setCorreo(rs.getString("correoemple"));
+                direc.setComuna(rs.getString("comuna"));
+                direc.setNumero(rs.getString("numero"));
+                direc.setNumeroDepto(rs.getString("numerodepto"));
+                direc.setPasaje(rs.getString("pasaje"));
+                direc.setRegion(rs.getInt("region"));
+                suc.setNombre(rs.getString("NOMBRES"));
+                suc.setNumFono(rs.getString("telefono"));
+                emp.setSucursal(suc);
+                emp.setDireccion(direc);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar" + e.getMessage());
+        }
+        return emp;
+    }
+
+    public boolean habilitar(String rut) {
+        try {
+            query = "{ call HABILITAR_EMPLEADO(?)}";
+            con = Conexion.getConexion();
+            call = con.prepareCall(query);
+            call.setString(1, rut);
+            call.execute();
+        } catch (SQLException e) {
+            System.out.println("error al Habilitar" + e.getMessage());
+        }
+        return true;
+    }
+
+    @Override
+    public boolean desabilitar(String rut, String dv) {
+        try {
+            query = "{ call DESHABILITAR_EMPLEADO(?)}";
+            con = Conexion.getConexion();
+            call = con.prepareCall(query);
+            call.setString(1, rut);
+            call.execute();
+        } catch (SQLException e) {
+            System.out.println("error al eliminar" + e.getMessage());
+        }
+        return true;
+    }
+}

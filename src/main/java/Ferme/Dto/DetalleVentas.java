@@ -1,12 +1,12 @@
-
 package Ferme.Dto;
 
 import java.io.Serializable;
 
 public class DetalleVentas implements Serializable {
+
     public String fechaCompra;
-    public int cantidad ;
-    public int total ;
+    public int cantidad;
+    public int total;
 
     public DetalleVentas() {
     }
@@ -40,11 +40,6 @@ public class DetalleVentas implements Serializable {
     public void setTotal(int total) {
         this.total = total;
     }
+   
 
-    @Override
-    public String toString() {
-        return "DetalleVentas{" + "fechaCompra=" + fechaCompra + ", cantidad=" + cantidad + ", total=" + total + '}';
-    }
-    
-    
 }

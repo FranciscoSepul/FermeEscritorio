@@ -1,12 +1,12 @@
-
 package Ferme.Dto;
 
 import java.io.Serializable;
 
-public class Documentos implements Serializable{
-     public String fecha;
-     public int tipoDoc;
-     public int numFolio;
+public class Documentos implements Serializable {
+
+    public String fecha;
+    public int tipoDoc;
+    public int numFolio;
 
     public Documentos() {
     }
@@ -41,10 +41,4 @@ public class Documentos implements Serializable{
         this.numFolio = numFolio;
     }
 
-    @Override
-    public String toString() {
-        return "Documentos{" + "fecha=" + fecha + ", tipoDoc=" + tipoDoc + ", numFolio=" + numFolio + '}';
-    }
-     
-     
 }

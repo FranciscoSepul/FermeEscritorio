@@ -1,9 +1,9 @@
-
 package Ferme.Dto;
 
 import java.io.Serializable;
 
-public class Sucursal implements Serializable{
+public class Sucursal implements Serializable {
+
     public String nombre;
     public String numFono;
 
@@ -31,10 +31,6 @@ public class Sucursal implements Serializable{
         this.numFono = numFono;
     }
 
-    @Override
-    public String toString() {
-        return "Sucursal{" + "nombre=" + nombre + ", numFono=" + numFono + '}';
-    }
     
-    
+
 }

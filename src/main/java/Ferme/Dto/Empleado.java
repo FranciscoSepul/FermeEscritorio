@@ -1,10 +1,9 @@
-
 package Ferme.Dto;
 
 import java.io.Serializable;
 
 public class Empleado implements Serializable {
-    
+
     public int estado;
     public String runEmpleado;
     public String digitoVerificador;
@@ -12,11 +11,14 @@ public class Empleado implements Serializable {
     public String apellido;
     public String correo;
     public String contrasena;
+    public Sucursal sucursal;
+    public Direccion direccion;
 
     public Empleado() {
     }
 
-    public Empleado(int estado, String runEmpleado, String digitoVerificador, String nombre, String apellido, String correo, String contrasena) {
+    
+    public Empleado(int estado, String runEmpleado, String digitoVerificador, String nombre, String apellido, String correo, String contrasena, Sucursal sucursal, Direccion direccion) {
         this.estado = estado;
         this.runEmpleado = runEmpleado;
         this.digitoVerificador = digitoVerificador;
@@ -24,6 +26,8 @@ public class Empleado implements Serializable {
         this.apellido = apellido;
         this.correo = correo;
         this.contrasena = contrasena;
+        this.sucursal = sucursal;
+        this.direccion = direccion;
     }
 
     public int getEstado() {
@@ -82,10 +86,20 @@ public class Empleado implements Serializable {
         this.contrasena = contrasena;
     }
 
-    @Override
-    public String toString() {
-        return "Empleado{" + "estado=" + estado + ", runEmpleado=" + runEmpleado + ", digitoVerificador=" + digitoVerificador + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", contrasena=" + contrasena + '}';
+    public Sucursal getSucursal() {
+        return sucursal;
     }
-    
-    
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+       
 }

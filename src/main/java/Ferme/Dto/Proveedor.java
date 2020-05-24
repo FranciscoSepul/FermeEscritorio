@@ -1,10 +1,10 @@
-
 package Ferme.Dto;
 
 import java.io.Serializable;
 
-public class Proveedor implements Serializable{
-    public String runEmpresa;
+public class Proveedor implements Serializable {
+
+    public String rutEmpresa;
     public String runProveedor;
     public String digitoVerif;
     public int estado;
@@ -12,12 +12,13 @@ public class Proveedor implements Serializable{
     public String numeroTelef;
     public String direccion;
     public String correo;
+    public Empresa empresa;
 
     public Proveedor() {
     }
 
-    public Proveedor(String runEmpresa, String runProveedor, String digitoVerif, int estado, String nombre, String numeroTelef, String direccion, String correo) {
-        this.runEmpresa = runEmpresa;
+    public Proveedor(String rutEmpresa, String runProveedor, String digitoVerif, int estado, String nombre, String numeroTelef, String direccion, String correo, Empresa empresa) {
+        this.rutEmpresa = rutEmpresa;
         this.runProveedor = runProveedor;
         this.digitoVerif = digitoVerif;
         this.estado = estado;
@@ -25,14 +26,15 @@ public class Proveedor implements Serializable{
         this.numeroTelef = numeroTelef;
         this.direccion = direccion;
         this.correo = correo;
+        this.empresa = empresa;
     }
 
-    public String getRunEmpresa() {
-        return runEmpresa;
+    public String getRutEmpresa() {
+        return rutEmpresa;
     }
 
-    public void setRunEmpresa(String runEmpresa) {
-        this.runEmpresa = runEmpresa;
+    public void setRutEmpresa(String rutEmpresa) {
+        this.rutEmpresa = rutEmpresa;
     }
 
     public String getRunProveedor() {
@@ -91,10 +93,12 @@ public class Proveedor implements Serializable{
         this.correo = correo;
     }
 
-    @Override
-    public String toString() {
-        return "Proveedor{" + "runEmpresa=" + runEmpresa + ", runProveedor=" + runProveedor + ", digitoVerif=" + digitoVerif + ", estado=" + estado + ", nombre=" + nombre + ", numeroTelef=" + numeroTelef + ", direccion=" + direccion + ", correo=" + correo + '}';
+    public Empresa getEmpresa() {
+        return empresa;
     }
-    
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
     
 }

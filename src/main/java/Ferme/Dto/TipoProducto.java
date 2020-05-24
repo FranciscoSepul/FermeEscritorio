@@ -3,7 +3,8 @@ package Ferme.Dto;
 import java.io.Serializable;
 
 public class TipoProducto implements Serializable {
-   public String nombreTipoProducto;
+
+    public String nombreTipoProducto;
 
     public TipoProducto() {
     }
@@ -20,10 +21,5 @@ public class TipoProducto implements Serializable {
         this.nombreTipoProducto = nombreTipoProducto;
     }
 
-    @Override
-    public String toString() {
-        return "TipoProducto{" + "nombreTipoProducto=" + nombreTipoProducto + '}';
-    }
-   
-   
+    
 }

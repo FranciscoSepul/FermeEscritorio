@@ -9,6 +9,6 @@ package Ferme.Dao;
  *
  * @author wwwvi
  */
-public class Sucursal {
+public class TipoProductoDao {
     
 }

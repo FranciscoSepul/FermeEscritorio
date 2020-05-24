@@ -1,9 +1,9 @@
-
 package Ferme.Dto;
+
 import java.io.Serializable;
 
 public class Perfil implements Serializable {
-    
+
     public String nombreCarga;
 
     public Perfil() {
@@ -13,7 +13,6 @@ public class Perfil implements Serializable {
         this.nombreCarga = nombreCarga;
     }
 
-    
     public String getNombreCarga() {
         return nombreCarga;
     }
@@ -22,9 +21,5 @@ public class Perfil implements Serializable {
         this.nombreCarga = nombreCarga;
     }
 
-    @Override
-    public String toString() {
-        return "Perfil{" + "nombreCarga=" + nombreCarga + '}';
-    }
-    
+
 }

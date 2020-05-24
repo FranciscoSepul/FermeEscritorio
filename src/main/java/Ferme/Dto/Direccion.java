@@ -1,17 +1,19 @@
 package Ferme.Dto;
+
 import java.io.Serializable;
 
-public class direccion implements Serializable {
-    public int region ;
+public class Direccion implements Serializable {
+
+    public int region;
     public String comuna;
     public String pasaje;
     public String numero;
     public String numeroDepto;
 
-    public direccion() {
+    public Direccion() {
     }
-    
-    public direccion(int region, String comuna, String pasaje, String numero, String numeroDepto) {
+
+    public Direccion(int region, String comuna, String pasaje, String numero, String numeroDepto) {
         this.region = region;
         this.comuna = comuna;
         this.pasaje = pasaje;
@@ -59,10 +61,4 @@ public class direccion implements Serializable {
         this.numeroDepto = numeroDepto;
     }
 
-    @Override
-    public String toString() {
-        return "direccion{" + "region=" + region + ", comuna=" + comuna + ", pasaje=" + pasaje + ", numero=" + numero + ", numeroDepto=" + numeroDepto + '}';
-    }
-    
-    
 }
