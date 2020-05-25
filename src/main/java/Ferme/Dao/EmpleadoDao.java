@@ -130,16 +130,12 @@ public class EmpleadoDao implements Crud {
         try {
             Codificador cod =new Codificador();
             String has=cod.sha256(pass);
-            query = "select * from empleado where CORREOEMPLE=? and CONTRASENA=?";
-            con = Conexion.getConexion();
-            
+            query = "select * from empleado where correoemple=? and contrasena=?";
+            con = Conexion.getConexion();            
             call = con.prepareCall(query);
-            call.registerOutParameter(1, OracleTypes.CURSOR);
             call.setString(1, user);
-            call.setString(2, has);
-            call.execute();
-
-            rs = (ResultSet) call.getObject(1);
+            call.setString(2, has);          
+            rs = call.executeQuery();
 
             while (rs.next()) {
                emp.setApellido(rs.getString("apellido"));

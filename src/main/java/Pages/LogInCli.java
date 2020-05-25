@@ -160,8 +160,9 @@ public class LogInCli extends javax.swing.JPanel {
         String user = usertxt.getText();
         String pass = passtxt.getText();
         Empleado emp = empdao.logIn(user, pass);
-        if (emp!=null) {
+        if (emp.estado==1) {
             JOptionPane.showConfirmDialog(null, "Yes Jotaro");
+            
         } else {
             JOptionPane.showConfirmDialog(null, "Credenciales invalidas");
         }
@@ -174,9 +175,9 @@ public class LogInCli extends javax.swing.JPanel {
     private javax.swing.JLabel LblLogIn2;
     private javax.swing.JLabel LblLogIn3;
     private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField passtxt;
+    public javax.swing.JTextField passtxt;
     private javax.swing.JTextField usertxt;
     // End of variables declaration//GEN-END:variables
 }
