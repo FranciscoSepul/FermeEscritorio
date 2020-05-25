@@ -39,7 +39,9 @@ public class EmpleadoDao implements Crud {
                 emp.setEstado(rs.getInt("estado"));
                 emp.setNombre(rs.getString("nombree"));
                 emp.setRunEmpleado(rs.getString("runempleado"));
+                emp.setSexo(rs.getInt("sexoe"));
                 emp.setCorreo(rs.getString("correoemple"));
+                emp.setIDCARGO(rs.getInt("IDCARGO"));
                 direc.setComuna(rs.getString("comuna"));
                 direc.setNumero(rs.getString("numero"));
                 direc.setNumeroDepto(rs.getString("numerodepto"));
@@ -78,7 +80,9 @@ public class EmpleadoDao implements Crud {
                 emp.setEstado(rs.getInt("estado"));
                 emp.setNombre(rs.getString("nombree"));
                 emp.setRunEmpleado(rs.getString("runempleado"));
+                emp.setSexo(rs.getInt("sexoe"));
                 emp.setCorreo(rs.getString("correoemple"));
+                emp.setIDCARGO(rs.getInt("IDCARGO"));
                 direc.setComuna(rs.getString("comuna"));
                 direc.setNumero(rs.getString("numero"));
                 direc.setNumeroDepto(rs.getString("numerodepto"));
@@ -138,13 +142,15 @@ public class EmpleadoDao implements Crud {
             rs = (ResultSet) call.getObject(1);
 
             while (rs.next()) {
-                emp.setApellido(rs.getString("apellido"));
+               emp.setApellido(rs.getString("apellido"));
                 emp.setContrasena("contrasena");
                 emp.setDigitoVerificador(rs.getString("digitoverif"));
                 emp.setEstado(rs.getInt("estado"));
                 emp.setNombre(rs.getString("nombree"));
                 emp.setRunEmpleado(rs.getString("runempleado"));
+                emp.setSexo(rs.getInt("sexoe"));
                 emp.setCorreo(rs.getString("correoemple"));
+                emp.setIDCARGO(rs.getInt("IDCARGO"));
                 direc.setComuna(rs.getString("comuna"));
                 direc.setNumero(rs.getString("numero"));
                 direc.setNumeroDepto(rs.getString("numerodepto"));

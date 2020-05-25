@@ -10,6 +10,8 @@ public class Empleado implements Serializable {
     public String nombre;
     public String apellido;
     public String correo;
+    public int sexo;
+    public int IDCARGO;
     public String contrasena;
     public Sucursal sucursal;
     public Direccion direccion;
@@ -17,14 +19,15 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
 
-    
-    public Empleado(int estado, String runEmpleado, String digitoVerificador, String nombre, String apellido, String correo, String contrasena, Sucursal sucursal, Direccion direccion) {
+    public Empleado(int estado, String runEmpleado, String digitoVerificador, String nombre, String apellido, String correo, int sexo, int IDCARGO, String contrasena, Sucursal sucursal, Direccion direccion) {
         this.estado = estado;
         this.runEmpleado = runEmpleado;
         this.digitoVerificador = digitoVerificador;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
+        this.sexo = sexo;
+        this.IDCARGO = IDCARGO;
         this.contrasena = contrasena;
         this.sucursal = sucursal;
         this.direccion = direccion;
@@ -78,6 +81,22 @@ public class Empleado implements Serializable {
         this.correo = correo;
     }
 
+    public int getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(int sexo) {
+        this.sexo = sexo;
+    }
+
+    public int getIDCARGO() {
+        return IDCARGO;
+    }
+
+    public void setIDCARGO(int IDCARGO) {
+        this.IDCARGO = IDCARGO;
+    }
+
     public String getContrasena() {
         return contrasena;
     }
@@ -101,5 +120,7 @@ public class Empleado implements Serializable {
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
+
+    
        
 }
