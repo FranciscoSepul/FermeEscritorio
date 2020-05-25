@@ -5,22 +5,27 @@ import java.awt.BorderLayout;
 
 public class Container extends javax.swing.JFrame {
 
-    Empleado emp = new Empleado();
     LogInCli log = new LogInCli();
+    Empleado emp = new Empleado();
+   
 
-    public Container() {
-        initComponents();
+    public  Container( ) {
+        
+        initComponents();       
         this.setLocationRelativeTo(null);
+        setTitle("Ferme");
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
         //Logo        
         rsscalelabel.RSScaleLabel.setScaleLabel(Lbl1, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
 
         //Imagen button 
         rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
-        ///Se modifica el panel body
-//        rsscalelabel.RSScaleLabel.setScaleLabel(body,"LogInCli" );
 
-        //Imagen Cliente aca deberia ir una condicion si el cliente es hombre usar la imagen de la mujer 
-        if (emp != null) {
+        //Imagen Cliente aca deberia ir una condicion si el cliente es hombre usar la imagen de la mujer
+        
+        if (emp.getEstado() > 0) {
             if (emp.getSexo() != 0) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
             } else {
@@ -32,15 +37,16 @@ public class Container extends javax.swing.JFrame {
             }
         } else {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAll.png");
+            
+            //Body LogIn  
+            log.setSize(751, 290);
+            log.setLocation(5, 5);
+            PanelBody.removeAll();
+            PanelBody.add(log, BorderLayout.CENTER);
+            PanelBody.revalidate();
+            PanelBody.repaint();
         }
-        log.setSize(751, 290);
-        log.setLocation(5,5);
-
-        PanelBody.removeAll();
-        PanelBody.add(log, BorderLayout.CENTER);
-        PanelBody.revalidate();
-        PanelBody.repaint();
-
+        
     }
 
     /**

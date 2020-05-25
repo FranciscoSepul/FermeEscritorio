@@ -147,15 +147,6 @@ public class EmpleadoDao implements Crud {
                 emp.setSexo(rs.getInt("sexoe"));
                 emp.setCorreo(rs.getString("correoemple"));
                 emp.setIDCARGO(rs.getInt("IDCARGO"));
-                direc.setComuna(rs.getString("comuna"));
-                direc.setNumero(rs.getString("numero"));
-                direc.setNumeroDepto(rs.getString("numerodepto"));
-                direc.setPasaje(rs.getString("pasaje"));
-                direc.setRegion(rs.getInt("region"));
-                suc.setNombre(rs.getString("NOMBRES"));
-                suc.setNumFono(rs.getString("telefono"));
-                emp.setSucursal(suc);
-                emp.setDireccion(direc);
             }
         } catch (SQLException e) {
             System.out.println("Error al buscar" + e.getMessage());
