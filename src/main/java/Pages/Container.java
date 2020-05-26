@@ -14,11 +14,12 @@ public class Container extends javax.swing.JFrame {
         emp=empl;
         Container cont=new Container();
         cont.removeAll();
+//        this.
         cont.repaint();
         return emp;
     }
-    public Container() {       
-        
+    
+    public Container() {             
         
         initComponents();
         this.setLocationRelativeTo(null);
