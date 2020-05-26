@@ -1,22 +1,34 @@
 package Pages;
 
 import Ferme.Dto.Empleado;
+import Ferme.Dao.EmpleadoDao;
 import java.awt.BorderLayout;
 
 public class Container extends javax.swing.JFrame {
 
     LogInCli log = new LogInCli();
-    Empleado emp = new Empleado();
-   
-
-    public  Container( ) {
+    EmpleadoDao empdao = new EmpleadoDao();
+    Empleado emp = new  Empleado();
+            
+    public Empleado emple(Empleado empl){
+        emp=empl;
+        Container cont=new Container();
+        cont.removeAll();
+        cont.repaint();
+        return emp;
+    }
+    public Container() {       
         
-        initComponents();       
+        
+        initComponents();
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
-        setResizable(false);
-        
+        setResizable(false); 
+//        System.out.println("run empleado " + rut);
+//        System.out.println("run e"+run);
+//        emp = empdao.BuscarEmpleado(rut);
+
         //Logo        
         rsscalelabel.RSScaleLabel.setScaleLabel(Lbl1, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
 
@@ -24,7 +36,6 @@ public class Container extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
 
         //Imagen Cliente aca deberia ir una condicion si el cliente es hombre usar la imagen de la mujer
-        
         if (emp.getEstado() > 0) {
             if (emp.getSexo() != 0) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
@@ -37,7 +48,7 @@ public class Container extends javax.swing.JFrame {
             }
         } else {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAll.png");
-            
+
             //Body LogIn  
             log.setSize(751, 290);
             log.setLocation(5, 5);
@@ -46,7 +57,7 @@ public class Container extends javax.swing.JFrame {
             PanelBody.revalidate();
             PanelBody.repaint();
         }
-        
+
     }
 
     /**

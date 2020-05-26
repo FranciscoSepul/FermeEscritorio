@@ -7,7 +7,6 @@ package Pages;
 
 import Ferme.Dao.EmpleadoDao;
 import Ferme.Dto.Empleado;
-import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class LogInCli extends javax.swing.JPanel {
 
+    
     /**
      * Creates new form LogInCli
      */
@@ -176,15 +176,18 @@ public class LogInCli extends javax.swing.JPanel {
     private void passtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passtxtActionPerformed
-
+     public  String runE = "" ;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        EmpleadoDao empdao = new EmpleadoDao();
-
+       
+        EmpleadoDao empdao = new EmpleadoDao();  
+        Container cont = new Container();
         String user = email.getText();
         String pass = passtxt.getText();
-        Empleado emp = empdao.logIn(user, pass);
+        Empleado emp = empdao.logIn(user, pass);                
         if (emp.estado==1) {
-            JOptionPane.showMessageDialog(null, "Yes Jotaro");
+              JOptionPane.showMessageDialog(null, "Yes Jotaro");    
+              cont.emp=emp;
+              cont.emple(emp);
         } else {
             JOptionPane.showMessageDialog(null, "Credenciales invalidas");
         }
