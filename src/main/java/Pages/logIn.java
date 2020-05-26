@@ -13,13 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author wwwvi
  */
-public class LogInCli extends javax.swing.JPanel {
+public class logIn extends javax.swing.JFrame {
 
-    
     /**
-     * Creates new form LogInCli
+     * Creates new form logIn
      */
-    public LogInCli() {
+    public logIn() {
         initComponents();
     }
 
@@ -32,10 +31,6 @@ public class LogInCli extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        evaluatorFloat1 = new org.jdesktop.core.animation.timing.evaluators.EvaluatorFloat();
-        rSMPassViewBeanInfo1 = new rojeru_san.RSMPassViewBeanInfo();
-        rSMPassViewBeanInfo2 = new rojeru_san.RSMPassViewBeanInfo();
-        rSMPassViewBeanInfo3 = new rojeru_san.RSMPassViewBeanInfo();
         jPanel1 = new javax.swing.JPanel();
         LblLogIn1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -45,6 +40,8 @@ public class LogInCli extends javax.swing.JPanel {
         LblLogIn3 = new javax.swing.JLabel();
         passtxt = new rojeru_san.RSMPassView();
         email = new rojeru_san.RSMTextFull();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -89,26 +86,8 @@ public class LogInCli extends javax.swing.JPanel {
         LblLogIn3.setForeground(new java.awt.Color(0, 0, 0));
         LblLogIn3.setText("No recuerdas tu contraseña ?");
 
-        passtxt.setBackground(new java.awt.Color(204, 204, 255));
-        passtxt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        passtxt.setForeground(new java.awt.Color(0, 0, 0));
-        passtxt.setToolTipText("");
-        passtxt.setBordeColorFocus(new java.awt.Color(255, 255, 255));
-        passtxt.setBordeColorNoFocus(new java.awt.Color(0, 0, 0));
-        passtxt.setDisabledTextColor(new java.awt.Color(153, 153, 153));
-        passtxt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         passtxt.setPlaceholder("Contraseña");
-        passtxt.setVerifyInputWhenFocusTarget(false);
-        passtxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passtxtActionPerformed(evt);
-            }
-        });
 
-        email.setBackground(new java.awt.Color(204, 204, 255));
-        email.setForeground(new java.awt.Color(0, 0, 0));
-        email.setBordeColorFocus(new java.awt.Color(204, 204, 255));
-        email.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         email.setPlaceholder("Email");
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,15 +110,16 @@ public class LogInCli extends javax.swing.JPanel {
                                     .addComponent(LblLogIn1)
                                     .addComponent(LblLogIn2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(passtxt, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(51, 51, 51))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(59, 59, 59)
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(LblLogIn3, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)))))
+                                .addComponent(LblLogIn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,21 +128,21 @@ public class LogInCli extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LblLogIn2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passtxt, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(LblLogIn1))
-                .addGap(34, 34, 34)
+                    .addComponent(LblLogIn1)
+                    .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(LblLogIn3))
                 .addGap(56, 56, 56))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -171,23 +151,22 @@ public class LogInCli extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passtxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passtxtActionPerformed
-     public  String runE = "" ;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        EmpleadoDao empdao = new EmpleadoDao();  
-        Container cont = new Container();
+
+        EmpleadoDao empdao = new EmpleadoDao();        
         String user = email.getText();
         String pass = passtxt.getText();
-        Empleado emp = empdao.logIn(user, pass);                
-        if (emp.estado==1) {
-              JOptionPane.showMessageDialog(null, "Yes Jotaro");    
-              cont.emp=emp;
-              cont.emple(emp);
+        Empleado emp = empdao.logIn(user, pass);
+        if (emp.estado==1) {            
+            JOptionPane.showMessageDialog(null, "Yes Jotaro");
+            String rut=emp.runEmpleado;
+            Home hom= new Home(rut);
+            hom.setVisible(true);
+            this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "Credenciales invalidas");
         }
@@ -196,7 +175,40 @@ public class LogInCli extends javax.swing.JPanel {
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new logIn().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblLogIn;
@@ -204,13 +216,9 @@ public class LogInCli extends javax.swing.JPanel {
     private javax.swing.JLabel LblLogIn2;
     private javax.swing.JLabel LblLogIn3;
     private rojeru_san.RSMTextFull email;
-    private org.jdesktop.core.animation.timing.evaluators.EvaluatorFloat evaluatorFloat1;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private rojeru_san.RSMPassView passtxt;
-    private rojeru_san.RSMPassViewBeanInfo rSMPassViewBeanInfo1;
-    private rojeru_san.RSMPassViewBeanInfo rSMPassViewBeanInfo2;
-    private rojeru_san.RSMPassViewBeanInfo rSMPassViewBeanInfo3;
     // End of variables declaration//GEN-END:variables
 }
