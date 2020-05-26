@@ -7,21 +7,20 @@ package Pages;
 
 import Ferme.Dao.EmpleadoDao;
 import Ferme.Dto.Empleado;
-import java.util.*;
 
 /**
  *
  * @author wwwvi
  */
-public class Home extends javax.swing.JFrame {
-
-    int contador = 0;
+public class GraficoDeVentas extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
 
-    public Home(String id) {
+        public GraficoDeVentas(String id) {
+        System.out.println("rut " + id);
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
+        System.out.println("data " + emp.runEmpleado);
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
@@ -32,34 +31,10 @@ public class Home extends javax.swing.JFrame {
 
         //Imagen button 
         rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
-
-        //imegen que se cambia 
-        //panel de imagenes con movimiento
-        int velocidad = 1; //esta metrica es en segundos
-        Timer timer;
-        TimerTask imagen;
-        imagen = new TimerTask() {
-            @Override
-            public void run() {
-                switch (contador) {
-                    case 0:                        
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
-                        contador++;
-                        break;
-                    case 1:
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");                        
-                        contador++;
-                        break;
-                    case 2:                        
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
-                        contador=0;
-                        break;
-                }
-            }
-
-        };
-        timer = new Timer();
-        timer.scheduleAtFixedRate(imagen, 1000, 2000);
+        System.out.println("sexo" + emp.sexo);
+        System.out.println("nombre" + emp.nombre);
+        System.out.println("cargo" + emp.IDCARGO);
+        System.out.println("cargoger" + emp.getIDCARGO());
 
         //Seleccinar logo segun sexo y cargo
         if (emp.sexo == 0) {
@@ -104,7 +79,6 @@ public class Home extends javax.swing.JFrame {
         btnVentasRealiza = new javax.swing.JButton();
         btnPrecioStock = new javax.swing.JButton();
         btnGraficos = new javax.swing.JButton();
-        TimerImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,10 +202,6 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1061, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(TimerImage, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,9 +209,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(TimerImage, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(359, 359, 359))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -279,20 +247,27 @@ public class Home extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GraficoDeVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GraficoDeVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GraficoDeVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GraficoDeVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home("").setVisible(true);
+                new GraficoDeVentas("").setVisible(true);
             }
         });
     }
@@ -304,7 +279,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel LblUser;
     private javax.swing.JLabel LblUsers;
     public javax.swing.JPanel PanelBody;
-    private javax.swing.JLabel TimerImage;
     private javax.swing.JButton btnAsistencia;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;

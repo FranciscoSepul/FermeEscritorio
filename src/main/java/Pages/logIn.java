@@ -162,6 +162,7 @@ public class logIn extends javax.swing.JFrame {
         String pass = passtxt.getText();
         Empleado emp = empdao.logIn(user, pass);
         if (emp.estado==1) {            
+            System.out.println("sexo log in"+emp.sexo);
             JOptionPane.showMessageDialog(null, "Yes Jotaro");
             String rut=emp.runEmpleado;
             Home hom= new Home(rut);
