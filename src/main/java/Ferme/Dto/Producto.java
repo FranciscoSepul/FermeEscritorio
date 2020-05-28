@@ -7,14 +7,16 @@ public class Producto implements Serializable {
     public String nombre;
     public int stock;
     public int precioUni;
+    public String rutaDoc;
 
     public Producto() {
     }
 
-    public Producto(String nombre, int stock, int precioUni) {
+    public Producto(String nombre, int stock, int precioUni, String rutaDoc) {
         this.nombre = nombre;
         this.stock = stock;
         this.precioUni = precioUni;
+        this.rutaDoc = rutaDoc;
     }
 
     public String getNombre() {
@@ -41,5 +43,15 @@ public class Producto implements Serializable {
         this.precioUni = precioUni;
     }
 
+    public String getRutaDoc() {
+        return rutaDoc;
+    }
+
+    public void setRutaDoc(String rutaDoc) {
+        this.rutaDoc = rutaDoc;
+    }
+    
+    
+    
 
 }
