@@ -50,7 +50,11 @@ public class Producto implements Serializable {
     public void setRutaDoc(String rutaDoc) {
         this.rutaDoc = rutaDoc;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Producto{" + "nombre=" + nombre + ", stock=" + stock + ", precioUni=" + precioUni + ", rutaDoc=" + rutaDoc + '}';
+    }
     
     
 

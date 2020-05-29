@@ -21,31 +21,54 @@ public class Home extends javax.swing.JFrame {
     public Home(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
-        prod = (ArrayList<Producto>) new ProductoDao().Listar();
+        prod = new ProductoDao().Listar();
+        
+//        
+//        for(Producto produ:prod){
+//            System.out.println("1 parte for");
+//            System.out.println(produ);
+//            System.out.println(produ.precioUni);
+//            System.out.println(produ.rutaDoc);
+//            System.out.println(produ.stock);
+//            System.out.println("2 parte for");
+//            System.out.println(produ.nombre.charAt(1));
+//            System.out.println(produ.precioUni);
+//            System.out.println(produ.rutaDoc);
+//            System.out.println(produ.stock);
+//        }
+        prod.stream().forEach((Producto)->{
+            System.out.println(Producto.nombre);
+    });
+        System.out.println(prod.toString());
 
-        for (int i = 0; i < prod.size();) {
-            System.out.println("en el for la ctm");
-            System.out.println(prod.get(i).nombre);
-             i++;
-        }
-        
-        prod.stream().map((o) -> {
-            System.out.println("2 for");
-            return o;
-        }).forEachOrdered((o) -> {
-            System.out.println("kkkkk");
-            System.out.println(o.nombre);
-            System.out.println(o.nombre);
-        });
-        
-        
+//        for (int i = 0; i < prod.size();) {
+//            System.out.println("en el for la ctm");
+//            System.out.println(prod.get(i).nombre);
+//            i++;
+//        }
+//
+//        prod.stream().map((o) -> {
+//            System.out.println("2 for");
+//            return o;
+//        }).forEachOrdered((o) -> {
+//            System.out.println("kkkkk");
+//            System.out.println(o.nombre);
+//            System.out.println(o.nombre);
+//        });
+//
+//        Iterator it = prod.iterator();
+//        while (it.hasNext()) {
+//            System.out.println("dentro del while");
+//            product = (Producto) it.next();
+//            System.out.println(product.nombre);
+//        }
+//
+//        Producto cadena1 = prod.get(0);
+//        Producto cadena2 = prod.get(1);
+//
+//        System.out.println("cadena " + cadena1.nombre);
+//        System.out.println("cadena2 " + cadena2.nombre);
 
-        Producto cadena1 = prod.get(0);
-        Producto cadena2 = prod.get(1);
-
-        System.out.println("cadena " + cadena1.nombre);
-        System.out.println("cadena2 " + cadena2.nombre);
-        
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
@@ -77,7 +100,7 @@ public class Home extends javax.swing.JFrame {
                 case (1):
                     nombre2 = Producto.nombre;
                     precio2 = Integer.toString(Producto.precioUni);
-                    ruta2 = Producto.rutaDoc+".jpg";
+                    ruta2 = Producto.rutaDoc + ".jpg";
                     String cantidad2 = Integer.toString(Producto.stock);
                     cont++;
                     break;
@@ -86,7 +109,7 @@ public class Home extends javax.swing.JFrame {
                     precio3 = Integer.toString(Producto.precioUni);
                     ruta3 = Producto.rutaDoc;
                     String cantidad3 = Integer.toString(Producto.stock);
-                    cont=0;
+                    cont = 0;
                     break;
             }
         });

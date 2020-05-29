@@ -17,9 +17,9 @@ public class ProductoDao implements Crud {
     String query = "";
     
     @Override
-    public List Listar() {
+    public List<Producto> Listar() {
         
-        ArrayList lis = new ArrayList();
+        List<Producto> lis = new ArrayList();
         query="select * from producto";
         try {
             con = Conexion.getConexion();
@@ -31,7 +31,7 @@ public class ProductoDao implements Crud {
                 prod.setRutaDoc(rs.getString("rutadoc"));
                 prod.setStock(rs.getInt("stock"));
                 lis.add(prod);
-                
+                System.out.println(lis.toString());
             }
         } catch (SQLException e) {
             System.out.println("error producto dao "+e.getMessage());
