@@ -14,6 +14,7 @@ public class Home extends javax.swing.JFrame {
     String nombre1, nombre2, nombre3;
     String ruta1, ruta2, ruta3;
     String precio1, precio2, precio3;
+    Producto product = new Producto();
 
     String rutaImg = "src\\main\\java\\FermePage\\Imagenes\\Productos\\";
 
@@ -21,17 +22,30 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = (ArrayList<Producto>) new ProductoDao().Listar();
-        Producto size=prod.get(WIDTH);
-        for (Producto prod1 : prod) {
-            System.out.println(size.nombre);
-            System.out.println(prod1.nombre);
-        }       
-        Producto cadena1 =prod.get(0);
-        String cadena2 = prod.get(1).nombre;
+
+        for (int i = 0; i < prod.size();) {
+            System.out.println("en el for la ctm");
+            System.out.println(prod.get(i).nombre);
+             i++;
+        }
+        
+        prod.stream().map((o) -> {
+            System.out.println("2 for");
+            return o;
+        }).forEachOrdered((o) -> {
+            System.out.println("kkkkk");
+            System.out.println(o.nombre);
+            System.out.println(o.nombre);
+        });
         
         
-        System.out.println("cadena "+cadena1.nombre);
-        System.out.println("cadena2 "+cadena2);
+
+        Producto cadena1 = prod.get(0);
+        Producto cadena2 = prod.get(1);
+
+        System.out.println("cadena " + cadena1.nombre);
+        System.out.println("cadena2 " + cadena2.nombre);
+        
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
@@ -52,8 +66,8 @@ public class Home extends javax.swing.JFrame {
             System.out.println("intermedio");
             System.out.println(Producto.nombre);
             System.out.println("final");
-            switch (contador) {
-                case (0):                    
+            switch (cont) {
+                case (0):
                     nombre1 = (Producto.nombre);
                     precio1 = Integer.toString(Producto.precioUni);
                     ruta1 = rutaImg + Producto.rutaDoc + ".jpg";
@@ -63,7 +77,7 @@ public class Home extends javax.swing.JFrame {
                 case (1):
                     nombre2 = Producto.nombre;
                     precio2 = Integer.toString(Producto.precioUni);
-                    ruta2 = Producto.rutaDoc;
+                    ruta2 = Producto.rutaDoc+".jpg";
                     String cantidad2 = Integer.toString(Producto.stock);
                     cont++;
                     break;
@@ -72,7 +86,7 @@ public class Home extends javax.swing.JFrame {
                     precio3 = Integer.toString(Producto.precioUni);
                     ruta3 = Producto.rutaDoc;
                     String cantidad3 = Integer.toString(Producto.stock);
-                    cont++;
+                    cont=0;
                     break;
             }
         });
