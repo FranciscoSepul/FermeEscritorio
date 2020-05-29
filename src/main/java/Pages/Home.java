@@ -36,10 +36,10 @@ public class Home extends javax.swing.JFrame {
 //            System.out.println(produ.rutaDoc);
 //            System.out.println(produ.stock);
 //        }
-        prod.stream().forEach((Producto)->{
-            System.out.println(Producto.nombre);
-    });
-        System.out.println(prod.toString());
+//        prod.stream().forEach((Producto)->{
+//            System.out.println("llamando al nombre del producto"+Producto.nombre);
+//    });
+//        System.out.println("aca el tostring "+prod.toString());
 
 //        for (int i = 0; i < prod.size();) {
 //            System.out.println("en el for la ctm");

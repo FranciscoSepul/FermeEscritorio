@@ -31,7 +31,9 @@ public class ProductoDao implements Crud {
                 prod.setRutaDoc(rs.getString("rutadoc"));
                 prod.setStock(rs.getInt("stock"));
                 lis.add(prod);
+                System.out.println("loco aca empieza el producto dao");
                 System.out.println(lis.toString());
+                System.out.println("aca termina el producto dao ");
             }
         } catch (SQLException e) {
             System.out.println("error producto dao "+e.getMessage());
