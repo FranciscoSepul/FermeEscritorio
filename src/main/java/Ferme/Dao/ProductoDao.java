@@ -29,7 +29,6 @@ public class ProductoDao implements Crud {
                 prod.setNombre(rs.getString("nombre"));
                 prod.setPrecioUni(rs.getInt("preciouni"));
                 prod.setRutaDoc(rs.getString("rutadoc"));
-                System.out.println(prod.rutaDoc);
                 prod.setStock(rs.getInt("stock"));
                 lis.add(prod);
                 

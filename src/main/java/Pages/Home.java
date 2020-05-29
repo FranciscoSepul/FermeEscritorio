@@ -8,7 +8,7 @@ import java.util.*;
 public class Home extends javax.swing.JFrame {
 
     int contador = 0;
-
+    int cont = 0;
     Empleado emp = new Empleado();
     List<Producto> prod;
     String nombre1, nombre2, nombre3;
@@ -21,13 +21,22 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = (ArrayList<Producto>) new ProductoDao().Listar();
-
+        Producto size=prod.get(WIDTH);
+        for (Producto prod1 : prod) {
+            System.out.println(size.nombre);
+            System.out.println(prod1.nombre);
+        }       
+        Producto cadena1 =prod.get(0);
+        String cadena2 = prod.get(1).nombre;
+        
+        
+        System.out.println("cadena "+cadena1.nombre);
+        System.out.println("cadena2 "+cadena2);
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
         setResizable(false);
         System.out.println("listado size " + prod.size());
-
         //Logo        
         rsscalelabel.RSScaleLabel.setScaleLabel(Lbl1, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
 
@@ -36,30 +45,34 @@ public class Home extends javax.swing.JFrame {
 
         //imegen que se cambia 
         //panel de imagenes con movimiento
-        int velocidad = 1; //esta metrica es en segundos
         Timer timer;
         TimerTask imagen;
 
         prod.forEach((Producto) -> {
-
+            System.out.println("intermedio");
+            System.out.println(Producto.nombre);
+            System.out.println("final");
             switch (contador) {
-                case (0):
-                    nombre1 = Producto.nombre;
+                case (0):                    
+                    nombre1 = (Producto.nombre);
                     precio1 = Integer.toString(Producto.precioUni);
                     ruta1 = rutaImg + Producto.rutaDoc + ".jpg";
                     String cantidad1 = Integer.toString(Producto.stock);
+                    cont++;
                     break;
                 case (1):
                     nombre2 = Producto.nombre;
                     precio2 = Integer.toString(Producto.precioUni);
                     ruta2 = Producto.rutaDoc;
                     String cantidad2 = Integer.toString(Producto.stock);
+                    cont++;
                     break;
                 case (2):
                     nombre3 = Producto.nombre;
                     precio3 = Integer.toString(Producto.precioUni);
                     ruta3 = Producto.rutaDoc;
                     String cantidad3 = Integer.toString(Producto.stock);
+                    cont++;
                     break;
             }
         });
@@ -73,12 +86,14 @@ public class Home extends javax.swing.JFrame {
                     case 0:
                         rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, ruta1);
                         txtDesc.setText(nombre1);
+                        System.out.println("dentro del case 1" + nombre1);
                         txtPrecio.setText("$ " + precio1);
                         contador++;
                         break;
                     case 1:
                         rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, ruta2);
                         txtDesc.setText(nombre2);
+                        System.out.println("dentro del case 2" + nombre2);
                         txtPrecio.setText("$ " + precio2);
                         contador++;
                         break;
