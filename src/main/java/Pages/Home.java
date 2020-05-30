@@ -278,6 +278,11 @@ public class Home extends javax.swing.JFrame {
         btnPrecioStock.setText("Cambiar Precio o Stock de productos");
 
         btnGraficos.setText("Graficos de ventas");
+        btnGraficos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraficosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelBodyLayout = new javax.swing.GroupLayout(PanelBody);
         PanelBody.setLayout(PanelBodyLayout);
@@ -324,19 +329,16 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Los mas vendidos");
 
         loMasV.setText("jLabel2");
 
-        loMasV1.setForeground(new java.awt.Color(0, 0, 0));
         loMasV1.setText("jLabel2");
 
         loMasV2.setText("jLabel2");
 
         loMasV3.setText("jLabel2");
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -431,6 +433,13 @@ public class Home extends javax.swing.JFrame {
     private void btnVentasRealizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasRealizaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVentasRealizaActionPerformed
+
+    private void btnGraficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficosActionPerformed
+        String rut = emp.runEmpleado;
+        GraficoDeVentas graf = new GraficoDeVentas(rut);
+        graf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGraficosActionPerformed
 
     /**
      * @param args the command line arguments

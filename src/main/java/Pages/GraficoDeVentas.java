@@ -79,6 +79,8 @@ public class GraficoDeVentas extends javax.swing.JFrame {
         btnVentasRealiza = new javax.swing.JButton();
         btnPrecioStock = new javax.swing.JButton();
         btnGraficos = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButtonVentas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,7 +107,7 @@ public class GraficoDeVentas extends javax.swing.JFrame {
                 .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(LblUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
@@ -144,6 +146,11 @@ public class GraficoDeVentas extends javax.swing.JFrame {
         btnAsistencia.setText("Asistencia Personal");
 
         BtnHome.setText("Home Ventas");
+        BtnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHomeActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Stock de productos");
 
@@ -193,6 +200,30 @@ public class GraficoDeVentas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButtonVentas.setText("Mostrar Ventas");
+        jButtonVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVentasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(315, 315, 315)
+                .addComponent(jButtonVentas)
+                .addContainerGap(346, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jButtonVentas)
+                .addContainerGap(153, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -202,6 +233,10 @@ public class GraficoDeVentas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1061, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +244,9 @@ public class GraficoDeVentas extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(359, 359, 359))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,6 +266,17 @@ public class GraficoDeVentas extends javax.swing.JFrame {
     private void btnVentasRealizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasRealizaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVentasRealizaActionPerformed
+
+    private void BtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHomeActionPerformed
+            String rut=emp.runEmpleado;
+            Home hom= new Home(rut);
+            hom.setVisible(true);
+            this.setVisible(false);
+    }//GEN-LAST:event_BtnHomeActionPerformed
+
+    private void jButtonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVentasActionPerformed
+        
+    }//GEN-LAST:event_jButtonVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,6 +333,8 @@ public class GraficoDeVentas extends javax.swing.JFrame {
     private javax.swing.JButton btnVentasRealiza;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonVentas;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblSearch;
