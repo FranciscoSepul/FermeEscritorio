@@ -11,29 +11,17 @@ public class Home extends javax.swing.JFrame {
     int cont = 0;
     Empleado emp = new Empleado();
     List<Producto> prod;
-//    Producto product = new Producto();
-//    Producto cadena0,cadena1,cadena2,cadena3 =new Producto();
 
     public Home(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = new ProductoDao().Listar();
-//        
-//         cadena0 = prod.get(0);        
-//         cadena1 = prod.get(1);
-//        if (prod.size()>2) {            
-//         cadena2 = prod.get(2);
-//        } if (prod.size()>3) {            
-//         cadena2 = prod.get(2);
-//        }
-//        
-//         
 
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
         setResizable(false);
-        System.out.println("listado size " + prod.size());
+        int contab = prod.size();
         //Logo        
         rsscalelabel.RSScaleLabel.setScaleLabel(Lbl1, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
 
@@ -46,16 +34,12 @@ public class Home extends javax.swing.JFrame {
         TimerTask imagen;
 
         imagen = new TimerTask() {
-            int contab = prod.size();
-
             @Override
             public void run() {
-                System.out.println("contador" + contab);
                 switch (contador) {
                     case 0:
                         rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(0).rutaDoc);
                         txtDesc.setText(prod.get(0).nombre);
-                        System.out.println("dentro del case 1" + prod.get(0).nombre);
                         txtPrecio.setText("$ " + prod.get(0).precioUni);
                         contador = (contab > 1) ? 1 : 0;
                         break;
@@ -63,7 +47,6 @@ public class Home extends javax.swing.JFrame {
                     case 1:
                         rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(1).rutaDoc);
                         txtDesc.setText(prod.get(1).nombre);
-                        System.out.println("dentro del case 2" + prod.get(1).toString());
                         txtPrecio.setText("$ " + prod.get(1).precioUni);
                         contador = (contab > 2) ? 2 : 0;
                         break;
@@ -71,7 +54,7 @@ public class Home extends javax.swing.JFrame {
                         rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(2).rutaDoc);
                         txtDesc.setText(prod.get(2).nombre);
                         txtPrecio.setText("$ " + prod.get(2).precioUni);
-                        contador = 0;
+                        contador = -0;
                         break;
                 }
 
@@ -83,33 +66,53 @@ public class Home extends javax.swing.JFrame {
 
         //Seleccinar logo segun sexo y cargo
         if (emp.sexo == 0) {
-            if (emp.IDCARGO == 1) {
+            if (emp.IDCARGO == 2) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
             }
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
+            this.BtnNuevoV.setVisible(false);
+            this.btnGraficos.setVisible(false);
+            this.btnVentasRealiza.setVisible(false);
+            this.btnPrecioStock.setVisible(false);
         } else {
-            if (emp.IDCARGO > 1) {
+            if (emp.IDCARGO == 2) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
             }
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
+            this.BtnNuevoV.setVisible(false);
+            this.btnGraficos.setVisible(false);
+            this.btnVentasRealiza.setVisible(false);
+            this.btnPrecioStock.setVisible(false);
 
         }
-        //pintar datos de los productos mas vendidos {
-        rsscalelabel.RSScaleLabel.setScaleLabel(loMasV1, prod.get(0).rutaDoc);
-        DescripLo.setText(prod.get(0).nombre);
+        //pintar datos de los productos mas vendidos nota: Esta es la parte mas indecente a mi consideracion del codigo home de ser posible cambiar a posterior 
+        //con mas tiempo
+        if (contab >= 1) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV1, prod.get(0).rutaDoc);
+            DescripLo.setText(prod.get(0).nombre);
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
-         rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(1).rutaDoc);
-        DescripLo1.setText(prod.get(1).nombre);
+        }
+        if (contab >= 2) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(1).rutaDoc);
+            DescripLo1.setText(prod.get(1).nombre);
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
-//        rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(2).rutaDoc);
-//        DescripLo2.setText(prod.get(2).nombre);
-////        txtPrecio.setText("$ " + prod.get(0).precioUni);
-//        rsscalelabel.RSScaleLabel.setScaleLabel(loMasV3, prod.get(3).rutaDoc);
-//        DescripLo3.setText(prod.get(3).nombre);
-////        txtPrecio.setText("$ " + prod.get(0).precioUni);
-//        rsscalelabel.RSScaleLabel.setScaleLabel(loMasV4, prod.get(4).rutaDoc);
+        }
+        if (contab >= 3) {
+            System.out.println("entro al 2");
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(2).rutaDoc);
+            DescripLo2.setText(prod.get(2).nombre);
+//        txtPrecio.setText("$ " + prod.get(0).precioUni);
+        }
+        if (contab >= 4) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV3, prod.get(3).rutaDoc);
+            DescripLo3.setText(prod.get(3).nombre);
+//        txtPrecio.setText("$ " + prod.get(0).precioUni);
+        }
+        if (contab == 5) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV4, prod.get(4).rutaDoc);
 //        DescripLo4.setText(prod.get(4).nombre);
-////        txtPrecio.setText("$ " + prod.get(0).precioUni);
+//        txtPrecio.setText("$ " + prod.get(0).precioUni);
+        }
 
     }
 
@@ -280,8 +283,6 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Los mas vistos");
-
-        loMasV4.setText("jLabel2");
 
         loMasV1.setBackground(new java.awt.Color(255, 255, 255));
         loMasV1.setForeground(new java.awt.Color(0, 0, 0));

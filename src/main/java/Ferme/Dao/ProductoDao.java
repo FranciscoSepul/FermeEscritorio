@@ -29,7 +29,6 @@ public class ProductoDao implements Crud {
             call = con.prepareCall(query);
             rs = call.executeQuery();
             while (rs.next()) {
-                System.out.println(cont + "este es el contador");
                 Producto produc = new Producto();
                 produc.setNombre(rs.getString("nombre"));
                 produc.setPrecioUni(rs.getInt("preciouni"));
