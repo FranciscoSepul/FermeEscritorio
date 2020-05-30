@@ -98,6 +98,44 @@ public class EmpleadoDao implements Crud {
         }
         return emp;
     }
+    public Empleado BuscarEmpleadoPorMail(String mail) {
+
+        try {
+            query = "{select * from empleado where correoemple =? }";
+            con = Conexion.getConexion();
+
+           call = con.prepareCall(query);
+//            call.registerOutParameter(1, OracleTypes.CURSOR);
+            call.setString(2, mail);
+            call.execute();
+
+            rs = (ResultSet) call.getObject(1);
+
+            while (rs.next()) {
+                emp.setApellido(rs.getString("apellido"));
+                emp.setContrasena("contrasena");
+                emp.setDigitoVerificador(rs.getString("digitoverif"));
+                emp.setEstado(rs.getInt("estado"));
+                emp.setNombre(rs.getString("nombree"));
+                emp.setRunEmpleado(rs.getString("runempleado"));
+                emp.setSexo(rs.getInt("sexoe"));
+                emp.setCorreo(rs.getString("correoemple"));
+                emp.setIDCARGO(rs.getInt("IDCARGO"));
+                direc.setComuna(rs.getString("comuna"));
+                direc.setNumero(rs.getString("numero"));
+                direc.setNumeroDepto(rs.getString("numerodepto"));
+                direc.setPasaje(rs.getString("pasaje"));
+                direc.setRegion(rs.getInt("region"));
+                suc.setNombre(rs.getString("NOMBRES"));
+                suc.setNumFono(rs.getString("telefono"));
+                emp.setSucursal(suc);
+                emp.setDireccion(direc);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar" + e.getMessage());
+        }
+        return emp;
+    }
 
     public boolean habilitar(String rut) {
         try {

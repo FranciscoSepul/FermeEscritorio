@@ -6,6 +6,7 @@
 package Pages;
 
 import Ferme.Dao.EmpleadoDao;
+import Ferme.Dao.Smtp;
 import Ferme.Dto.Empleado;
 import javax.swing.JOptionPane;
 
@@ -13,12 +14,9 @@ import javax.swing.JOptionPane;
  *
  * @author wwwvi
  */
-public class logIn extends javax.swing.JFrame {
+public class RecuperarPass extends javax.swing.JFrame {
 
-    /**
-     * Creates new form logIn
-     */
-    public logIn() {
+    public RecuperarPass() {
         initComponents();
     }
 
@@ -32,27 +30,22 @@ public class logIn extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        LblLogIn1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         LblLogIn = new javax.swing.JLabel();
         LblLogIn2 = new javax.swing.JLabel();
         LblLogIn3 = new javax.swing.JLabel();
-        passtxt = new rojeru_san.RSMPassView();
-        email = new rojeru_san.RSMTextFull();
-        BtnObtener = new javax.swing.JButton();
+        Run = new rojeru_san.RSMTextFull();
+        lblRun = new javax.swing.JLabel();
+        email1 = new rojeru_san.RSMTextFull();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        LblLogIn1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        LblLogIn1.setForeground(new java.awt.Color(0, 0, 0));
-        LblLogIn1.setText("Contraseña:");
-
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Login");
+        jButton1.setText("Enviar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -63,7 +56,7 @@ public class logIn extends javax.swing.JFrame {
 
         LblLogIn.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         LblLogIn.setForeground(new java.awt.Color(0, 0, 0));
-        LblLogIn.setText("Login");
+        LblLogIn.setText("Recuperar clave de Usuario");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -86,24 +79,21 @@ public class logIn extends javax.swing.JFrame {
         LblLogIn3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         LblLogIn3.setForeground(new java.awt.Color(0, 0, 0));
 
-        passtxt.setPlaceholder("Contraseña");
-
-        email.setPlaceholder("Email");
-        email.addActionListener(new java.awt.event.ActionListener() {
+        Run.setPlaceholder("Ingrese su Run ");
+        Run.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
+                RunActionPerformed(evt);
             }
         });
 
-        BtnObtener.setBackground(new java.awt.Color(255, 255, 255));
-        BtnObtener.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        BtnObtener.setForeground(new java.awt.Color(0, 0, 0));
-        BtnObtener.setText("No recuerdas tu contraseña ?");
-        BtnObtener.setBorder(null);
-        BtnObtener.setBorderPainted(false);
-        BtnObtener.addActionListener(new java.awt.event.ActionListener() {
+        lblRun.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        lblRun.setForeground(new java.awt.Color(0, 0, 0));
+        lblRun.setText("Run:");
+
+        email1.setPlaceholder("Email");
+        email1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnObtenerActionPerformed(evt);
+                email1ActionPerformed(evt);
             }
         });
 
@@ -114,45 +104,55 @@ public class logIn extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(543, 543, 543)
+                        .addComponent(LblLogIn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LblLogIn2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LblLogIn1)
-                                    .addComponent(LblLogIn2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(BtnObtener, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LblLogIn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(lblRun, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(Run, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(257, 257, 257)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(217, Short.MAX_VALUE)
+                    .addComponent(email1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(169, 169, 169)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblLogIn2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblLogIn1)
-                    .addComponent(passtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(LblLogIn3)
-                    .addComponent(BtnObtener, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(93, 93, 93))
+                            .addComponent(LblLogIn2))
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 152, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblRun)
+                            .addComponent(Run, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(LblLogIn3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(27, 27, 27))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(102, 102, 102)
+                    .addComponent(email1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(127, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,29 +171,35 @@ public class logIn extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        EmpleadoDao empdao = new EmpleadoDao();        
-        String user = email.getText();
-        String pass = passtxt.getText();
-        Empleado emp = empdao.logIn(user, pass);
-        if (emp.estado==1) {       
-            String rut=emp.runEmpleado;
-            Home hom= new Home(rut);
-            hom.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Credenciales invalidas");
+        EmpleadoDao empdao = new EmpleadoDao();
+        Smtp smtp = new Smtp();
+        Empleado empdto;
+        
+        String user = email1.getText();
+        String run = Run.getText();
+        
+        empdto=empdao.BuscarEmpleado(run);
+        
+        if(empdto.correo.equals(user)){
+            String destina ="franciscosepul96@gmail.com";
+            String asunto ="chupalo";
+            String cuerpo ="Felicitacines usted es un pelmazo su pass es"+empdto.contrasena;
+            smtp.enviarSmtp(destina,asunto,cuerpo);
+        }else{
+             JOptionPane.showMessageDialog(null, "Este email no pertenece al usuario que busca");
         }
+
+        this.setVisible(false);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+    private void RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
+    }//GEN-LAST:event_RunActionPerformed
 
-    private void BtnObtenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnObtenerActionPerformed
-            RecuperarPass pass = new RecuperarPass();
-            pass.setVisible(true);
-            this.setVisible(false);
-    }//GEN-LAST:event_BtnObtenerActionPerformed
+    private void email1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_email1ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -211,34 +217,34 @@ public class logIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecuperarPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecuperarPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecuperarPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(logIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecuperarPass.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new logIn().setVisible(true);
+                new RecuperarPass().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnObtener;
     private javax.swing.JLabel LblLogIn;
-    private javax.swing.JLabel LblLogIn1;
     private javax.swing.JLabel LblLogIn2;
     private javax.swing.JLabel LblLogIn3;
-    private rojeru_san.RSMTextFull email;
+    private rojeru_san.RSMTextFull Run;
+    private rojeru_san.RSMTextFull email1;
     private javax.swing.JButton jButton1;
     public javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private rojeru_san.RSMPassView passtxt;
+    private javax.swing.JLabel lblRun;
     // End of variables declaration//GEN-END:variables
 }
