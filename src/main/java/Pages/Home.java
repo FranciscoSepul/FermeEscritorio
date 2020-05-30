@@ -11,24 +11,23 @@ public class Home extends javax.swing.JFrame {
     int cont = 0;
     Empleado emp = new Empleado();
     List<Producto> prod;
-    Producto product = new Producto();
-    Producto cadena2 =new Producto();
-    
+//    Producto product = new Producto();
+//    Producto cadena0,cadena1,cadena2,cadena3 =new Producto();
 
     public Home(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = new ProductoDao().Listar();
-        
-        
-        Producto cadena0 = prod.get(0);        
-        Producto cadena1 = prod.get(1);
-        if (prod.size()>2) {            
-         cadena2 = prod.get(2);
-        }
-        
-        System.out.println("cadena " + cadena0.nombre);
-        System.out.println("cadena2 " + cadena1.nombre);
+//        
+//         cadena0 = prod.get(0);        
+//         cadena1 = prod.get(1);
+//        if (prod.size()>2) {            
+//         cadena2 = prod.get(2);
+//        } if (prod.size()>3) {            
+//         cadena2 = prod.get(2);
+//        }
+//        
+//         
 
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
@@ -47,29 +46,31 @@ public class Home extends javax.swing.JFrame {
         TimerTask imagen;
 
         imagen = new TimerTask() {
+            int contab = prod.size();
 
             @Override
             public void run() {
-
+                System.out.println("contador" + contab);
                 switch (contador) {
                     case 0:
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, cadena0.rutaDoc);
-                        txtDesc.setText(cadena0.nombre);
-                        System.out.println("dentro del case 1" + cadena0.nombre);
-                        txtPrecio.setText("$ " + cadena0.precioUni);
-                        contador++;
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(0).rutaDoc);
+                        txtDesc.setText(prod.get(0).nombre);
+                        System.out.println("dentro del case 1" + prod.get(0).nombre);
+                        txtPrecio.setText("$ " + prod.get(0).precioUni);
+                        contador = (contab > 1) ? 1 : 0;
                         break;
+
                     case 1:
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, cadena1.rutaDoc);
-                        txtDesc.setText(cadena1.nombre);
-                        System.out.println("dentro del case 2" + cadena1.toString());
-                        txtPrecio.setText("$ " + cadena1.precioUni);
-                        contador++;
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(1).rutaDoc);
+                        txtDesc.setText(prod.get(1).nombre);
+                        System.out.println("dentro del case 2" + prod.get(1).toString());
+                        txtPrecio.setText("$ " + prod.get(1).precioUni);
+                        contador = (contab > 2) ? 2 : 0;
                         break;
                     case 2:
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, cadena2.rutaDoc);
-                        txtDesc.setText(cadena2.nombre);
-                        txtPrecio.setText("$ " + cadena2.precioUni);
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(2).rutaDoc);
+                        txtDesc.setText(prod.get(2).nombre);
+                        txtPrecio.setText("$ " + prod.get(2).precioUni);
                         contador = 0;
                         break;
                 }
@@ -93,8 +94,22 @@ public class Home extends javax.swing.JFrame {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
 
         }
-        //pintar datos usuario en cmb 
-//        txtNombre.setText(emp.nombre);
+        //pintar datos de los productos mas vendidos {
+        rsscalelabel.RSScaleLabel.setScaleLabel(loMasV1, prod.get(0).rutaDoc);
+        DescripLo.setText(prod.get(0).nombre);
+//        txtPrecio.setText("$ " + prod.get(0).precioUni);
+         rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(1).rutaDoc);
+        DescripLo1.setText(prod.get(1).nombre);
+//        txtPrecio.setText("$ " + prod.get(0).precioUni);
+//        rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(2).rutaDoc);
+//        DescripLo2.setText(prod.get(2).nombre);
+////        txtPrecio.setText("$ " + prod.get(0).precioUni);
+//        rsscalelabel.RSScaleLabel.setScaleLabel(loMasV3, prod.get(3).rutaDoc);
+//        DescripLo3.setText(prod.get(3).nombre);
+////        txtPrecio.setText("$ " + prod.get(0).precioUni);
+//        rsscalelabel.RSScaleLabel.setScaleLabel(loMasV4, prod.get(4).rutaDoc);
+//        DescripLo4.setText(prod.get(4).nombre);
+////        txtPrecio.setText("$ " + prod.get(0).precioUni);
 
     }
 
@@ -127,11 +142,18 @@ public class Home extends javax.swing.JFrame {
         txtPrecio = new javax.swing.JLabel();
         txtDesc = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        loMasV = new javax.swing.JLabel();
+        loMasV4 = new javax.swing.JLabel();
         loMasV1 = new javax.swing.JLabel();
         loMasV2 = new javax.swing.JLabel();
         loMasV3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        DescripLo = new javax.swing.JLabel();
+        DescripLo1 = new javax.swing.JLabel();
+        DescripLo2 = new javax.swing.JLabel();
+        DescripLo3 = new javax.swing.JLabel();
+        PrecioLo = new javax.swing.JLabel();
+        PrecioLo1 = new javax.swing.JLabel();
+        PrecioLo2 = new javax.swing.JLabel();
+        PrecioLo3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,7 +180,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(LblUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
@@ -257,19 +279,28 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Los mas vendidos");
+        jLabel1.setText("Los mas vistos");
 
-        loMasV.setText("jLabel2");
+        loMasV4.setText("jLabel2");
 
+        loMasV1.setBackground(new java.awt.Color(255, 255, 255));
         loMasV1.setForeground(new java.awt.Color(0, 0, 0));
-        loMasV1.setText("jLabel2");
 
-        loMasV2.setText("jLabel2");
+        DescripLo.setForeground(new java.awt.Color(0, 0, 0));
 
-        loMasV3.setText("jLabel2");
+        DescripLo1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("jLabel2");
+        DescripLo2.setForeground(new java.awt.Color(0, 0, 0));
+
+        DescripLo3.setForeground(new java.awt.Color(0, 0, 0));
+
+        PrecioLo.setForeground(new java.awt.Color(0, 0, 0));
+
+        PrecioLo1.setForeground(new java.awt.Color(0, 0, 0));
+
+        PrecioLo2.setForeground(new java.awt.Color(0, 0, 0));
+
+        PrecioLo3.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -280,40 +311,56 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1145, Short.MAX_VALUE))
+                        .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1133, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
+                                .addGap(76, 76, 76)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(loMasV1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(22, 22, 22)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(loMasV1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(DescripLo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(PrecioLo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(55, 55, 55)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(PrecioLo3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(228, 228, 228)
+                                                .addComponent(PrecioLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(DescripLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(127, 127, 127)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(PrecioLo2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(DescripLo3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(153, 153, 153)
+                                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(loMasV4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(DescripLo2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(363, 363, 363)
                                         .addComponent(loMasV2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(293, 293, 293)
-                                        .addComponent(loMasV, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGap(49, 49, 49))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(TimerImage, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(41, 41, 41)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(loMasV3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(63, 63, 63)
+                                        .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(80, 80, 80)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(TimerImage, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(loMasV3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(197, 197, 197)
-                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,35 +373,55 @@ public class Home extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(TimerImage, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel1)
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(loMasV2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(loMasV3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(loMasV1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(loMasV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2))
+                        .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addGap(38, 38, 38)
                         .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
+                        .addGap(39, 39, 39)
                         .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loMasV4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loMasV3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loMasV1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loMasV2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DescripLo, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DescripLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DescripLo2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(DescripLo3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(PrecioLo2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(PrecioLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(PrecioLo, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PrecioLo3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 17, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -402,10 +469,18 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnHome;
     private javax.swing.JButton BtnNuevoV;
+    private javax.swing.JLabel DescripLo;
+    private javax.swing.JLabel DescripLo1;
+    private javax.swing.JLabel DescripLo2;
+    private javax.swing.JLabel DescripLo3;
     private javax.swing.JLabel Lbl1;
     private javax.swing.JLabel LblUser;
     private javax.swing.JLabel LblUsers;
     public javax.swing.JPanel PanelBody;
+    private javax.swing.JLabel PrecioLo;
+    private javax.swing.JLabel PrecioLo1;
+    private javax.swing.JLabel PrecioLo2;
+    private javax.swing.JLabel PrecioLo3;
     private javax.swing.JLabel TimerImage;
     private javax.swing.JButton btnAsistencia;
     private javax.swing.JButton btnGraficos;
@@ -414,14 +489,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblSearch;
-    private javax.swing.JLabel loMasV;
     private javax.swing.JLabel loMasV1;
     private javax.swing.JLabel loMasV2;
     private javax.swing.JLabel loMasV3;
+    private javax.swing.JLabel loMasV4;
     private rojeru_san.RSMTextFull rSMTextFull1;
     private javax.swing.JLabel txtDesc;
     private javax.swing.JLabel txtPrecio;
