@@ -11,63 +11,24 @@ public class Home extends javax.swing.JFrame {
     int cont = 0;
     Empleado emp = new Empleado();
     List<Producto> prod;
-    String nombre1, nombre2, nombre3;
-    String ruta1, ruta2, ruta3;
-    String precio1, precio2, precio3;
     Producto product = new Producto();
-
-    String rutaImg = "src\\main\\java\\FermePage\\Imagenes\\Productos\\";
+    Producto cadena2 =new Producto();
+    
 
     public Home(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = new ProductoDao().Listar();
         
-//        
-//        for(Producto produ:prod){
-//            System.out.println("1 parte for");
-//            System.out.println(produ);
-//            System.out.println(produ.precioUni);
-//            System.out.println(produ.rutaDoc);
-//            System.out.println(produ.stock);
-//            System.out.println("2 parte for");
-//            System.out.println(produ.nombre.charAt(1));
-//            System.out.println(produ.precioUni);
-//            System.out.println(produ.rutaDoc);
-//            System.out.println(produ.stock);
-//        }
-//        prod.stream().forEach((Producto)->{
-//            System.out.println("llamando al nombre del producto"+Producto.nombre);
-//    });
-//        System.out.println("aca el tostring "+prod.toString());
-
-//        for (int i = 0; i < prod.size();) {
-//            System.out.println("en el for la ctm");
-//            System.out.println(prod.get(i).nombre);
-//            i++;
-//        }
-//
-//        prod.stream().map((o) -> {
-//            System.out.println("2 for");
-//            return o;
-//        }).forEachOrdered((o) -> {
-//            System.out.println("kkkkk");
-//            System.out.println(o.nombre);
-//            System.out.println(o.nombre);
-//        });
-//
-//        Iterator it = prod.iterator();
-//        while (it.hasNext()) {
-//            System.out.println("dentro del while");
-//            product = (Producto) it.next();
-//            System.out.println(product.nombre);
-//        }
-//
-//        Producto cadena1 = prod.get(0);
-//        Producto cadena2 = prod.get(1);
-//
-//        System.out.println("cadena " + cadena1.nombre);
-//        System.out.println("cadena2 " + cadena2.nombre);
+        
+        Producto cadena0 = prod.get(0);        
+        Producto cadena1 = prod.get(1);
+        if (prod.size()>2) {            
+         cadena2 = prod.get(2);
+        }
+        
+        System.out.println("cadena " + cadena0.nombre);
+        System.out.println("cadena2 " + cadena1.nombre);
 
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
@@ -85,35 +46,6 @@ public class Home extends javax.swing.JFrame {
         Timer timer;
         TimerTask imagen;
 
-        prod.forEach((Producto) -> {
-            System.out.println("intermedio");
-            System.out.println(Producto.nombre);
-            System.out.println("final");
-            switch (cont) {
-                case (0):
-                    nombre1 = (Producto.nombre);
-                    precio1 = Integer.toString(Producto.precioUni);
-                    ruta1 = rutaImg + Producto.rutaDoc + ".jpg";
-                    String cantidad1 = Integer.toString(Producto.stock);
-                    cont++;
-                    break;
-                case (1):
-                    nombre2 = Producto.nombre;
-                    precio2 = Integer.toString(Producto.precioUni);
-                    ruta2 = Producto.rutaDoc + ".jpg";
-                    String cantidad2 = Integer.toString(Producto.stock);
-                    cont++;
-                    break;
-                case (2):
-                    nombre3 = Producto.nombre;
-                    precio3 = Integer.toString(Producto.precioUni);
-                    ruta3 = Producto.rutaDoc;
-                    String cantidad3 = Integer.toString(Producto.stock);
-                    cont = 0;
-                    break;
-            }
-        });
-
         imagen = new TimerTask() {
 
             @Override
@@ -121,23 +53,23 @@ public class Home extends javax.swing.JFrame {
 
                 switch (contador) {
                     case 0:
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, ruta1);
-                        txtDesc.setText(nombre1);
-                        System.out.println("dentro del case 1" + nombre1);
-                        txtPrecio.setText("$ " + precio1);
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, cadena0.rutaDoc);
+                        txtDesc.setText(cadena0.nombre);
+                        System.out.println("dentro del case 1" + cadena0.nombre);
+                        txtPrecio.setText("$ " + cadena0.precioUni);
                         contador++;
                         break;
                     case 1:
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, ruta2);
-                        txtDesc.setText(nombre2);
-                        System.out.println("dentro del case 2" + nombre2);
-                        txtPrecio.setText("$ " + precio2);
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, cadena1.rutaDoc);
+                        txtDesc.setText(cadena1.nombre);
+                        System.out.println("dentro del case 2" + cadena1.toString());
+                        txtPrecio.setText("$ " + cadena1.precioUni);
                         contador++;
                         break;
                     case 2:
-                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, ruta3);
-                        txtDesc.setText(nombre3);
-                        txtPrecio.setText("$ " + precio3);
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, cadena2.rutaDoc);
+                        txtDesc.setText(cadena2.nombre);
+                        txtPrecio.setText("$ " + cadena2.precioUni);
                         contador = 0;
                         break;
                 }

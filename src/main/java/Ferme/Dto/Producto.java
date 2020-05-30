@@ -48,7 +48,9 @@ public class Producto implements Serializable {
     }
 
     public void setRutaDoc(String rutaDoc) {
-        this.rutaDoc = rutaDoc;
+        String rutaImg = "src\\main\\java\\FermePage\\Imagenes\\Productos\\"+rutaDoc;
+        String Formato =rutaImg+".jpg";
+        this.rutaDoc = Formato;
     }
 
     @Override
