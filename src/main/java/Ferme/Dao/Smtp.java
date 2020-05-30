@@ -1,15 +1,13 @@
 package Ferme.Dao;
 
-import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 
 public class Smtp {
 
-    public  void enviarSmtp(String destinatario, String asunto, String cuerpo) {
+    public   void enviarSmtp(String destinatario, String asunto, String cuerpo) {
 
         String remitente = "equipoferme2020@gmail.com";
         String contra ="animaldoom";
