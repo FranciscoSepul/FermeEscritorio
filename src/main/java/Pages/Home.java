@@ -195,6 +195,11 @@ public class Home extends javax.swing.JFrame {
         BtnNuevoV.setText("Nuevo Vendedor");
 
         btnAsistencia.setText("Asistencia Personal");
+        btnAsistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsistenciaActionPerformed(evt);
+            }
+        });
 
         BtnHome.setText("Home Ventas");
 
@@ -372,6 +377,13 @@ public class Home extends javax.swing.JFrame {
         graf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnGraficosActionPerformed
+
+    private void btnAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciaActionPerformed
+        String rut = emp.runEmpleado;
+        AsistenciaPersonal apersonal = new AsistenciaPersonal(rut);
+        apersonal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAsistenciaActionPerformed
 
     /**
      * @param args the command line arguments

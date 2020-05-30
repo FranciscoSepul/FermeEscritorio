@@ -7,6 +7,8 @@ package Pages;
 
 import Ferme.Dao.EmpleadoDao;
 import Ferme.Dto.Empleado;
+import org.jfree.chart.ChartFactory;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -16,7 +18,7 @@ public class GraficoDeVentas extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
 
-        public GraficoDeVentas(String id) {
+    public GraficoDeVentas(String id) {
         System.out.println("rut " + id);
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
@@ -81,6 +83,10 @@ public class GraficoDeVentas extends javax.swing.JFrame {
         btnGraficos = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButtonVentas = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtA1 = new javax.swing.JTextField();
+        txtA2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +150,11 @@ public class GraficoDeVentas extends javax.swing.JFrame {
         BtnNuevoV.setText("Nuevo Vendedor");
 
         btnAsistencia.setText("Asistencia Personal");
+        btnAsistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsistenciaActionPerformed(evt);
+            }
+        });
 
         BtnHome.setText("Home Ventas");
         BtnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -207,21 +218,45 @@ public class GraficoDeVentas extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Venta año 1");
+
+        jLabel2.setText("Venta año 2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(315, 315, 315)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(380, Short.MAX_VALUE)
                 .addComponent(jButtonVentas)
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addGap(281, 281, 281))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtA2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtA1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(86, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtA2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addComponent(jButtonVentas)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGap(116, 116, 116))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -268,15 +303,33 @@ public class GraficoDeVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentasRealizaActionPerformed
 
     private void BtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHomeActionPerformed
-            String rut=emp.runEmpleado;
-            Home hom= new Home(rut);
-            hom.setVisible(true);
-            this.setVisible(false);
+        String rut = emp.runEmpleado;
+        Home hom = new Home(rut);
+        hom.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnHomeActionPerformed
 
     private void jButtonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVentasActionPerformed
-        
+        int a1 = Integer.parseInt(txtA1.getText());
+        int a2 = Integer.parseInt(txtA2.getText());
+
+        try {
+            DefaultCategoryDataset ds = new DefaultCategoryDataset();
+            ds.addValue(a1, "Año 1", "");
+            ds.addValue(a2, "Año 2", "");
+
+        } catch (Exception e) {
+        }
+
+
     }//GEN-LAST:event_jButtonVentasActionPerformed
+
+    private void btnAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciaActionPerformed
+        String rut = emp.runEmpleado;
+        AsistenciaPersonal apersonal = new AsistenciaPersonal(rut);
+        apersonal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAsistenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,10 +387,14 @@ public class GraficoDeVentas extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButtonVentas;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblSearch;
     private rojeru_san.RSMTextFull rSMTextFull1;
+    private javax.swing.JTextField txtA1;
+    private javax.swing.JTextField txtA2;
     // End of variables declaration//GEN-END:variables
 }
