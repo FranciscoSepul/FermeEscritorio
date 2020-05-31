@@ -16,7 +16,7 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
 
-        public AsistenciaPersonal(String id) {
+    public AsistenciaPersonal(String id) {
         System.out.println("rut " + id);
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
@@ -52,6 +52,29 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
         //pintar datos usuario en cmb 
 //        txtNombre.setText(emp.nombre);
 
+        String nombre = emp.nombre;
+        String apellido = emp.apellido;
+        String correo = emp.correo;
+        String cargo = null;
+
+        switch (emp.IDCARGO) {
+            case 1:
+                cargo = "Vendedor";
+                break;
+            case 2:
+                cargo = "Administrador";
+                break;
+            case 3:
+                cargo = "Bodeguero";
+                break;
+            default:
+                break;
+        }
+
+        jNombre.setText("Bienvenido: " + nombre.concat(" ").concat(apellido));
+        jCorreo.setText("Correo: " + correo);
+        jCargo.setText("Cargo: " + cargo);
+
     }
 
     /**
@@ -79,6 +102,10 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
         btnVentasRealiza = new javax.swing.JButton();
         btnPrecioStock = new javax.swing.JButton();
         btnGraficos = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jNombre = new javax.swing.JLabel();
+        jCorreo = new javax.swing.JLabel();
+        jCargo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,7 +132,7 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
                 .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(LblUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
@@ -144,6 +171,11 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
         btnAsistencia.setText("Asistencia Personal");
 
         BtnHome.setText("Home Ventas");
+        BtnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHomeActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Stock de productos");
 
@@ -157,6 +189,11 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
         btnPrecioStock.setText("Cambiar Precio o Stock de productos");
 
         btnGraficos.setText("Graficos de ventas");
+        btnGraficos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraficosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelBodyLayout = new javax.swing.GroupLayout(PanelBody);
         PanelBody.setLayout(PanelBodyLayout);
@@ -193,6 +230,42 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jNombre.setText(" ");
+
+        jCorreo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jCorreo.setText(" ");
+
+        jCargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jCargo.setText(" ");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(257, 257, 257)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(325, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCorreo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCargo)
+                .addContainerGap(174, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -202,6 +275,10 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1061, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +286,9 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(359, 359, 359))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,6 +308,22 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
     private void btnVentasRealizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasRealizaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVentasRealizaActionPerformed
+
+    private void BtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHomeActionPerformed
+        // se redirecciona al home
+        String rut = emp.runEmpleado;
+        Home hom = new Home(rut);
+        hom.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnHomeActionPerformed
+
+    private void btnGraficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficosActionPerformed
+        //redirecciona a grafico de ventas
+        String rut = emp.runEmpleado;
+        GraficoDeVentas graf = new GraficoDeVentas(rut);
+        graf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGraficosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,7 +374,11 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
     private javax.swing.JButton btnVentasRealiza;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jCargo;
+    private javax.swing.JLabel jCorreo;
+    private javax.swing.JLabel jNombre;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     public javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblSearch;
     private rojeru_san.RSMTextFull rSMTextFull1;
