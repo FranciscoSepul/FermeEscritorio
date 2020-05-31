@@ -66,25 +66,24 @@ public class Home extends javax.swing.JFrame {
 
         //Seleccinar logo segun sexo y cargo
         if (emp.sexo == 0) {
-            if (emp.IDCARGO == 2) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-            }
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
             this.BtnNuevoV.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
-        } else {
             if (emp.IDCARGO == 2) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-
+                this.BtnNuevoV.setVisible(true);
+                this.btnGraficos.setVisible(true);
+                this.btnVentasRealiza.setVisible(true);
+                this.btnPrecioStock.setVisible(true);
             }
+        } else {           
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
             this.BtnNuevoV.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
-
         }
         //pintar datos de los productos mas vendidos nota: Esta es la parte mas indecente a mi consideracion del codigo home de ser posible cambiar a posterior 
         //con mas tiempo

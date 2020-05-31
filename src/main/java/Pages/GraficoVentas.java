@@ -37,17 +37,25 @@ public class GraficoVentas extends javax.swing.JFrame {
         System.out.println("cargoger" + emp.getIDCARGO());
 
         //Seleccinar logo segun sexo y cargo
-        if (emp.sexo == 0) {
-            if (emp.IDCARGO == 1) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-            }
+          if (emp.sexo == 0) {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
-        } else {
-            if (emp.IDCARGO > 1) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
+            this.BtnNuevoV.setVisible(false);
+            this.btnGraficos.setVisible(false);
+            this.btnVentasRealiza.setVisible(false);
+            this.btnPrecioStock.setVisible(false);
+            if (emp.IDCARGO == 2) {
+                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
+                this.BtnNuevoV.setVisible(true);
+                this.btnGraficos.setVisible(true);
+                this.btnVentasRealiza.setVisible(true);
+                this.btnPrecioStock.setVisible(true);
             }
-            rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-
+        } else {           
+            rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
+            this.BtnNuevoV.setVisible(false);
+            this.btnGraficos.setVisible(false);
+            this.btnVentasRealiza.setVisible(false);
+            this.btnPrecioStock.setVisible(false);
         }
         //pintar datos usuario en cmb 
 //        txtNombre.setText(emp.nombre);
