@@ -66,12 +66,23 @@ public class Home extends javax.swing.JFrame {
 
         //Seleccinar logo segun sexo y cargo
         if (emp.sexo == 0) {
+<<<<<<< HEAD
+=======
+            if (emp.IDCARGO == 1) {
+                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
+            }
+>>>>>>> e8ca4638903fb8548883abbfa3c19b045b0eddd4
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
             this.BtnNuevoV.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
+<<<<<<< HEAD
             if (emp.IDCARGO == 2) {
+=======
+        } else {
+            if (emp.IDCARGO == 1) {
+>>>>>>> e8ca4638903fb8548883abbfa3c19b045b0eddd4
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
                 this.BtnNuevoV.setVisible(true);
                 this.btnGraficos.setVisible(true);
