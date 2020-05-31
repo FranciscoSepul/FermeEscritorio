@@ -66,7 +66,7 @@ public class Home extends javax.swing.JFrame {
 
         //Seleccinar logo segun sexo y cargo
         if (emp.sexo == 0) {
-            if (emp.IDCARGO == 2) {
+            if (emp.IDCARGO == 1) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
             }
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
@@ -75,7 +75,7 @@ public class Home extends javax.swing.JFrame {
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
         } else {
-            if (emp.IDCARGO == 2) {
+            if (emp.IDCARGO == 1) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
 
             }
