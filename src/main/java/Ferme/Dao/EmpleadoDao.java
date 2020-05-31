@@ -75,7 +75,7 @@ public class EmpleadoDao implements Crud {
 
             while (rs.next()) {
                 emp.setApellido(rs.getString("apellido"));
-                emp.setContrasena("contrasena");
+                emp.setContrasena(rs.getString("contrasena"));
                 emp.setDigitoVerificador(rs.getString("digitoverif"));
                 emp.setEstado(rs.getInt("estado"));
                 emp.setNombre(rs.getString("nombree"));

@@ -28,15 +28,15 @@ public class Smtp {
             texto.setFrom(new InternetAddress(remitente));
             texto.addRecipient(Message.RecipientType.TO,new InternetAddress(destinatario));
             texto.setSubject(asunto);    
-            texto.setText(cuerpo);
+            
+           texto.setContent(cuerpo, "text/html; charset=utf-8");
+//            texto.setText(cuerpo);
             
             try (Transport ts = s.getTransport("smtp")) {
                 ts.connect(remitente,contra);
                 ts.sendMessage(texto,texto.getRecipients(Message.RecipientType.TO));
             }
-            
-            
-            
+                  
 
         } catch (MessagingException e) {            
             System.out.println("error en el smtp");
