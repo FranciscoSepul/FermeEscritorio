@@ -338,7 +338,6 @@ public class PrecioYstock extends javax.swing.JFrame {
 
         int conta = 1;
         int size = prod.size();
-        System.out.println("size" + size);
         for (int i = 0; i < size; i++) {
             datosE[conta][0] = prod.get(i).nombre;
             datosE[conta][1] = Integer.toString(prod.get(i).stock);

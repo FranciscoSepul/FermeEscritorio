@@ -17,10 +17,8 @@ public class GraficoDeVentas extends javax.swing.JFrame {
     Empleado emp = new Empleado();
 
         public GraficoDeVentas(String id) {
-        System.out.println("rut " + id);
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
-        System.out.println("data " + emp.runEmpleado);
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
@@ -31,10 +29,6 @@ public class GraficoDeVentas extends javax.swing.JFrame {
 
         //Imagen button 
         rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
-        System.out.println("sexo" + emp.sexo);
-        System.out.println("nombre" + emp.nombre);
-        System.out.println("cargo" + emp.IDCARGO);
-        System.out.println("cargoger" + emp.getIDCARGO());
 
         //Seleccinar logo segun sexo y cargo
            if (emp.sexo == 0) {

@@ -19,7 +19,6 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
     public AsistenciaPersonal(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
-        System.out.println("data " + emp.runEmpleado);
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
