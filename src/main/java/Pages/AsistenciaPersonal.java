@@ -45,29 +45,12 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
                 this.btnVentasRealiza.setVisible(true);
                 this.btnPrecioStock.setVisible(true);
             }
-<<<<<<< HEAD
-        } else {
-=======
-            rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
-            this.BtnNuevoV.setVisible(false);
-            this.btnGraficos.setVisible(false);
-            this.btnVentasRealiza.setVisible(false);
-            this.btnPrecioStock.setVisible(false);
-        } else {
-            if (emp.IDCARGO == 1) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-
-            }
->>>>>>> e8ca4638903fb8548883abbfa3c19b045b0eddd4
+        } else {           
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
             this.BtnNuevoV.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
-<<<<<<< HEAD
-=======
-
->>>>>>> e8ca4638903fb8548883abbfa3c19b045b0eddd4
         }
         //pintar datos usuario en cmb 
 //        txtNombre.setText(emp.nombre);
