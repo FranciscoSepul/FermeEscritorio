@@ -3,6 +3,7 @@ package Pages;
 import Ferme.Dao.*;
 import Ferme.Dto.*;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,9 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import jxl.Workbook;
-import jxl.WorkbookSettings;
-import jxl.write.WritableWorkbook;
+import java.util.Date;
 import jxl.write.WriteException;
 
 public class PrecioYstock extends javax.swing.JFrame {
@@ -35,10 +34,10 @@ public class PrecioYstock extends javax.swing.JFrame {
 
         //Logo        
         rsscalelabel.RSScaleLabel.setScaleLabel(Lbl1, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
-        
+
         //imagen excel       
         rsscalelabel.RSScaleLabel.setScaleLabel(Excel, "src\\main\\java\\FermePage\\Imagenes\\excel.png");
-        
+
         //Imagen button 
         rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
 
@@ -331,29 +330,31 @@ public class PrecioYstock extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnHomeActionPerformed
 
     private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
-          CreacionExcel crea = new CreacionExcel();
-          String[] [] datosE =new String [3][3];
-          datosE[0][0]="Nombre";
-          datosE[0][1]="Stock";
-          datosE[0][2]="Precio";
-          
-          int conta=1;
-          int size =prod.size();
-          System.out.println("size"+size);
-          for (int i = 0; i < size; i++) {
-            datosE[conta][0]=prod.get(i).nombre;
-            datosE[conta][1]=Integer.toString(prod.get(i).stock);
-            datosE[conta][2]=Integer.toString(prod.get(i).precioUni);
+        CreacionExcel crea = new CreacionExcel();
+        String[][] datosE = new String[3][3];
+        datosE[0][0] = "Nombre";
+        datosE[0][1] = "Stock";
+        datosE[0][2] = "Precio";
+
+        int conta = 1;
+        int size = prod.size();
+        System.out.println("size" + size);
+        for (int i = 0; i < size; i++) {
+            datosE[conta][0] = prod.get(i).nombre;
+            datosE[conta][1] = Integer.toString(prod.get(i).stock);
+            datosE[conta][2] = Integer.toString(prod.get(i).precioUni);
             conta++;
         }
-          
-          String ruta ="C:/Desarrollo/Excel/Productos.xls";
+        Date fecha = new Date();
+
+        String ruta = "C:/Desarrollo/Excel/Productos" + new SimpleDateFormat("dd-mm-yyyy").format(fecha) + ".xls";
+        JOptionPane.showMessageDialog(null, "Se genera excel Productos ");
         try {
             crea.generarExcel(datosE, ruta);
         } catch (IOException | WriteException ex) {
             Logger.getLogger(PrecioYstock.class.getName()).log(Level.SEVERE, null, ex);
         }
-          
+
     }//GEN-LAST:event_btnExcelActionPerformed
 
     /**
