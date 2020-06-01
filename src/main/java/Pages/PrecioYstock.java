@@ -2,11 +2,18 @@ package Pages;
 
 import Ferme.Dao.*;
 import Ferme.Dto.*;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 
 public class PrecioYstock extends javax.swing.JFrame {
 
@@ -14,9 +21,9 @@ public class PrecioYstock extends javax.swing.JFrame {
     List<Producto> prod;
     DefaultTableModel model;
     String nombreColumna = "";
-    String datoModificado="";
-     boolean respuesta=false;
-    
+    String datoModificado = "";
+    boolean respuesta = false;
+
     public PrecioYstock(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
@@ -28,7 +35,10 @@ public class PrecioYstock extends javax.swing.JFrame {
 
         //Logo        
         rsscalelabel.RSScaleLabel.setScaleLabel(Lbl1, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
-
+        
+        //imagen excel       
+        rsscalelabel.RSScaleLabel.setScaleLabel(Excel, "src\\main\\java\\FermePage\\Imagenes\\excel.png");
+        
         //Imagen button 
         rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
 
@@ -57,35 +67,30 @@ public class PrecioYstock extends javax.swing.JFrame {
 
         for (int i = 0; i < prod.size(); i++) {
             model.insertRow(model.getRowCount(), new Object[]{prod.get(i).nombre, prod.get(i).stock, prod.get(i).precioUni});
-            System.out.println("cantidad" + prod.get(i).stock);
         }
         tabla.setCellSelectionEnabled(true);
         model.addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent e) {
                 if (e.getType() == TableModelEvent.UPDATE) {
-                    datoModificado =  (String) model.getValueAt(e.getFirstRow(), e.getColumn());
-                    nombreColumna = (String) model.getValueAt(e.getFirstRow(),0);
-                   
+                    datoModificado = (String) model.getValueAt(e.getFirstRow(), e.getColumn());
+                    nombreColumna = (String) model.getValueAt(e.getFirstRow(), 0);
+
                     int columna = e.getColumn();
                     switch (columna) {
                         case 0:
-                          JOptionPane.showMessageDialog(null, "No se puede modificar el nombre del producto");
+                            JOptionPane.showMessageDialog(null, "No se puede modificar el nombre del producto");
                             break;
                         case 1:
-                            respuesta=new ProductoDao().modificarStock(datoModificado, nombreColumna);   
-                            JOptionPane.showMessageDialog(null, "A modificado el Stock del producto: "+nombreColumna);
+                            respuesta = new ProductoDao().modificarStock(datoModificado, nombreColumna);
+                            JOptionPane.showMessageDialog(null, "A modificado el Stock del producto: " + nombreColumna);
                             break;
                         case 2:
-                            respuesta=new ProductoDao().modificarPrecio(datoModificado, nombreColumna);              
-                            JOptionPane.showMessageDialog(null,"A modificado el Precio del producto: "+nombreColumna);
+                            respuesta = new ProductoDao().modificarPrecio(datoModificado, nombreColumna);
+                            JOptionPane.showMessageDialog(null, "A modificado el Precio del producto: " + nombreColumna);
                             break;
                     }
-                    System.out.println(respuesta);
-                    System.out.println(nombreColumna);
-                    System.out.println(datoModificado);
-                    
-                    
+
                 }
             }
 
@@ -120,6 +125,8 @@ public class PrecioYstock extends javax.swing.JFrame {
         btnGraficos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        Excel = new javax.swing.JLabel();
+        btnExcel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,6 +192,11 @@ public class PrecioYstock extends javax.swing.JFrame {
         btnAsistencia.setText("Asistencia Personal");
 
         BtnHome.setText("Home Ventas");
+        BtnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHomeActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Stock de productos");
 
@@ -244,19 +256,39 @@ public class PrecioYstock extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
+        btnExcel.setBackground(new java.awt.Color(255, 255, 255));
+        btnExcel.setForeground(new java.awt.Color(0, 0, 255));
+        btnExcel.setText("Generar Excel");
+        btnExcel.setBorder(null);
+        btnExcel.setBorderPainted(false);
+        btnExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1061, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1061, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 993, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(Excel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 993, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +296,11 @@ public class PrecioYstock extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Excel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -286,6 +322,39 @@ public class PrecioYstock extends javax.swing.JFrame {
     private void btnVentasRealizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasRealizaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVentasRealizaActionPerformed
+
+    private void BtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHomeActionPerformed
+        String rut = emp.runEmpleado;
+        Home hom = new Home(rut);
+        hom.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnHomeActionPerformed
+
+    private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+          CreacionExcel crea = new CreacionExcel();
+          String[] [] datosE =new String [3][3];
+          datosE[0][0]="Nombre";
+          datosE[0][1]="Stock";
+          datosE[0][2]="Precio";
+          
+          int conta=1;
+          int size =prod.size();
+          System.out.println("size"+size);
+          for (int i = 0; i < size; i++) {
+            datosE[conta][0]=prod.get(i).nombre;
+            datosE[conta][1]=Integer.toString(prod.get(i).stock);
+            datosE[conta][2]=Integer.toString(prod.get(i).precioUni);
+            conta++;
+        }
+          
+          String ruta ="C:/Desarrollo/Excel/Productos.xls";
+        try {
+            crea.generarExcel(datosE, ruta);
+        } catch (IOException | WriteException ex) {
+            Logger.getLogger(PrecioYstock.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+    }//GEN-LAST:event_btnExcelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,11 +409,13 @@ public class PrecioYstock extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnHome;
     private javax.swing.JButton BtnNuevoV;
+    private javax.swing.JLabel Excel;
     private javax.swing.JLabel Lbl1;
     private javax.swing.JLabel LblUser;
     private javax.swing.JLabel LblUsers;
     public javax.swing.JPanel PanelBody;
     private javax.swing.JButton btnAsistencia;
+    private javax.swing.JButton btnExcel;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;
