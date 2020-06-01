@@ -16,7 +16,7 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = new ProductoDao().Listar();
-
+        
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
@@ -238,6 +238,11 @@ public class Home extends javax.swing.JFrame {
         });
 
         btnPrecioStock.setText("Cambiar Precio o Stock de productos");
+        btnPrecioStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrecioStockActionPerformed(evt);
+            }
+        });
 
         btnGraficos.setText("Graficos de ventas");
 
@@ -427,6 +432,13 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_btnAsistenciaActionPerformed
+
+    private void btnPrecioStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecioStockActionPerformed
+        String rut = emp.runEmpleado;
+        PrecioYstock pre =new PrecioYstock(rut);
+        pre.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPrecioStockActionPerformed
 
     /**
      * @param args the command line arguments

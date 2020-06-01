@@ -43,6 +43,34 @@ public class ProductoDao implements Crud {
         return list;
     }
 
+    public boolean modificarPrecio(String precio,String nombre){
+        query = "update producto set preciouni = ? where nombre = ?";
+        try {
+            con = Conexion.getConexion();
+            call = con.prepareCall(query);
+            call.setString(1,precio);
+            call.setString(2,nombre);
+            rs = call.executeQuery();          
+        } catch (SQLException e) {
+            System.out.println("error producto dao " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+     public boolean modificarStock(String stock,String nombre){
+        query = "update producto set stock = ? where nombre = ?";
+        try {
+            con = Conexion.getConexion();
+            call = con.prepareCall(query);
+            call.setString(1,stock);
+            call.setString(2,nombre);
+            rs = call.executeQuery();          
+        } catch (SQLException e) {
+            System.out.println("error producto dao " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
     @Override
     public boolean desabilitar(String rut, String dv) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
