@@ -81,6 +81,7 @@ public class GraficoDeVentas extends javax.swing.JFrame {
         btnVentasRealiza = new javax.swing.JButton();
         btnPrecioStock = new javax.swing.JButton();
         btnGraficos = new javax.swing.JButton();
+        btnCatalogo1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,16 +161,25 @@ public class GraficoDeVentas extends javax.swing.JFrame {
 
         btnGraficos.setText("Graficos de ventas");
 
+        btnCatalogo1.setText("Catalogo");
+        btnCatalogo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCatalogo1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelBodyLayout = new javax.swing.GroupLayout(PanelBody);
         PanelBody.setLayout(PanelBodyLayout);
         PanelBodyLayout.setHorizontalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBodyLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnNuevoV)
+                .addComponent(BtnHome)
+                .addGap(9, 9, 9)
+                .addComponent(btnCatalogo1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnNuevoV)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAsistencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,19 +189,20 @@ public class GraficoDeVentas extends javax.swing.JFrame {
                 .addComponent(btnPrecioStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGraficos)
-                .addGap(47, 47, 47))
+                .addContainerGap())
         );
         PanelBodyLayout.setVerticalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBodyLayout.createSequentialGroup()
                 .addGroup(PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnNuevoV, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(btnAsistencia, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(BtnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(btnVentasRealiza, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(btnPrecioStock, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(btnGraficos, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
+                    .addComponent(BtnNuevoV)
+                    .addComponent(btnAsistencia)
+                    .addComponent(BtnHome)
+                    .addComponent(jButton7)
+                    .addComponent(btnVentasRealiza)
+                    .addComponent(btnPrecioStock)
+                    .addComponent(btnGraficos)
+                    .addComponent(btnCatalogo1))
                 .addContainerGap())
         );
 
@@ -202,7 +213,7 @@ public class GraficoDeVentas extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1061, Short.MAX_VALUE)
+                .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1063, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -231,6 +242,14 @@ public class GraficoDeVentas extends javax.swing.JFrame {
     private void btnVentasRealizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasRealizaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVentasRealizaActionPerformed
+
+    private void btnCatalogo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogo1ActionPerformed
+        //redirecciona a la pagina de catalogo
+        String rut = emp.runEmpleado;
+        Catalogo cat = new Catalogo(rut);
+        cat.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCatalogo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,6 +301,7 @@ public class GraficoDeVentas extends javax.swing.JFrame {
     private javax.swing.JLabel LblUsers;
     public javax.swing.JPanel PanelBody;
     private javax.swing.JButton btnAsistencia;
+    private javax.swing.JButton btnCatalogo1;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;

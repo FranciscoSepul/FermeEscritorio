@@ -141,6 +141,7 @@ public class Home extends javax.swing.JFrame {
         btnVentasRealiza = new javax.swing.JButton();
         btnPrecioStock = new javax.swing.JButton();
         btnGraficos = new javax.swing.JButton();
+        btnCatalogo = new javax.swing.JButton();
         TimerImage = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JLabel();
         txtDesc = new javax.swing.JLabel();
@@ -245,15 +246,29 @@ public class Home extends javax.swing.JFrame {
         });
 
         btnGraficos.setText("Graficos de ventas");
+        btnGraficos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraficosActionPerformed(evt);
+            }
+        });
+
+        btnCatalogo.setText("Catalogo");
+        btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCatalogoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelBodyLayout = new javax.swing.GroupLayout(PanelBody);
         PanelBody.setLayout(PanelBodyLayout);
         PanelBodyLayout.setHorizontalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBodyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addComponent(BtnHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCatalogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(BtnNuevoV)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAsistencia)
@@ -277,7 +292,8 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btnVentasRealiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPrecioStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGraficos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnNuevoV))
+                    .addComponent(BtnNuevoV)
+                    .addComponent(btnCatalogo))
                 .addContainerGap())
         );
 
@@ -440,6 +456,22 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnPrecioStockActionPerformed
 
+    private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
+        //redirecciona a la pagina de catalogo
+        String rut = emp.runEmpleado;
+        Catalogo cat = new Catalogo(rut);
+        cat.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCatalogoActionPerformed
+
+    private void btnGraficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficosActionPerformed
+        // Redireccion a grafico de ventas
+        String rut = emp.runEmpleado;
+        GraficoDeVentas gdv = new GraficoDeVentas(rut);
+        gdv.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGraficosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -492,6 +524,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel PrecioLo3;
     private javax.swing.JLabel TimerImage;
     private javax.swing.JButton btnAsistencia;
+    private javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;

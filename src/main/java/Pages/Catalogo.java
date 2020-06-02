@@ -7,16 +7,18 @@ package Pages;
 
 import Ferme.Dao.EmpleadoDao;
 import Ferme.Dto.Empleado;
+import Ferme.Dao.ProductoDao;
+import Ferme.Dto.Producto;
 
 /**
  *
  * @author wwwvi
  */
-public class Carro extends javax.swing.JFrame {
+public class Catalogo extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
 
-        public Carro(String id) {
+    public Catalogo(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         this.setLocationRelativeTo(null);
@@ -30,9 +32,8 @@ public class Carro extends javax.swing.JFrame {
         //Imagen button 
         rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
 
-
         //Seleccinar logo segun sexo y cargo
-           if (emp.sexo == 0) {
+        if (emp.sexo == 0) {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
             this.BtnNuevoV.setVisible(false);
             this.btnGraficos.setVisible(false);
@@ -54,6 +55,29 @@ public class Carro extends javax.swing.JFrame {
         }
         //pintar datos usuario en cmb 
 //        txtNombre.setText(emp.nombre);
+
+        String nombre = emp.nombre;
+        String apellido = emp.apellido;
+        String correo = emp.correo;
+        String cargo = null;
+
+        switch (emp.IDCARGO) {
+            case 1:
+                cargo = "Vendedor";
+                break;
+            case 2:
+                cargo = "Administrador";
+                break;
+            case 3:
+                cargo = "Bodeguero";
+                break;
+            default:
+                break;
+        }
+
+        jNombre.setText("Bienvenido: " + nombre.concat(" ").concat(apellido));
+        jCorreo.setText("Correo: " + correo);
+        jCargo.setText("Cargo: " + cargo);
 
     }
 
@@ -82,7 +106,11 @@ public class Carro extends javax.swing.JFrame {
         btnVentasRealiza = new javax.swing.JButton();
         btnPrecioStock = new javax.swing.JButton();
         btnGraficos = new javax.swing.JButton();
-        btnCatalogo1 = new javax.swing.JButton();
+        btnCatalogo = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jNombre = new javax.swing.JLabel();
+        jCorreo = new javax.swing.JLabel();
+        jCargo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,6 +176,11 @@ public class Carro extends javax.swing.JFrame {
         btnAsistencia.setText("Asistencia Personal");
 
         BtnHome.setText("Home Ventas");
+        BtnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHomeActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Stock de productos");
 
@@ -161,24 +194,24 @@ public class Carro extends javax.swing.JFrame {
         btnPrecioStock.setText("Cambiar Precio o Stock de productos");
 
         btnGraficos.setText("Graficos de ventas");
-
-        btnCatalogo1.setText("Catalogo");
-        btnCatalogo1.addActionListener(new java.awt.event.ActionListener() {
+        btnGraficos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCatalogo1ActionPerformed(evt);
+                btnGraficosActionPerformed(evt);
             }
         });
+
+        btnCatalogo.setText("Catalogo");
 
         javax.swing.GroupLayout PanelBodyLayout = new javax.swing.GroupLayout(PanelBody);
         PanelBody.setLayout(PanelBodyLayout);
         PanelBodyLayout.setHorizontalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBodyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(BtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCatalogo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCatalogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnNuevoV)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAsistencia)
@@ -190,7 +223,7 @@ public class Carro extends javax.swing.JFrame {
                 .addComponent(btnPrecioStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGraficos)
-                .addContainerGap())
+                .addGap(35, 35, 35))
         );
         PanelBodyLayout.setVerticalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,8 +236,44 @@ public class Carro extends javax.swing.JFrame {
                     .addComponent(btnVentasRealiza)
                     .addComponent(btnPrecioStock)
                     .addComponent(btnGraficos)
-                    .addComponent(btnCatalogo1))
+                    .addComponent(btnCatalogo))
                 .addContainerGap())
+        );
+
+        jNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jNombre.setText(" ");
+
+        jCorreo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jCorreo.setText(" ");
+
+        jCargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jCargo.setText(" ");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(257, 257, 257)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(325, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCorreo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCargo)
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -214,8 +283,12 @@ public class Carro extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1063, Short.MAX_VALUE)
+                .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1108, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +296,9 @@ public class Carro extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(359, 359, 359))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -244,13 +319,21 @@ public class Carro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVentasRealizaActionPerformed
 
-    private void btnCatalogo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogo1ActionPerformed
-        //redirecciona a la pagina de catalogo
+    private void BtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHomeActionPerformed
+        // se redirecciona al home
         String rut = emp.runEmpleado;
-        Catalogo cat = new Catalogo(rut);
-        cat.setVisible(true);
+        Home hom = new Home(rut);
+        hom.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnCatalogo1ActionPerformed
+    }//GEN-LAST:event_BtnHomeActionPerformed
+
+    private void btnGraficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficosActionPerformed
+        //redirecciona a grafico de ventas
+        String rut = emp.runEmpleado;
+        GraficoDeVentas graf = new GraficoDeVentas(rut);
+        graf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGraficosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,18 +352,14 @@ public class Carro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Carro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Catalogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Carro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Catalogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Carro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Catalogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Carro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Catalogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -289,7 +368,7 @@ public class Carro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Carro("").setVisible(true);
+                new Catalogo("").setVisible(true);
             }
         });
     }
@@ -302,13 +381,17 @@ public class Carro extends javax.swing.JFrame {
     private javax.swing.JLabel LblUsers;
     public javax.swing.JPanel PanelBody;
     private javax.swing.JButton btnAsistencia;
-    private javax.swing.JButton btnCatalogo1;
+    private javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jCargo;
+    private javax.swing.JLabel jCorreo;
+    private javax.swing.JLabel jNombre;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     public javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblSearch;
     private rojeru_san.RSMTextFull rSMTextFull1;

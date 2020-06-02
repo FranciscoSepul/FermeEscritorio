@@ -299,9 +299,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="BtnHome" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnCatalogo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="7" max="32767" attributes="0"/>
                       <Component id="BtnNuevoV" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnAsistencia" min="-2" max="-2" attributes="0"/>
@@ -328,6 +330,7 @@
                           <Component id="btnPrecioStock" alignment="3" max="32767" attributes="0"/>
                           <Component id="btnGraficos" alignment="3" max="32767" attributes="0"/>
                           <Component id="BtnNuevoV" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCatalogo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -378,6 +381,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Graficos de ventas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGraficosActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCatalogo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Catalogo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCatalogoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

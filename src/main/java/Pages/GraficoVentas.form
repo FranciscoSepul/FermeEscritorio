@@ -85,7 +85,7 @@
                       <Component id="lblSearch" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="LblUser" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="21" max="32767" attributes="0"/>
                       <Component id="LblUsers" min="-2" pref="68" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -173,10 +173,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BtnHome" min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="BtnHome" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnCatalogo1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BtnNuevoV" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnAsistencia" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton7" min="-2" pref="141" max="-2" attributes="0"/>
@@ -186,7 +188,7 @@
                       <Component id="btnPrecioStock" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnGraficos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -194,13 +196,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BtnNuevoV" alignment="3" pref="41" max="32767" attributes="0"/>
-                          <Component id="btnAsistencia" alignment="3" pref="41" max="32767" attributes="0"/>
-                          <Component id="BtnHome" alignment="3" pref="41" max="32767" attributes="0"/>
-                          <Component id="jButton7" alignment="3" pref="41" max="32767" attributes="0"/>
-                          <Component id="btnVentasRealiza" alignment="3" pref="41" max="32767" attributes="0"/>
-                          <Component id="btnPrecioStock" alignment="3" pref="41" max="32767" attributes="0"/>
-                          <Component id="btnGraficos" alignment="3" pref="41" max="32767" attributes="0"/>
+                          <Component id="BtnNuevoV" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAsistencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnHome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVentasRealiza" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnPrecioStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGraficos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCatalogo1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -245,6 +248,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Graficos de ventas"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCatalogo1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Catalogo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCatalogo1ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
