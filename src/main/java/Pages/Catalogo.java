@@ -172,6 +172,11 @@ public class Catalogo extends javax.swing.JFrame {
         PanelBody.setPreferredSize(new java.awt.Dimension(651, 300));
 
         BtnNuevoV.setText("Nuevo Vendedor");
+        BtnNuevoV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoVActionPerformed(evt);
+            }
+        });
 
         btnAsistencia.setText("Asistencia Personal");
 
@@ -334,6 +339,14 @@ public class Catalogo extends javax.swing.JFrame {
         graf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnGraficosActionPerformed
+
+    private void BtnNuevoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoVActionPerformed
+        // Redirecciona a nuevo vendedor
+        String rut = emp.runEmpleado;
+        NuevoVendedor nv = new NuevoVendedor(rut);
+        nv.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnNuevoVActionPerformed
 
     /**
      * @param args the command line arguments

@@ -98,13 +98,14 @@ public class EmpleadoDao implements Crud {
         }
         return emp;
     }
+
     public Empleado BuscarEmpleadoPorMail(String mail) {
 
         try {
             query = "{select * from empleado where correoemple =? }";
             con = Conexion.getConexion();
 
-           call = con.prepareCall(query);
+            call = con.prepareCall(query);
 //            call.registerOutParameter(1, OracleTypes.CURSOR);
             call.setString(2, mail);
             call.execute();
@@ -163,20 +164,21 @@ public class EmpleadoDao implements Crud {
         }
         return true;
     }
-    public Empleado logIn(String user,String pass){
-        
+
+    public Empleado logIn(String user, String pass) {
+
         try {
-            Codificador cod =new Codificador();
-            String has=cod.sha256(pass);
+            Codificador cod = new Codificador();
+            String has = cod.sha256(pass);
             query = "select * from empleado where correoemple=? and contrasena=?";
-            con = Conexion.getConexion();            
+            con = Conexion.getConexion();
             call = con.prepareCall(query);
             call.setString(1, user);
-            call.setString(2, has);          
+            call.setString(2, has);
             rs = call.executeQuery();
 
             while (rs.next()) {
-               emp.setApellido(rs.getString("apellido"));
+                emp.setApellido(rs.getString("apellido"));
                 emp.setContrasena("contrasena");
                 emp.setDigitoVerificador(rs.getString("digitoverif"));
                 emp.setEstado(rs.getInt("estado"));
@@ -191,5 +193,28 @@ public class EmpleadoDao implements Crud {
         }
         return emp;
     }
-            
+
+    public Empleado agregarEmpleado() {
+        try {
+            query = "{call AGREGAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?)}";
+            con = Conexion.getConexion();
+
+            call = con.prepareCall(query);
+            call.execute();
+
+            rs = (ResultSet) call.getObject(1);
+
+            while (rs.next()) {
+                emp.setIDCARGO(rs.getInt("idcargo"));
+                emp.setNombre(rs.getString("nombre"));
+                emp.setApellido(rs.getString("apellido"));
+    
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al agregar " + e.getMessage());
+        }
+        return agregarEmpleado();
+    }
+
 }

@@ -222,6 +222,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nuevo Vendedor"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNuevoVActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnAsistencia">
               <Properties>
