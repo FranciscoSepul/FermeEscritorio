@@ -44,20 +44,20 @@ public class PrecioYstock extends javax.swing.JFrame {
         //Seleccinar logo segun sexo y cargo
         if (emp.sexo == 0) {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
-            this.BtnNuevoV.setVisible(false);
+            this.BtnNuevoE.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
             if (emp.IDCARGO == 2) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-                this.BtnNuevoV.setVisible(true);
+                this.BtnNuevoE.setVisible(true);
                 this.btnGraficos.setVisible(true);
                 this.btnVentasRealiza.setVisible(true);
                 this.btnPrecioStock.setVisible(true);
             }
         } else {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
-            this.BtnNuevoV.setVisible(false);
+            this.BtnNuevoE.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
@@ -112,10 +112,10 @@ public class PrecioYstock extends javax.swing.JFrame {
         lblSearch = new javax.swing.JLabel();
         LblUser = new javax.swing.JLabel();
         LblUsers = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnCuentaP = new javax.swing.JButton();
         rSMTextFull1 = new rojeru_san.RSMTextFull();
         PanelBody = new javax.swing.JPanel();
-        BtnNuevoV = new javax.swing.JButton();
+        BtnNuevoE = new javax.swing.JButton();
         btnAsistencia = new javax.swing.JButton();
         BtnHome = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -134,8 +134,13 @@ public class PrecioYstock extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setText("Mi Cuenta");
+        btnCuentaP.setBackground(new java.awt.Color(102, 102, 255));
+        btnCuentaP.setText("Mi Cuenta");
+        btnCuentaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuentaPActionPerformed(evt);
+            }
+        });
 
         rSMTextFull1.setBackground(new java.awt.Color(153, 153, 153));
         rSMTextFull1.setPlaceholder("Buscar");
@@ -156,7 +161,7 @@ public class PrecioYstock extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnCuentaP)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -168,7 +173,7 @@ public class PrecioYstock extends javax.swing.JFrame {
                         .addComponent(LblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jButton2))
+                        .addComponent(btnCuentaP))
                     .addComponent(Lbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -187,7 +192,12 @@ public class PrecioYstock extends javax.swing.JFrame {
         PanelBody.setBackground(new java.awt.Color(255, 255, 255));
         PanelBody.setPreferredSize(new java.awt.Dimension(651, 300));
 
-        BtnNuevoV.setText("Nuevo Vendedor");
+        BtnNuevoE.setText("Nuevo Empleado");
+        BtnNuevoE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoEActionPerformed(evt);
+            }
+        });
 
         btnAsistencia.setText("Asistencia Personal");
 
@@ -227,8 +237,8 @@ public class PrecioYstock extends javax.swing.JFrame {
                 .addComponent(BtnHome)
                 .addGap(9, 9, 9)
                 .addComponent(btnCatalogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnNuevoV)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnNuevoE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAsistencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,13 +249,13 @@ public class PrecioYstock extends javax.swing.JFrame {
                 .addComponent(btnPrecioStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGraficos)
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         PanelBodyLayout.setVerticalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBodyLayout.createSequentialGroup()
                 .addGroup(PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnNuevoV)
+                    .addComponent(BtnNuevoE)
                     .addComponent(btnAsistencia)
                     .addComponent(BtnHome)
                     .addComponent(jButton7)
@@ -286,19 +296,18 @@ public class PrecioYstock extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1063, Short.MAX_VALUE))
+                        .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1177, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 993, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(Excel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(41, 41, 41)
+                        .addComponent(Excel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 993, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,11 +328,11 @@ public class PrecioYstock extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -374,6 +383,22 @@ public class PrecioYstock extends javax.swing.JFrame {
         cat.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCatalogoActionPerformed
+
+    private void btnCuentaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaPActionPerformed
+        //redirecciona a Asistencia Personal
+        String rut = emp.runEmpleado;
+        AsistenciaPersonal apersonal = new AsistenciaPersonal(rut);
+        apersonal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCuentaPActionPerformed
+
+    private void BtnNuevoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEActionPerformed
+        // Redirecciona a nuevo Empleado
+        String rut = emp.runEmpleado;
+        NuevoEmpleado ne = new NuevoEmpleado(rut);
+        ne.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnNuevoEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,7 +452,7 @@ public class PrecioYstock extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnHome;
-    private javax.swing.JButton BtnNuevoV;
+    private javax.swing.JButton BtnNuevoE;
     private javax.swing.JLabel Excel;
     private javax.swing.JLabel Lbl1;
     private javax.swing.JLabel LblUser;
@@ -435,11 +460,11 @@ public class PrecioYstock extends javax.swing.JFrame {
     public javax.swing.JPanel PanelBody;
     private javax.swing.JButton btnAsistencia;
     private javax.swing.JButton btnCatalogo;
+    private javax.swing.JButton btnCuentaP;
     private javax.swing.JButton btnExcel;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel4;

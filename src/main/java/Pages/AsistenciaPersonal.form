@@ -46,7 +46,7 @@
               <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="PanelBody" pref="1076" max="32767" attributes="0"/>
+                  <Component id="PanelBody" pref="1174" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -92,7 +92,7 @@
                       <Component id="lblSearch" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="LblUser" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="LblUsers" min="-2" pref="68" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -184,7 +184,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnCatalogo1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BtnNuevoV" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnNuevoE" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnAsistencia" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -203,7 +203,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BtnNuevoV" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnNuevoE" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnAsistencia" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtnHome" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -218,10 +218,13 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="BtnNuevoV">
+            <Component class="javax.swing.JButton" name="BtnNuevoE">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nuevo Vendedor"/>
+                <Property name="text" type="java.lang.String" value="Nuevo Empleado"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNuevoEActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnAsistencia">
               <Properties>
@@ -253,6 +256,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cambiar Precio o Stock de productos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrecioStockActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnGraficos">
               <Properties>
@@ -273,22 +279,30 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jCargo" min="-2" pref="120" max="-2" attributes="0"/>
-                          <Component id="jCorreo" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+                              <Component id="jCargo" min="-2" pref="120" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace pref="238" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jNombre" pref="226" max="32767" attributes="0"/>
+                                  <Component id="jCorreo" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="325" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jNombre" min="-2" pref="226" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="238" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
