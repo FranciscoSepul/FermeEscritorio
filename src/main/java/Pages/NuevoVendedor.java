@@ -14,12 +14,13 @@ import java.sql.Connection;
 import javax.swing.ButtonGroup;
 import java.sql.*;
 import javax.swing.JOptionPane;
-
+import Ferme.Dao.Codificador;
 public class NuevoVendedor extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
     Connection con = null;
     PreparedStatement pst = null;
+    Codificador cod = null;
 
     public NuevoVendedor(String id) {
         initComponents();
@@ -60,11 +61,12 @@ public class NuevoVendedor extends javax.swing.JFrame {
 //        txtNombre.setText(emp.nombre);
 
         //Función de radio button una sola opción
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(rbtnFemenino);
-        bg.add(rbtnMasculino);
-        bg.add(rbtnVendedor);
-        bg.add(rbtnBodeguero);
+        ButtonGroup bgSexo = new ButtonGroup();
+        ButtonGroup bgCargo = new ButtonGroup();
+        bgSexo.add(rbtnFemenino);
+        bgSexo.add(rbtnMasculino);
+        bgCargo.add(rbtnVendedor);
+        bgCargo.add(rbtnBodeguero);
     }
 
     /**
@@ -82,7 +84,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
         lblSearch = new javax.swing.JLabel();
         LblUser = new javax.swing.JLabel();
         LblUsers = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnCuentaP = new javax.swing.JButton();
         rSMTextFull1 = new rojeru_san.RSMTextFull();
         PanelBody = new javax.swing.JPanel();
         BtnNuevoV = new javax.swing.JButton();
@@ -101,7 +103,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
         jSexo = new javax.swing.JLabel();
         jCorreo = new javax.swing.JLabel();
         jContrasena = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombreE = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         txtApellido = new javax.swing.JTextField();
         txtRun = new javax.swing.JTextField();
@@ -121,8 +123,13 @@ public class NuevoVendedor extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setText("Mi Cuenta");
+        btnCuentaP.setBackground(new java.awt.Color(102, 102, 255));
+        btnCuentaP.setText("Mi Cuenta");
+        btnCuentaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuentaPActionPerformed(evt);
+            }
+        });
 
         rSMTextFull1.setBackground(new java.awt.Color(153, 153, 153));
         rSMTextFull1.setPlaceholder("Buscar");
@@ -220,7 +227,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnCuentaP)
                 .addContainerGap())
             .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE)
         );
@@ -233,7 +240,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
                         .addComponent(LblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jButton2))
+                        .addComponent(btnCuentaP))
                     .addComponent(Lbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -303,7 +310,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtApellido)
@@ -339,7 +346,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNombre)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jApellido)
@@ -437,6 +444,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         con = Conexion.getConexion();
+        
         String sql = "Insert into Empleado(idcargo,iddireccion,idsucursal,estado,runempleado,"
                 + "                         sexoe,digitoverif,nombree,apellido,correoemple,contrasena) values(?,?,?,?,?,?,?,?,?,?,?)";
         try {
@@ -457,17 +465,27 @@ public class NuevoVendedor extends javax.swing.JFrame {
                 pst.setInt(6, 1);
             }
             pst.setString(7, txtDv.getText());
-            pst.setString(8, jTextField1.getText());
+            pst.setString(8, txtNombreE.getText());
             pst.setString(9, txtApellido.getText());
             pst.setString(10, txtCorreo.getText());
             pst.setString(11, txtContrasena.getText());
             pst.execute();
-            JOptionPane.showMessageDialog(null, "Agregadp empleado correctamente");
+            JOptionPane.showMessageDialog(null, "Agregado empleado correctamente");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        
+        cod.sha256(txtContrasena.getText());
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnCuentaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaPActionPerformed
+        //redirecciona a Asistencia Personal
+        String rut = emp.runEmpleado;
+        AsistenciaPersonal apersonal = new AsistenciaPersonal(rut);
+        apersonal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCuentaPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -521,11 +539,11 @@ public class NuevoVendedor extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAsistencia;
     private javax.swing.JButton btnCatalogo;
+    private javax.swing.JButton btnCuentaP;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;
     private javax.swing.JLabel jApellido;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jCargo;
     private javax.swing.JLabel jContrasena;
@@ -537,7 +555,6 @@ public class NuevoVendedor extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel4;
     private javax.swing.JLabel jRun;
     private javax.swing.JLabel jSexo;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jTitulo;
     private javax.swing.JLabel lblSearch;
     private rojeru_san.RSMTextFull rSMTextFull1;
@@ -549,6 +566,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
     private javax.swing.JTextField txtContrasena;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDv;
+    private javax.swing.JTextField txtNombreE;
     private javax.swing.JTextField txtRun;
     // End of variables declaration//GEN-END:variables
 }

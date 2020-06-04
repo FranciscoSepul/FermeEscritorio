@@ -10,14 +10,11 @@ import Ferme.Dto.Empleado;
 import Ferme.Dao.ProductoDao;
 import Ferme.Dto.Producto;
 
-/**
- *
- * @author wwwvi
- */
 public class Catalogo extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
-
+    Producto pro = new Producto();
+    
     public Catalogo(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
@@ -96,7 +93,7 @@ public class Catalogo extends javax.swing.JFrame {
         lblSearch = new javax.swing.JLabel();
         LblUser = new javax.swing.JLabel();
         LblUsers = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnCuentaP = new javax.swing.JButton();
         rSMTextFull1 = new rojeru_san.RSMTextFull();
         PanelBody = new javax.swing.JPanel();
         BtnNuevoV = new javax.swing.JButton();
@@ -118,8 +115,13 @@ public class Catalogo extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setText("Mi Cuenta");
+        btnCuentaP.setBackground(new java.awt.Color(102, 102, 255));
+        btnCuentaP.setText("Mi Cuenta");
+        btnCuentaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuentaPActionPerformed(evt);
+            }
+        });
 
         rSMTextFull1.setBackground(new java.awt.Color(153, 153, 153));
         rSMTextFull1.setPlaceholder("Buscar");
@@ -140,7 +142,7 @@ public class Catalogo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnCuentaP)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -152,7 +154,7 @@ public class Catalogo extends javax.swing.JFrame {
                         .addComponent(LblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jButton2))
+                        .addComponent(btnCuentaP))
                     .addComponent(Lbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -212,7 +214,7 @@ public class Catalogo extends javax.swing.JFrame {
         PanelBodyLayout.setHorizontalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBodyLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCatalogo)
@@ -288,7 +290,7 @@ public class Catalogo extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1108, Short.MAX_VALUE)
+                .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 1108, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(177, 177, 177)
@@ -348,6 +350,14 @@ public class Catalogo extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnNuevoVActionPerformed
 
+    private void btnCuentaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaPActionPerformed
+        //redirecciona a Asistencia Personal
+        String rut = emp.runEmpleado;
+        AsistenciaPersonal apersonal = new AsistenciaPersonal(rut);
+        apersonal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCuentaPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -395,10 +405,10 @@ public class Catalogo extends javax.swing.JFrame {
     public javax.swing.JPanel PanelBody;
     private javax.swing.JButton btnAsistencia;
     private javax.swing.JButton btnCatalogo;
+    private javax.swing.JButton btnCuentaP;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jCargo;
     private javax.swing.JLabel jCorreo;

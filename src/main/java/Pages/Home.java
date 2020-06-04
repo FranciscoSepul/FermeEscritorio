@@ -16,7 +16,7 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = new ProductoDao().Listar();
-        
+
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
@@ -65,7 +65,7 @@ public class Home extends javax.swing.JFrame {
         timer.scheduleAtFixedRate(imagen, 1000, 2000);
 
         //Seleccinar logo segun sexo y cargo
-         if (emp.sexo == 0) {
+        if (emp.sexo == 0) {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
             this.BtnNuevoV.setVisible(false);
             this.btnGraficos.setVisible(false);
@@ -78,7 +78,7 @@ public class Home extends javax.swing.JFrame {
                 this.btnVentasRealiza.setVisible(true);
                 this.btnPrecioStock.setVisible(true);
             }
-        } else {           
+        } else {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
             this.BtnNuevoV.setVisible(false);
             this.btnGraficos.setVisible(false);
@@ -131,7 +131,7 @@ public class Home extends javax.swing.JFrame {
         lblSearch = new javax.swing.JLabel();
         LblUser = new javax.swing.JLabel();
         LblUsers = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnCuentaP = new javax.swing.JButton();
         rSMTextFull1 = new rojeru_san.RSMTextFull();
         PanelBody = new javax.swing.JPanel();
         BtnNuevoV = new javax.swing.JButton();
@@ -165,8 +165,13 @@ public class Home extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setText("Mi Cuenta");
+        btnCuentaP.setBackground(new java.awt.Color(102, 102, 255));
+        btnCuentaP.setText("Mi Cuenta");
+        btnCuentaP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuentaPActionPerformed(evt);
+            }
+        });
 
         rSMTextFull1.setBackground(new java.awt.Color(153, 153, 153));
         rSMTextFull1.setPlaceholder("Buscar");
@@ -187,7 +192,7 @@ public class Home extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnCuentaP)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -199,7 +204,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(LblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jButton2))
+                        .addComponent(btnCuentaP))
                     .addComponent(Lbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -447,16 +452,16 @@ public class Home extends javax.swing.JFrame {
 
     private void btnAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsistenciaActionPerformed
         //nos llevará a la página de asistencia personal con la sesión.
-        String rut = emp.runEmpleado;
-        AsistenciaPersonal apersonal = new AsistenciaPersonal(rut);
-        apersonal.setVisible(true);
-        this.setVisible(false);
+//        String rut = emp.runEmpleado;
+//        AsistenciaPersonal apersonal = new AsistenciaPersonal(rut);
+//        apersonal.setVisible(true);
+//        this.setVisible(false);
 
     }//GEN-LAST:event_btnAsistenciaActionPerformed
 
     private void btnPrecioStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecioStockActionPerformed
         String rut = emp.runEmpleado;
-        PrecioYstock pre =new PrecioYstock(rut);
+        PrecioYstock pre = new PrecioYstock(rut);
         pre.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnPrecioStockActionPerformed
@@ -478,12 +483,20 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGraficosActionPerformed
 
     private void BtnNuevoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoVActionPerformed
-        // Redirecciona a nuevo vendedor
+        // Redirecciona a nuevo Empleado
         String rut = emp.runEmpleado;
         NuevoVendedor nv = new NuevoVendedor(rut);
         nv.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnNuevoVActionPerformed
+
+    private void btnCuentaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaPActionPerformed
+        //redirecciona a Asistencia Personal
+        String rut = emp.runEmpleado;
+        AsistenciaPersonal apersonal = new AsistenciaPersonal(rut);
+        apersonal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCuentaPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -538,10 +551,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel TimerImage;
     private javax.swing.JButton btnAsistencia;
     private javax.swing.JButton btnCatalogo;
+    private javax.swing.JButton btnCuentaP;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;

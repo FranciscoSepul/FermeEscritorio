@@ -170,6 +170,11 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
         PanelBody.setPreferredSize(new java.awt.Dimension(651, 300));
 
         BtnNuevoV.setText("Nuevo Vendedor");
+        BtnNuevoV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoVActionPerformed(evt);
+            }
+        });
 
         btnAsistencia.setText("Asistencia Personal");
 
@@ -243,6 +248,8 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+
         jNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jNombre.setText(" ");
 
@@ -257,15 +264,16 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(325, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(jCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(238, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                            .addComponent(jCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +294,7 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+                .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 1085, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(177, 177, 177)
@@ -345,6 +353,14 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
         cat.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCatalogo1ActionPerformed
+
+    private void BtnNuevoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoVActionPerformed
+        // Redirecciona a nuevo Empleado
+        String rut = emp.runEmpleado;
+        NuevoVendedor nv = new NuevoVendedor(rut);
+        nv.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnNuevoVActionPerformed
 
     /**
      * @param args the command line arguments
