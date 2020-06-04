@@ -3,8 +3,6 @@ package Ferme.Dao;
 import java.io.File;
 import java.io.IOException;
 import jxl.WorkbookSettings;
-import jxl.write.WritableCellFormat;
-import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;

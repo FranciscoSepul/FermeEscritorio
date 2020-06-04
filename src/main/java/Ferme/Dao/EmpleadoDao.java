@@ -191,5 +191,22 @@ public class EmpleadoDao implements Crud {
         }
         return emp;
     }
-            
+     public boolean  cambiarPass(String rut,String pass){
+        
+        try {
+            Codificador cod =new Codificador();
+            String has=cod.sha256(pass);
+            query = "update empleado set contrasena = ? where runempleado = ?";
+            con = Conexion.getConexion();            
+            call = con.prepareCall(query);
+            call.setString(1, has);
+            call.setString(2, rut);          
+            rs = call.executeQuery();
+
+        } catch (SQLException e) {
+            System.out.println("Error al buscar" + e.getMessage());
+            return false;
+        }
+        return true;
+    }
 }
