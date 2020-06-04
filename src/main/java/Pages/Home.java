@@ -67,20 +67,20 @@ public class Home extends javax.swing.JFrame {
         //Seleccinar logo segun sexo y cargo
         if (emp.sexo == 0) {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
-            this.BtnNuevoV.setVisible(false);
+            this.BtnNuevoE.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
             if (emp.IDCARGO == 2) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-                this.BtnNuevoV.setVisible(true);
+                this.BtnNuevoE.setVisible(true);
                 this.btnGraficos.setVisible(true);
                 this.btnVentasRealiza.setVisible(true);
                 this.btnPrecioStock.setVisible(true);
             }
         } else {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
-            this.BtnNuevoV.setVisible(false);
+            this.BtnNuevoE.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
@@ -134,7 +134,7 @@ public class Home extends javax.swing.JFrame {
         btnCuentaP = new javax.swing.JButton();
         rSMTextFull1 = new rojeru_san.RSMTextFull();
         PanelBody = new javax.swing.JPanel();
-        BtnNuevoV = new javax.swing.JButton();
+        BtnNuevoE = new javax.swing.JButton();
         btnAsistencia = new javax.swing.JButton();
         BtnHome = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -189,7 +189,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(LblUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCuentaP)
@@ -223,10 +223,10 @@ public class Home extends javax.swing.JFrame {
         PanelBody.setBackground(new java.awt.Color(255, 255, 255));
         PanelBody.setPreferredSize(new java.awt.Dimension(651, 300));
 
-        BtnNuevoV.setText("Nuevo Vendedor");
-        BtnNuevoV.addActionListener(new java.awt.event.ActionListener() {
+        BtnNuevoE.setText("Nuevo Empleado");
+        BtnNuevoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnNuevoVActionPerformed(evt);
+                BtnNuevoEActionPerformed(evt);
             }
         });
 
@@ -274,12 +274,12 @@ public class Home extends javax.swing.JFrame {
         PanelBodyLayout.setHorizontalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBodyLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(35, 35, 35)
                 .addComponent(BtnHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCatalogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(BtnNuevoV)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnNuevoE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAsistencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -290,7 +290,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(btnPrecioStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGraficos)
-                .addGap(47, 47, 47))
+                .addGap(59, 59, 59))
         );
         PanelBodyLayout.setVerticalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +302,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btnVentasRealiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPrecioStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGraficos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnNuevoV)
+                    .addComponent(BtnNuevoE)
                     .addComponent(btnCatalogo))
                 .addContainerGap())
         );
@@ -330,7 +330,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1133, Short.MAX_VALUE))
+                        .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 1197, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -482,13 +482,13 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnGraficosActionPerformed
 
-    private void BtnNuevoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoVActionPerformed
+    private void BtnNuevoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEActionPerformed
         // Redirecciona a nuevo Empleado
         String rut = emp.runEmpleado;
-        NuevoVendedor nv = new NuevoVendedor(rut);
-        nv.setVisible(true);
+        NuevoEmpleado ne = new NuevoEmpleado(rut);
+        ne.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_BtnNuevoVActionPerformed
+    }//GEN-LAST:event_BtnNuevoEActionPerformed
 
     private void btnCuentaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaPActionPerformed
         //redirecciona a Asistencia Personal
@@ -535,7 +535,7 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnHome;
-    private javax.swing.JButton BtnNuevoV;
+    private javax.swing.JButton BtnNuevoE;
     private javax.swing.JLabel DescripLo;
     private javax.swing.JLabel DescripLo1;
     private javax.swing.JLabel DescripLo2;

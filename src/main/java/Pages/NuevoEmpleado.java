@@ -15,14 +15,14 @@ import javax.swing.ButtonGroup;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import Ferme.Dao.Codificador;
-public class NuevoVendedor extends javax.swing.JFrame {
+public class NuevoEmpleado extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
     Connection con = null;
     PreparedStatement pst = null;
     Codificador cod = null;
 
-    public NuevoVendedor(String id) {
+    public NuevoEmpleado(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         this.setLocationRelativeTo(null);
@@ -39,20 +39,20 @@ public class NuevoVendedor extends javax.swing.JFrame {
         //Seleccinar logo segun sexo y cargo
         if (emp.sexo == 0) {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
-            this.BtnNuevoV.setVisible(false);
+            this.BtnNuevoE.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
             if (emp.IDCARGO == 2) {
                 rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-                this.BtnNuevoV.setVisible(true);
+                this.BtnNuevoE.setVisible(true);
                 this.btnGraficos.setVisible(true);
                 this.btnVentasRealiza.setVisible(true);
                 this.btnPrecioStock.setVisible(true);
             }
         } else {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
-            this.BtnNuevoV.setVisible(false);
+            this.BtnNuevoE.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
@@ -87,7 +87,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
         btnCuentaP = new javax.swing.JButton();
         rSMTextFull1 = new rojeru_san.RSMTextFull();
         PanelBody = new javax.swing.JPanel();
-        BtnNuevoV = new javax.swing.JButton();
+        BtnNuevoE = new javax.swing.JButton();
         btnAsistencia = new javax.swing.JButton();
         BtnHome = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -137,7 +137,12 @@ public class NuevoVendedor extends javax.swing.JFrame {
         PanelBody.setBackground(new java.awt.Color(255, 255, 255));
         PanelBody.setPreferredSize(new java.awt.Dimension(651, 300));
 
-        BtnNuevoV.setText("Nuevo Vendedor");
+        BtnNuevoE.setText("Nuevo Empleado");
+        BtnNuevoE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoEActionPerformed(evt);
+            }
+        });
 
         btnAsistencia.setText("Asistencia Personal");
 
@@ -158,6 +163,11 @@ public class NuevoVendedor extends javax.swing.JFrame {
         });
 
         btnPrecioStock.setText("Cambiar Precio o Stock de productos");
+        btnPrecioStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrecioStockActionPerformed(evt);
+            }
+        });
 
         btnGraficos.setText("Graficos de ventas");
         btnGraficos.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +193,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCatalogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnNuevoV)
+                .addComponent(BtnNuevoE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAsistencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,7 +210,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBodyLayout.createSequentialGroup()
                 .addGroup(PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnNuevoV)
+                    .addComponent(BtnNuevoE)
                     .addComponent(btnAsistencia)
                     .addComponent(BtnHome)
                     .addComponent(jButton7)
@@ -224,12 +234,12 @@ public class NuevoVendedor extends javax.swing.JFrame {
                 .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(LblUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(LblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCuentaP)
                 .addContainerGap())
-            .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1104, Short.MAX_VALUE)
+            .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 1145, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -487,6 +497,22 @@ public class NuevoVendedor extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCuentaPActionPerformed
 
+    private void BtnNuevoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEActionPerformed
+        // Redirecciona a nuevo Empleado
+        String rut = emp.runEmpleado;
+        NuevoEmpleado ne = new NuevoEmpleado(rut);
+        ne.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnNuevoEActionPerformed
+
+    private void btnPrecioStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecioStockActionPerformed
+        //Redirecciona a Precio y Stock
+        String rut = emp.runEmpleado;
+        PrecioYstock psk = new PrecioYstock(rut);
+        psk.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPrecioStockActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -504,14 +530,22 @@ public class NuevoVendedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NuevoVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NuevoVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NuevoVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NuevoVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -524,14 +558,14 @@ public class NuevoVendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NuevoVendedor("").setVisible(true);
+                new NuevoEmpleado("").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnHome;
-    private javax.swing.JButton BtnNuevoV;
+    private javax.swing.JButton BtnNuevoE;
     private javax.swing.JLabel Lbl1;
     private javax.swing.JLabel LblUser;
     private javax.swing.JLabel LblUsers;
