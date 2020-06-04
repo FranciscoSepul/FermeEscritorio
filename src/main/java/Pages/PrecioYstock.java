@@ -366,7 +366,7 @@ public class PrecioYstock extends javax.swing.JFrame {
         }
         Date fecha = new Date();
 
-        String ruta = "C:/Desarrollo/Excel/Productos" + new SimpleDateFormat("dd-mm-yyyy").format(fecha) + ".xls";
+        String ruta = "C:/Desarrollo/Excel/Productos" + new SimpleDateFormat("dd-m-yyyy").format(fecha) + ".xls";
         JOptionPane.showMessageDialog(null, "Se genera excel Productos ");
         try {
             crea.generarExcel(datosE, ruta);

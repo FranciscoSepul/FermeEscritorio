@@ -43,7 +43,7 @@ public class CreacionCorreos {
                     + "<table width=\"600\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" class=\"blk\" name=\"blk_text\"><tbody><tr><td>    \n"
                     + "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\" class=\"bmeContainerRow\"><tbody><tr><td class=\"tdPart\" valign=\"top\" align=\"center\">    \n"
                     + "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"600\" name=\"tblText\" style=\"float:left; background-color:transparent;\" align=\"left\" class=\"tblText\"><tbody><tr><td valign=\"top\" align=\"left\" name=\"tblCell\" style=\"padding: 10px 20px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; color: rgb(56, 56, 56); text-align: left;\" class=\"tblCell\"><div style=\"line-height: 200%; text-align: center;\"><span style=\"font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000000; line-height: 200%;\">Hola Esperando que tengas un buen dia laboral a continuacion te hacemos envio de tu contraseña para acceder a nustro sistema Saludos</span></div></td></tr></tbody>    \n"
-                    + "\n" + pass
+                    + "\n <H1 align=\"center\"> "+ pass+"</H1>"
                     + "</table></td></tr><tr><td height=\"20\"></td></tr></tbody>    \n"
                     + "</table></td><td width=\"20\"></td></tr></tbody>    \n"
                     + "</table></div>\n"
