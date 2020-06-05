@@ -236,5 +236,25 @@ public class EmpleadoDao implements Crud {
         }
         return agregarEmpleado();
     }
+    
+    public boolean ModificarE(String nombre,String apellido,String correo,String contra ,String run) throws SQLException{          
+        try{
+            query = "update empleado set nombree = ? ,apellido=?,correoemple=?,contrasena=?  where runempleado = ?";
+            Codificador cod =new Codificador();
+            String has=cod.sha256(contra);
+            con = Conexion.getConexion();            
+            call = con.prepareCall(query);
+            call.setString(1, nombre);
+            call.setString(2, apellido);
+            call.setString(3, correo);
+            call.setString(4, has);
+            call.setString(5, run);          
+            rs = call.executeQuery();
+        } catch (SQLException e) {
+            System.out.println("error al modificar un empleado"+e.getMessage());
+            return false;
+        }
+        return true;
+    }
 
 }
