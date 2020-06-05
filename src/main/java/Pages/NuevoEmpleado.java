@@ -15,9 +15,13 @@ import javax.swing.ButtonGroup;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import Ferme.Dao.Codificador;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class NuevoEmpleado extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
+    EmpleadoDao emp2 = new EmpleadoDao();
     Connection con = null;
     PreparedStatement pst = null;
     Codificador cod = null;
@@ -453,40 +457,71 @@ public class NuevoEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCatalogoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+//        con = Conexion.getConexion();
+//        
+//        String sql = "Insert into Empleado(idcargo,iddireccion,idsucursal,estado,runempleado,"
+//                + "                         sexoe,digitoverif,nombree,apellido,correoemple,contrasena) values(?,?,?,?,?,?,?,?,?,?,?)";
+//        try {
+//            pst = con.prepareStatement(sql);
+//            if (rbtnVendedor.isSelected() )  {
+//                pst.setInt(1, 1);
+//            }else {
+//                pst.setInt(1, 3);
+//            }
+//            pst.setInt(2, 2);
+//            //en sucursal más adelante poner un button con las opciones de sucursal
+//            pst.setInt(3, 1);
+//            pst.setInt(4, 1);
+//            pst.setString(5, txtRun.getText());
+//            if (rbtnMasculino.isSelected() ) {
+//                pst.setInt(6, 0);    
+//            }else {
+//                pst.setInt(6, 1);
+//            }
+//            pst.setString(7, txtDv.getText());
+//            pst.setString(8, txtNombreE.getText());
+//            pst.setString(9, txtApellido.getText());
+//            pst.setString(10, txtCorreo.getText());
+//            pst.setString(11, txtContrasena.getText());
+//            pst.execute();
+//            JOptionPane.showMessageDialog(null, "Agregado empleado correctamente");
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e);
+//        }
         con = Conexion.getConexion();
-        
-        String sql = "Insert into Empleado(idcargo,iddireccion,idsucursal,estado,runempleado,"
-                + "                         sexoe,digitoverif,nombree,apellido,correoemple,contrasena) values(?,?,?,?,?,?,?,?,?,?,?)";
-        try {
-            pst = con.prepareStatement(sql);
-            if (rbtnVendedor.isSelected() )  {
-                pst.setInt(1, 1);
-            }else {
-                pst.setInt(1, 3);
-            }
-            pst.setInt(2, 2);
-            //en sucursal más adelante poner un button con las opciones de sucursal
-            pst.setInt(3, 1);
-            pst.setInt(4, 1);
-            pst.setString(5, txtRun.getText());
-            if (rbtnMasculino.isSelected() ) {
-                pst.setInt(6, 0);    
-            }else {
-                pst.setInt(6, 1);
-            }
-            pst.setString(7, txtDv.getText());
-            pst.setString(8, txtNombreE.getText());
-            pst.setString(9, txtApellido.getText());
-            pst.setString(10, txtCorreo.getText());
-            pst.setString(11, txtContrasena.getText());
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Agregado empleado correctamente");
+        boolean resp = false; //idcargo,iddireccion,idsucursal,estado,runempleado,"
+        int idCargo, sexo;  //+ "                         sexoe,digitoverif,nombree,apellido,correoemple,contrasena)
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        if (rbtnVendedor.isSelected()) {
+            idCargo = 1;
+        } else {
+            idCargo = 3;
         }
+        int direccion = 2;
+        int idSucursal = 1;
+        int estado = 1;
+        String runE = txtRun.getText();
+        String Dv = txtDv.getText();
+        if (rbtnMasculino.isSelected()) {
+            sexo = 1;
+        } else {
+            sexo = 0;
+        }
+        String nombreE = txtNombreE.getText();
+        String apellidoE = txtApellido.getText();
+        String correoE = txtCorreo.getText();
+        String contrasena = txtContrasena.getText();
         
-        cod.sha256(txtContrasena.getText());
+        try {
+            resp = new EmpleadoDao().agregarEmpleado();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al agregar usuario");
+        }
+        if (resp != false) {
+            JOptionPane.showMessageDialog(null, "Se agrego el usuario");
+        }
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnCuentaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaPActionPerformed

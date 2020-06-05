@@ -214,27 +214,32 @@ public class EmpleadoDao implements Crud {
     }
 
 
-    public Empleado agregarEmpleado() {
+    public boolean agregarEmpleado() {
         try {
             query = "{call AGREGAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?)}";
             con = Conexion.getConexion();
-
+            
             call = con.prepareCall(query);
-            call.execute();
+            call.setInt(1, emp.getIDCARGO());
+            call.setObject(2, emp.getDireccion());
+            call.setObject(3, emp.getSucursal());
+            call.setInt(4, emp.getEstado());
+            call.setString(5, emp.getRunEmpleado());
+            call.setString(6, emp.getDigitoVerificador());
+            call.setInt(7, emp.getSexo());
+            call.setString(8, emp.getNombre());
+            call.setString(9, emp.getApellido());
+            call.setString(10, emp.getCorreo());
+            call.setString(11, emp.getContrasena());
+            call.executeUpdate();
 
-            rs = (ResultSet) call.getObject(1);
 
-            while (rs.next()) {
-                emp.setIDCARGO(rs.getInt("idcargo"));
-                emp.setNombre(rs.getString("nombre"));
-                emp.setApellido(rs.getString("apellido"));
-    
 
-            }
         } catch (SQLException e) {
             System.out.println("Error al agregar " + e.getMessage());
+            return false;
         }
-        return agregarEmpleado();
+        return true;
     }
     
     public boolean ModificarE(String nombre,String apellido,String correo,String contra ,String run) throws SQLException{          
