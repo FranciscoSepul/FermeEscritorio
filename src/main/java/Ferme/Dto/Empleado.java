@@ -15,11 +15,13 @@ public class Empleado implements Serializable {
     public String contrasena;
     public Sucursal sucursal;
     public Direccion direccion;
+    public int CambioPass;
 
     public Empleado() {
     }
 
-    public Empleado(int estado, String runEmpleado, String digitoVerificador, String nombre, String apellido, String correo, int sexo, int IDCARGO, String contrasena, Sucursal sucursal, Direccion direccion) {
+    
+    public Empleado(int estado, String runEmpleado, String digitoVerificador, String nombre, String apellido, String correo, int sexo, int IDCARGO, String contrasena, Sucursal sucursal, Direccion direccion, int CambioPass) {
         this.estado = estado;
         this.runEmpleado = runEmpleado;
         this.digitoVerificador = digitoVerificador;
@@ -31,6 +33,7 @@ public class Empleado implements Serializable {
         this.contrasena = contrasena;
         this.sucursal = sucursal;
         this.direccion = direccion;
+        this.CambioPass = CambioPass;
     }
 
     public int getEstado() {
@@ -121,6 +124,13 @@ public class Empleado implements Serializable {
         this.direccion = direccion;
     }
 
-    
-       
-}
+    public int getCambioPass() {
+        return CambioPass;
+    }
+
+    public void setCambioPass(int CambioPass) {
+        this.CambioPass = CambioPass;
+    }
+
+  
+    }

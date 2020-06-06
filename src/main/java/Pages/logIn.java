@@ -172,14 +172,22 @@ public class logIn extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         EmpleadoDao empdao = new EmpleadoDao();        
+        
         String user = email.getText();
         String pass = passtxt.getText();
         Empleado emp = empdao.logIn(user, pass);
-        if (emp.estado==1) {       
-            String rut=emp.runEmpleado;
-            Home hom= new Home(rut);
-            hom.setVisible(true);
-            this.setVisible(false);
+        String rut = emp.runEmpleado;
+        if (emp.estado == 1) {
+            if (emp.CambioPass == 1) {
+                CambioPass passView = new CambioPass(rut);
+                passView.setVisible(true);
+                this.setVisible(false);
+            } else {                
+                Home hom = new Home(rut);
+                hom.setVisible(true);
+                this.setVisible(false);
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "Credenciales invalidas");
         }
@@ -190,9 +198,9 @@ public class logIn extends javax.swing.JFrame {
     }//GEN-LAST:event_emailActionPerformed
 
     private void BtnObtenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnObtenerActionPerformed
-            RecuperarPass pass = new RecuperarPass();
-            pass.setVisible(true);
-            this.setVisible(false);
+        RecuperarPass pass = new RecuperarPass();
+        pass.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BtnObtenerActionPerformed
     /**
      * @param args the command line arguments

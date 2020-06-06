@@ -187,6 +187,7 @@ public class EmpleadoDao implements Crud {
                 emp.setSexo(rs.getInt("sexoe"));
                 emp.setCorreo(rs.getString("correoemple"));
                 emp.setIDCARGO(rs.getInt("IDCARGO"));
+                emp.setCambioPass(rs.getInt("cambioPass"));
             }
         } catch (SQLException e) {
             System.out.println("Error al buscar" + e.getMessage());
@@ -194,16 +195,17 @@ public class EmpleadoDao implements Crud {
         return emp;
     }
 
-     public boolean  cambiarPass(String rut,String pass){
+     public boolean  cambiarPass(String rut,String pass,int cambioPass ){
         
         try {
             Codificador cod =new Codificador();
             String has=cod.sha256(pass);
-            query = "update empleado set contrasena = ? where runempleado = ?";
+            query = "update empleado set contrasena = ? ,cambioPass=? where runempleado = ?";
             con = Conexion.getConexion();            
             call = con.prepareCall(query);
             call.setString(1, has);
-            call.setString(2, rut);          
+            call.setInt(2, cambioPass);
+            call.setString(3, rut);          
             rs = call.executeQuery();
 
         } catch (SQLException e) {

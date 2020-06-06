@@ -186,11 +186,12 @@ public class RecuperarPass extends javax.swing.JFrame {
             System.out.println("pass nueva"+pass);
             String destina = empdto.correo;
             String asunto = "Recuperacion de Password";
+            int cambioPass=1;
             String cuerpo =new CreacionCorreos().correoPass(pass, destina);
-            boolean Resp=empdao.cambiarPass(run, pass);
+            boolean Resp=empdao.cambiarPass(run, pass,cambioPass);
             if (Resp!=false) {
                 smtp.enviarSmtp(destina, asunto, cuerpo);
-                JOptionPane.showMessageDialog(null, "Se le a  enviado su contraseña a su correo electronico");
+                JOptionPane.showMessageDialog(null, "Se le a enviado su contraseña a su correo electronico");
             }    
         } else {
             JOptionPane.showMessageDialog(null, "Este email no pertenece al usuario que busca");
