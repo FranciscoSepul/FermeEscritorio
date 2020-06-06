@@ -128,8 +128,6 @@ public class CambioPass extends javax.swing.JFrame {
 
         if (passConfir == null ? passN != null : !passConfir.equals(passN)) {
             JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-            System.out.println("pass confir " + passConfir);
-            System.out.println("pass nu " + passN);
         } else {
             boolean Resp = empdao.cambiarPass(run, passN, cambioPass);
             if (Resp == true) {

@@ -10,18 +10,20 @@ public class Ventas implements Serializable {
     public Retiro retiro;
     public Empleado empleado;
     public FormaDePago formapago;
+    public int formaPago;
     public int estado;
 
     public Ventas() {
     }
 
-    public Ventas(Cliente cliente, DetalleVentas detalle, Documentos docum, Retiro retiro, Empleado empleado, FormaDePago formapago, int estado) {
+    public Ventas(Cliente cliente, DetalleVentas detalle, Documentos docum, Retiro retiro, Empleado empleado, FormaDePago formapago, int formaPago, int estado) {
         this.cliente = cliente;
         this.detalle = detalle;
         this.docum = docum;
         this.retiro = retiro;
         this.empleado = empleado;
         this.formapago = formapago;
+        this.formaPago = formaPago;
         this.estado = estado;
     }
 
@@ -73,6 +75,14 @@ public class Ventas implements Serializable {
         this.formapago = formapago;
     }
 
+    public int getFormaPago() {
+        return formaPago;
+    }
+
+    public void setFormaPago(int formaPago) {
+        this.formaPago = formaPago;
+    }
+
     public int getEstado() {
         return estado;
     }
@@ -80,6 +90,6 @@ public class Ventas implements Serializable {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
+
     
 }
