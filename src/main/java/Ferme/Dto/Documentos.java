@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Documentos implements Serializable {
 
     public String fecha;
-    public int tipoDoc;
+    public TipoDocumento tipoDoc;
     public int numFolio;
 
     public Documentos() {
     }
 
-    public Documentos(String fecha, int tipoDoc, int numFolio) {
+    public Documentos(String fecha, TipoDocumento tipoDoc, int numFolio) {
         this.fecha = fecha;
         this.tipoDoc = tipoDoc;
         this.numFolio = numFolio;
@@ -25,11 +25,11 @@ public class Documentos implements Serializable {
         this.fecha = fecha;
     }
 
-    public int getTipoDoc() {
+    public TipoDocumento getTipoDoc() {
         return tipoDoc;
     }
 
-    public void setTipoDoc(int tipoDoc) {
+    public void setTipoDoc(TipoDocumento tipoDoc) {
         this.tipoDoc = tipoDoc;
     }
 
@@ -40,5 +40,7 @@ public class Documentos implements Serializable {
     public void setNumFolio(int numFolio) {
         this.numFolio = numFolio;
     }
+
+
 
 }

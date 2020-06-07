@@ -1,23 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Pages;
 
-import Ferme.Dao.EmpleadoDao;
-import Ferme.Dto.Empleado;
-import Ferme.Dao.ProductoDao;
-import Ferme.Dto.Producto;
+import Ferme.Dao.*;
+import Ferme.Dto.*;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import java.util.Date;
+import jxl.write.WriteException;
 
 public class Catalogo extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
-    Producto pro = new Producto();
-    
+    List<Producto> prod;
+    DefaultTableModel model;
+    String nombreColumna = "";
+    String datoModificado = "";
+    boolean respuesta = false;
+
     public Catalogo(String id) {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
+        prod = new ProductoDao().Listar();
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
@@ -43,38 +52,46 @@ public class Catalogo extends javax.swing.JFrame {
                 this.btnVentasRealiza.setVisible(true);
                 this.btnPrecioStock.setVisible(true);
             }
-        } else {           
+        } else {
             rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
             this.BtnNuevoE.setVisible(false);
             this.btnGraficos.setVisible(false);
             this.btnVentasRealiza.setVisible(false);
             this.btnPrecioStock.setVisible(false);
         }
-        //pintar datos usuario en cmb 
-//        txtNombre.setText(emp.nombre);
-
-        String nombre = emp.nombre;
-        String apellido = emp.apellido;
-        String correo = emp.correo;
-        String cargo = null;
-
-        switch (emp.IDCARGO) {
-            case 1:
-                cargo = "Vendedor";
-                break;
-            case 2:
-                cargo = "Administrador";
-                break;
-            case 3:
-                cargo = "Bodeguero";
-                break;
-            default:
-                break;
-        }
-
-        jNombre.setText("Bienvenido: " + nombre.concat(" ").concat(apellido));
-        jCorreo.setText("Correo: " + correo);
-        jCargo.setText("Cargo: " + cargo);
+//        model = (DefaultTableModel) tabla.getModel();
+//       
+//
+//        for (int i = 0; i < prod.size(); i++) {
+//            model.insertRow(model.getRowCount(), new Object[]{prod.get(i).nombre, prod.get(i).stock, prod.get(i).precioUni});
+//        }
+//        tabla.setCellSelectionEnabled(true);
+//        model.addTableModelListener(new TableModelListener() {
+//            @Override
+//            public void tableChanged(TableModelEvent e) {
+//                if (e.getType() == TableModelEvent.UPDATE) {
+//                    datoModificado = (String) model.getValueAt(e.getFirstRow(), e.getColumn());
+//                    nombreColumna = (String) model.getValueAt(e.getFirstRow(), 0);
+//
+//                    int columna = e.getColumn();
+//                    switch (columna) {
+//                        case 0:
+//                            JOptionPane.showMessageDialog(null, "No se puede modificar el nombre del producto");
+//                            break;
+//                        case 1:
+//                            respuesta = new ProductoDao().modificarStock(datoModificado, nombreColumna);
+//                            JOptionPane.showMessageDialog(null, "A modificado el Stock del producto: " + nombreColumna);
+//                            break;
+//                        case 2:
+//                            respuesta = new ProductoDao().modificarPrecio(datoModificado, nombreColumna);
+//                            JOptionPane.showMessageDialog(null, "A modificado el Precio del producto: " + nombreColumna);
+//                            break;
+//                    }
+//
+//                }
+//            }
+//
+//        });
 
     }
 
@@ -104,10 +121,8 @@ public class Catalogo extends javax.swing.JFrame {
         btnPrecioStock = new javax.swing.JButton();
         btnGraficos = new javax.swing.JButton();
         btnCatalogo = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jNombre = new javax.swing.JLabel();
-        jCorreo = new javax.swing.JLabel();
-        jCargo = new javax.swing.JLabel();
+        btnExcel = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,29 +214,24 @@ public class Catalogo extends javax.swing.JFrame {
         });
 
         btnPrecioStock.setText("Cambiar Precio o Stock de productos");
-        btnPrecioStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrecioStockActionPerformed(evt);
-            }
-        });
 
         btnGraficos.setText("Graficos de ventas");
-        btnGraficos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGraficosActionPerformed(evt);
-            }
-        });
 
         btnCatalogo.setText("Catalogo");
+        btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCatalogoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelBodyLayout = new javax.swing.GroupLayout(PanelBody);
         PanelBody.setLayout(PanelBodyLayout);
         PanelBodyLayout.setHorizontalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBodyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(BtnHome)
+                .addGap(9, 9, 9)
                 .addComponent(btnCatalogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnNuevoE)
@@ -235,7 +245,7 @@ public class Catalogo extends javax.swing.JFrame {
                 .addComponent(btnPrecioStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGraficos)
-                .addGap(35, 35, 35))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         PanelBodyLayout.setVerticalGroup(
             PanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,40 +262,26 @@ public class Catalogo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jNombre.setText(" ");
+        btnExcel.setBackground(new java.awt.Color(255, 255, 255));
+        btnExcel.setForeground(new java.awt.Color(0, 0, 255));
+        btnExcel.setText("Generar Excel");
+        btnExcel.setBorder(null);
+        btnExcel.setBorderPainted(false);
+        btnExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcelActionPerformed(evt);
+            }
+        });
 
-        jCorreo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jCorreo.setText(" ");
-
-        jCargo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jCargo.setText(" ");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(325, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 249, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jNombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCorreo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCargo)
-                .addContainerGap(174, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 186, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -294,34 +290,42 @@ public class Catalogo extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanelBody, javax.swing.GroupLayout.DEFAULT_SIZE, 1177, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(btnExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(293, 293, 293)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addGap(40, 40, 40)
+                .addComponent(btnExcel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(250, 250, 250))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -332,28 +336,46 @@ public class Catalogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentasRealizaActionPerformed
 
     private void BtnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHomeActionPerformed
-        // se redirecciona al home
         String rut = emp.runEmpleado;
         Home hom = new Home(rut);
         hom.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnHomeActionPerformed
 
-    private void btnGraficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraficosActionPerformed
-        //redirecciona a grafico de ventas
-        String rut = emp.runEmpleado;
-        GraficoDeVentas graf = new GraficoDeVentas(rut);
-        graf.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnGraficosActionPerformed
+    private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+//        CreacionExcel crea = new CreacionExcel();
+//        String[][] datosE = new String[3][3];
+//        datosE[0][0] = "Nombre";
+//        datosE[0][1] = "Stock";
+//        datosE[0][2] = "Precio";
+//
+//        int conta = 1;
+//        int size = prod.size();
+//        for (int i = 0; i < size; i++) {
+//            datosE[conta][0] = prod.get(i).nombre;
+//            datosE[conta][1] = Integer.toString(prod.get(i).stock);
+//            datosE[conta][2] = Integer.toString(prod.get(i).precioUni);
+//            conta++;
+//        }
+//        Date fecha = new Date();
+//
+//        String ruta = "C:/Desarrollo/Excel/Productos" + new SimpleDateFormat("dd-m-yyyy").format(fecha) + ".xls";
+//        JOptionPane.showMessageDialog(null, "Se genera excel Productos ");
+//        try {
+//            crea.generarExcel(datosE, ruta);
+//        } catch (IOException | WriteException ex) {
+//            Logger.getLogger(Catalogo.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
-    private void BtnNuevoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEActionPerformed
-        // Redirecciona a nuevo Empleado
+    }//GEN-LAST:event_btnExcelActionPerformed
+
+    private void btnCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatalogoActionPerformed
+        //redirecciona a la pagina de catalogo
         String rut = emp.runEmpleado;
-        NuevoEmpleado ne = new NuevoEmpleado(rut);
-        ne.setVisible(true);
+        Catalogo cat = new Catalogo(rut);
+        cat.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_BtnNuevoEActionPerformed
+    }//GEN-LAST:event_btnCatalogoActionPerformed
 
     private void btnCuentaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaPActionPerformed
         //redirecciona a Asistencia Personal
@@ -363,13 +385,13 @@ public class Catalogo extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCuentaPActionPerformed
 
-    private void btnPrecioStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecioStockActionPerformed
-        //Redirecciona a Precio y Stock
+    private void BtnNuevoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEActionPerformed
+        // Redirecciona a nuevo Empleado
         String rut = emp.runEmpleado;
-        PrecioYstock psk = new PrecioYstock(rut);
-        psk.setVisible(true);
+        NuevoEmpleado ne = new NuevoEmpleado(rut);
+        ne.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnPrecioStockActionPerformed
+    }//GEN-LAST:event_BtnNuevoEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,6 +422,34 @@ public class Catalogo extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -419,15 +469,13 @@ public class Catalogo extends javax.swing.JFrame {
     private javax.swing.JButton btnAsistencia;
     private javax.swing.JButton btnCatalogo;
     private javax.swing.JButton btnCuentaP;
+    private javax.swing.JButton btnExcel;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;
     private javax.swing.JButton btnVentasRealiza;
     private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jCargo;
-    private javax.swing.JLabel jCorreo;
-    private javax.swing.JLabel jNombre;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     public javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblSearch;
     private rojeru_san.RSMTextFull rSMTextFull1;
