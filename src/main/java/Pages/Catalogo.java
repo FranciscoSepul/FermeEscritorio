@@ -272,7 +272,7 @@ public class Catalogo extends javax.swing.JFrame {
 
         btnExcel.setBackground(new java.awt.Color(255, 255, 255));
         btnExcel.setForeground(new java.awt.Color(0, 0, 255));
-        btnExcel.setText("xd");
+        btnExcel.setText("prueba");
         btnExcel.setBorder(null);
         btnExcel.setBorderPainted(false);
         btnExcel.addActionListener(new java.awt.event.ActionListener() {

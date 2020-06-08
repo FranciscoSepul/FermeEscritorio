@@ -163,19 +163,19 @@ public class EditarUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean resp = false;
-        String correo=txtCorreo.getText();
-        String nombre=txtNombre.getText();
-        String apellido=txtApellido.getText();
-        String run=emp.runEmpleado;
-        String contra =txtPass.getText();
+        String correo = txtCorreo.getText();
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String run = emp.runEmpleado;
+        String contra = txtPass.getText();
         try {
-            resp=new EmpleadoDao().ModificarE(nombre, apellido, correo,contra,run);
+            resp = new EmpleadoDao().ModificarE(nombre, apellido, correo, contra, run);
         } catch (SQLException ex) {
             Logger.getLogger(EditarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (resp!=false) {
-             this.setVisible(false);  
-             JOptionPane.showMessageDialog(null, "Se modifico correctamente su informacion");
+        if (resp != false) {
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Se modifico correctamente su informacion");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

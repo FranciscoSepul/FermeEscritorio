@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Producto implements Serializable {
 
-
+    public int id;
     public TipoProducto tipoProducto;
     public Sucursal sucursal;
     public String nombre;
@@ -15,8 +15,8 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(TipoProducto tipoProducto, Sucursal sucursal, String nombre, int stock, int precioUni, String rutaDoc) {
-
+    public Producto(int id, TipoProducto tipoProducto, Sucursal sucursal, String nombre, int stock, int precioUni, String rutaDoc) {
+        this.id = id;
         this.tipoProducto = tipoProducto;
         this.sucursal = sucursal;
         this.nombre = nombre;
@@ -25,6 +25,13 @@ public class Producto implements Serializable {
         this.rutaDoc = rutaDoc;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public TipoProducto getTipoProducto() {
         return tipoProducto;
@@ -66,7 +73,7 @@ public class Producto implements Serializable {
         this.precioUni = precioUni;
     }
 
-    
+
 
     public void setRutaDoc(String rutaDoc) {
         String rutaImg = "src\\main\\java\\FermePage\\Imagenes\\Productos\\"+rutaDoc;
@@ -77,7 +84,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Producto{"+  "tipoProducto=" + tipoProducto + ", sucursal=" + sucursal + ", nombre=" + nombre + ", stock=" + stock + ", precioUni=" + precioUni + ", rutaDoc=" + rutaDoc + '}';
+        return "Producto{"+ id +  "tipoProducto=" + tipoProducto + ", sucursal=" + sucursal + ", nombre=" + nombre + ", stock=" + stock + ", precioUni=" + precioUni + ", rutaDoc=" + rutaDoc + '}';
     }
     
 

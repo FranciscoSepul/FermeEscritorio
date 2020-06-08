@@ -28,8 +28,9 @@ public class CompraProducto extends javax.swing.JFrame {
     PreparedStatement pst = null;
     boolean resp = false;
 
-    public CompraProducto(String rut) {
+    public CompraProducto(String rut ,int idProd) {
         initComponents();
+
         emp = new EmpleadoDao().BuscarEmpleado(rut);
     }
 
@@ -96,7 +97,6 @@ public class CompraProducto extends javax.swing.JFrame {
         prod = new ProductoDao().Listar();
         int id = 1;
         int preciouni = prod.get(0).getPrecioUni();
-        System.out.println("precio" + preciouni);
         int cantidad = (Integer) jCantidad.getValue();
         int total = cantidad * preciouni;
 
@@ -110,6 +110,10 @@ public class CompraProducto extends javax.swing.JFrame {
         }
         if (resp != false) {
             JOptionPane.showMessageDialog(null, "Se agrego la venta");
+            String rut = emp.runEmpleado;
+            Home home1 = new Home(rut);
+            home1.setVisible(true);
+            this.setVisible(false);
         }
 
     }//GEN-LAST:event_btnCompraActionPerformed

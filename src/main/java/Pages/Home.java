@@ -16,104 +16,107 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = new ProductoDao().Listar();
- 
-            this.setLocationRelativeTo(null);
-            setTitle("Ferme");
-            setLocationRelativeTo(null);
-            setResizable(false);
-            int contab = prod.size();
-            //Logo        
-            rsscalelabel.RSScaleLabel.setScaleLabel(Lbl1, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
 
-            //Imagen button 
-            rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
+        this.setLocationRelativeTo(null);
+        setTitle("Ferme");
+        setLocationRelativeTo(null);
+        setResizable(false);
+        int contab = prod.size();
+        //Logo        
+        rsscalelabel.RSScaleLabel.setScaleLabel(Lbl1, "src\\main\\java\\FermePage\\Imagenes\\FERME Logo.png");
 
-            //imegen que se cambia 
-            //panel de imagenes con movimiento
-            Timer timer;
-            TimerTask imagen;
+        //Imagen button 
+        rsscalelabel.RSScaleLabel.setScaleLabel(lblSearch, "src\\main\\java\\FermePage\\Imagenes\\search.png");
 
-            imagen = new TimerTask() {
-                @Override
-                public void run() {
-                    switch (contador) {
-                        case 0:
-                            rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(0).rutaDoc);
-                            txtDesc.setText(prod.get(0).nombre);
-                            txtPrecio.setText("$ " + prod.get(0).precioUni);
-                            contador = (contab > 1) ? 1 : 0;
-                            break;
+        //imegen que se cambia 
+        //panel de imagenes con movimiento
+        Timer timer;
+        TimerTask imagen;
 
-                        case 1:
-                            rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(1).rutaDoc);
-                            txtDesc.setText(prod.get(1).nombre);
-                            txtPrecio.setText("$ " + prod.get(1).precioUni);
-                            contador = (contab > 2) ? 2 : 0;
-                            break;
-                        case 2:
-                            rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(2).rutaDoc);
-                            txtDesc.setText(prod.get(2).nombre);
-                            txtPrecio.setText("$ " + prod.get(2).precioUni);
-                            contador = -0;
-                            break;
-                    }
+        imagen = new TimerTask() {
+            @Override
+            public void run() {
+                switch (contador) {
+                    case 0:
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(0).rutaDoc);
+                        txtDesc.setText(prod.get(0).nombre);
+                        txtPrecio.setText("$ " + prod.get(0).precioUni);
+                        contador = (contab > 1) ? 1 : 0;
+                        break;
 
+                    case 1:
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(1).rutaDoc);
+                        txtDesc.setText(prod.get(1).nombre);
+                        txtPrecio.setText("$ " + prod.get(1).precioUni);
+                        contador = (contab > 2) ? 2 : 0;
+                        break;
+                    case 2:
+                        rsscalelabel.RSScaleLabel.setScaleLabel(TimerImage, prod.get(2).rutaDoc);
+                        txtDesc.setText(prod.get(2).nombre);
+                        txtPrecio.setText("$ " + prod.get(2).precioUni);
+                        contador = -0;
+                        break;
                 }
 
-            };
-            timer = new Timer();
-            timer.scheduleAtFixedRate(imagen, 1000, 2000);
+            }
 
-            //Seleccinar logo segun sexo y cargo
-            if (emp.sexo == 0) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
-                this.BtnNuevoE.setVisible(false);
-                this.btnGraficos.setVisible(false);
-                this.btnVentasRealiza.setVisible(false);
-                this.btnPrecioStock.setVisible(false);
-                if (emp.IDCARGO == 2) {
-                    rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
-                    this.BtnNuevoE.setVisible(true);
-                    this.btnGraficos.setVisible(true);
-                    this.btnVentasRealiza.setVisible(true);
-                    this.btnPrecioStock.setVisible(true);
-                }
-            } else {
-                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
-                this.BtnNuevoE.setVisible(false);
-                this.btnGraficos.setVisible(false);
-                this.btnVentasRealiza.setVisible(false);
-                this.btnPrecioStock.setVisible(false);
+        };
+        timer = new Timer();
+        timer.scheduleAtFixedRate(imagen, 1000, 2000);
+
+        //Seleccinar logo segun sexo y cargo
+        if (emp.sexo == 0) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userFemale.png");
+            this.BtnNuevoE.setVisible(false);
+            this.btnGraficos.setVisible(false);
+            this.btnVentasRealiza.setVisible(false);
+            this.btnPrecioStock.setVisible(false);
+            if (emp.IDCARGO == 2) {
+                rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userAdmin.png");
+                this.BtnNuevoE.setVisible(true);
+                this.btnGraficos.setVisible(true);
+                this.btnVentasRealiza.setVisible(true);
+                this.btnPrecioStock.setVisible(true);
             }
-            //pintar datos de los productos mas vendidos nota: Esta es la parte mas indecente a mi consideracion del codigo home de ser posible cambiar a posterior 
-            //con mas tiempo
-            if (contab >= 1) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(loMasV1, prod.get(0).rutaDoc);
-                DescripLo.setText(prod.get(0).nombre);
+        } else {
+            rsscalelabel.RSScaleLabel.setScaleLabel(LblUsers, "src\\main\\java\\FermePage\\Imagenes\\userMen.png");
+            this.BtnNuevoE.setVisible(false);
+            this.btnGraficos.setVisible(false);
+            this.btnVentasRealiza.setVisible(false);
+            this.btnPrecioStock.setVisible(false);
+        }
+        //pintar datos de los productos mas vendidos nota: Esta es la parte mas indecente a mi consideracion del codigo home de ser posible cambiar a posterior 
+        //con mas tiempo
+        if (contab >= 1) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV1, prod.get(0).rutaDoc);
+            DescripLo.setText(prod.get(0).nombre);
+            int idp = prod.get(0).getId(); //nuevo agregado
+
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
-            }
-            if (contab >= 2) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(1).rutaDoc);
-                DescripLo1.setText(prod.get(1).nombre);
+        }
+        if (contab >= 2) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(1).rutaDoc);
+            DescripLo1.setText(prod.get(1).nombre);
+
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
-            }
-            if (contab >= 3) {
-                System.out.println("entro al 2");
-                rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(2).rutaDoc);
-                DescripLo2.setText(prod.get(2).nombre);
+        }
+        if (contab >= 3) {
+            System.out.println("entro al 2");
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(2).rutaDoc);
+            DescripLo2.setText(prod.get(2).nombre);
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
-            }
-            if (contab >= 4) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(loMasV3, prod.get(3).rutaDoc);
-                DescripLo3.setText(prod.get(3).nombre);
+        }
+        if (contab >= 4) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV3, prod.get(3).rutaDoc);
+            DescripLo3.setText(prod.get(3).nombre);
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
-            }
-            if (contab == 5) {
-                rsscalelabel.RSScaleLabel.setScaleLabel(loMasV4, prod.get(4).rutaDoc);
+        }
+        if (contab == 5) {
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV4, prod.get(4).rutaDoc);
 //        DescripLo4.setText(prod.get(4).nombre);
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
-            }
-       
+        }
+
     }
 
     /**
@@ -331,6 +334,11 @@ public class Home extends javax.swing.JFrame {
         });
 
         btnComprar2.setText("Comprar");
+        btnComprar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprar2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -500,7 +508,8 @@ public class Home extends javax.swing.JFrame {
         String rut = emp.runEmpleado;
         GraficoDeVentas gdv = new GraficoDeVentas(rut);
         gdv.setVisible(true);
- 
+        this.setVisible(false);
+
     }//GEN-LAST:event_btnGraficosActionPerformed
 
     private void BtnNuevoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEActionPerformed
@@ -521,10 +530,21 @@ public class Home extends javax.swing.JFrame {
 
     private void btnComprar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar1ActionPerformed
         String rut = emp.runEmpleado;
-        CompraProducto lproductos = new CompraProducto(rut);
+        int idProd = prod.get(0).id;
+
+        CompraProducto lproductos = new CompraProducto(rut, idProd);
         lproductos.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnComprar1ActionPerformed
+
+    private void btnComprar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar2ActionPerformed
+        String rut = emp.runEmpleado;
+        int idProd = prod.get(1).id;
+
+        CompraProducto lproductos = new CompraProducto(rut, idProd);
+        lproductos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnComprar2ActionPerformed
 
     /**
      * @param args the command line arguments
