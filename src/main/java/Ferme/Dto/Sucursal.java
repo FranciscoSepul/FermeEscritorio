@@ -4,15 +4,35 @@ import java.io.Serializable;
 
 public class Sucursal implements Serializable {
 
+    public int iddirec;
+    public int direccion;
     public String nombre;
     public String numFono;
 
     public Sucursal() {
     }
 
-    public Sucursal(String nombre, String numFono) {
+    public Sucursal(int iddirec, int direccion, String nombre, String numFono) {
+        this.iddirec = iddirec;
+        this.direccion = direccion;
         this.nombre = nombre;
         this.numFono = numFono;
+    }
+
+    public int getIddirec() {
+        return iddirec;
+    }
+
+    public void setIddirec(int iddirec) {
+        this.iddirec = iddirec;
+    }
+
+    public int getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(int direccion) {
+        this.direccion = direccion;
     }
 
     public String getNombre() {
@@ -31,6 +51,7 @@ public class Sucursal implements Serializable {
         this.numFono = numFono;
     }
 
+  
     
 
 }

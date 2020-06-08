@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Direccion implements Serializable {
 
     public int region;
+    public int idDire;
     public String comuna;
     public String pasaje;
     public String numero;
@@ -13,8 +14,9 @@ public class Direccion implements Serializable {
     public Direccion() {
     }
 
-    public Direccion(int region, String comuna, String pasaje, String numero, String numeroDepto) {
+    public Direccion(int region, int idDire, String comuna, String pasaje, String numero, String numeroDepto) {
         this.region = region;
+        this.idDire = idDire;
         this.comuna = comuna;
         this.pasaje = pasaje;
         this.numero = numero;
@@ -27,6 +29,14 @@ public class Direccion implements Serializable {
 
     public void setRegion(int region) {
         this.region = region;
+    }
+
+    public int getIdDire() {
+        return idDire;
+    }
+
+    public void setIdDire(int idDire) {
+        this.idDire = idDire;
     }
 
     public String getComuna() {
@@ -60,5 +70,7 @@ public class Direccion implements Serializable {
     public void setNumeroDepto(String numeroDepto) {
         this.numeroDepto = numeroDepto;
     }
+
+    
 
 }
