@@ -18,6 +18,13 @@ public class Catalogo extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
     List<Producto> prod;
+    FormaDePago fmp = new FormaDePago();
+    Ventas vent = new Ventas();
+    Cliente cli = new Cliente();
+    DetalleVentas dtv = new DetalleVentas();
+    Retiro ret = new Retiro();
+    Documentos doc = new Documentos();
+    TipoDocumento tdoc = new TipoDocumento();
     DefaultTableModel model;
     String nombreColumna = "";
     String datoModificado = "";
@@ -27,6 +34,7 @@ public class Catalogo extends javax.swing.JFrame {
         initComponents();
         emp = new EmpleadoDao().BuscarEmpleado(id);
         prod = new ProductoDao().Listar();
+        
         this.setLocationRelativeTo(null);
         setTitle("Ferme");
         setLocationRelativeTo(null);
@@ -264,7 +272,7 @@ public class Catalogo extends javax.swing.JFrame {
 
         btnExcel.setBackground(new java.awt.Color(255, 255, 255));
         btnExcel.setForeground(new java.awt.Color(0, 0, 255));
-        btnExcel.setText("Generar Excel");
+        btnExcel.setText("xd");
         btnExcel.setBorder(null);
         btnExcel.setBorderPainted(false);
         btnExcel.addActionListener(new java.awt.event.ActionListener() {
@@ -277,11 +285,11 @@ public class Catalogo extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
+            .addGap(0, 553, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 186, Short.MAX_VALUE)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -297,24 +305,22 @@ public class Catalogo extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(btnExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(293, 293, 293)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(btnExcel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(250, 250, 250))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnExcel)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

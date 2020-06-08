@@ -158,6 +158,8 @@ public class Home extends javax.swing.JFrame {
         PrecioLo1 = new javax.swing.JLabel();
         PrecioLo2 = new javax.swing.JLabel();
         PrecioLo3 = new javax.swing.JLabel();
+        btnComprar1 = new javax.swing.JButton();
+        btnComprar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -262,7 +264,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btnCatalogo.setText("Catalogo");
+        btnCatalogo.setText("Catálogo");
         btnCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCatalogoActionPerformed(evt);
@@ -317,9 +319,18 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Los mas vistos");
+        jLabel1.setText("Los más vistos");
 
         loMasV1.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnComprar1.setText("Comprar");
+        btnComprar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprar1ActionPerformed(evt);
+            }
+        });
+
+        btnComprar2.setText("Comprar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -330,7 +341,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 1197, Short.MAX_VALUE))
+                        .addComponent(PanelBody, javax.swing.GroupLayout.PREFERRED_SIZE, 1203, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -350,7 +361,9 @@ public class Home extends javax.swing.JFrame {
                                                 .addGap(228, 228, 228)
                                                 .addComponent(PrecioLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(DescripLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(btnComprar2)
+                                                    .addComponent(DescripLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(127, 127, 127)
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(PrecioLo2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -380,6 +393,10 @@ public class Home extends javax.swing.JFrame {
                                         .addGap(80, 80, 80)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(btnComprar1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,14 +435,18 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(PrecioLo2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PrecioLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(PrecioLo, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PrecioLo3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnComprar1)
+                    .addComponent(btnComprar2))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -479,7 +500,7 @@ public class Home extends javax.swing.JFrame {
         String rut = emp.runEmpleado;
         GraficoDeVentas gdv = new GraficoDeVentas(rut);
         gdv.setVisible(true);
-        this.setVisible(false);
+ 
     }//GEN-LAST:event_btnGraficosActionPerformed
 
     private void BtnNuevoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoEActionPerformed
@@ -497,6 +518,13 @@ public class Home extends javax.swing.JFrame {
         apersonal.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCuentaPActionPerformed
+
+    private void btnComprar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar1ActionPerformed
+        String rut = emp.runEmpleado;
+        CompraProducto lproductos = new CompraProducto(rut);
+        lproductos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnComprar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -551,6 +579,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel TimerImage;
     private javax.swing.JButton btnAsistencia;
     private javax.swing.JButton btnCatalogo;
+    private javax.swing.JButton btnComprar1;
+    private javax.swing.JButton btnComprar2;
     private javax.swing.JButton btnCuentaP;
     private javax.swing.JButton btnGraficos;
     private javax.swing.JButton btnPrecioStock;

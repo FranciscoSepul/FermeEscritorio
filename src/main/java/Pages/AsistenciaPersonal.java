@@ -224,7 +224,7 @@ public class AsistenciaPersonal extends javax.swing.JFrame {
             .addGroup(PanelBodyLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(BtnHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCatalogo1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnNuevoE)

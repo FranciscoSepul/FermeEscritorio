@@ -50,7 +50,7 @@ public class CambioPass extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Clave antigual");
+        jLabel1.setText("Clave antigua");
 
         jLabel2.setText("Clave nueva");
 
