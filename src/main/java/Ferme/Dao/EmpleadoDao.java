@@ -216,27 +216,29 @@ public class EmpleadoDao implements Crud {
     }
 
 
-    public boolean agregarEmpleado() {
+    public boolean agregarEmpleado(int idDirecc,int idSucur,String runEmp,String dv,int sexo,String nombre,String apellido,String correo,String pass,int cargo) {
         try {
-            query = "{call AGREGAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?)}";
+            Codificador cod =new Codificador();
+             String has=cod.sha256(pass);
+            int estado=1;
+            int cambiop=0;
+            query = "{call AGREGAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?,?)}";
             con = Conexion.getConexion();
             
             call = con.prepareCall(query);
-            call.setInt(1, emp.getIDCARGO());
-            call.setObject(2, emp.getDireccion());
-            call.setObject(3, emp.getSucursal());
-            call.setInt(4, emp.getEstado());
-            call.setString(5, emp.getRunEmpleado());
-            call.setString(6, emp.getDigitoVerificador());
-            call.setInt(7, emp.getSexo());
-            call.setString(8, emp.getNombre());
-            call.setString(9, emp.getApellido());
-            call.setString(10, emp.getCorreo());
-            call.setString(11, emp.getContrasena());
+            call.setInt(1, cargo);
+            call.setInt(2, idDirecc);
+            call.setInt(3, idSucur);
+            call.setInt(4,estado);
+            call.setString(5,runEmp);
+            call.setInt(6,sexo);
+            call.setString(7, dv);            
+            call.setString(8,nombre);
+            call.setString(9,apellido);
+            call.setString(10,correo);
+            call.setString(11,has);
+            call.setInt(12, cambiop);
             call.executeUpdate();
-
-
-
         } catch (SQLException e) {
             System.out.println("Error al agregar " + e.getMessage());
             return false;
