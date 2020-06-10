@@ -74,7 +74,6 @@ public class ClienteDao implements Crud {
                 direc.setComuna(rs.getString("COMUNA"));
                 direc.setNumero(rs.getNString("numero"));
                 direc.setPasaje(rs.getString("pasaje"));
-//             direc.setRegion(rs.getInt("region"));
                 cli.setDireccion(direc);
             }
         } catch (SQLException e) {

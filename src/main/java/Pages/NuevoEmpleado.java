@@ -24,12 +24,12 @@ public class NuevoEmpleado extends javax.swing.JFrame {
     EmpleadoDao emp2 = new EmpleadoDao();
     DireccionDao direc = new DireccionDao();
     Direccion direcDto = new Direccion();
-    Sucursal sucuid =new Sucursal();
+    Sucursal sucuid = new Sucursal();
     List<Sucursal> succu;
     Connection con = null;
     PreparedStatement pst = null;
     Codificador cod = null;
-    String  region ;
+    String region;
     int sucu = 0;
 
     public NuevoEmpleado(String id) {
@@ -572,20 +572,17 @@ public class NuevoEmpleado extends javax.swing.JFrame {
 
         if (rbtnVendedor.isSelected()) {
             idCargo = 1;
-        } else if (rbtnAdmin.isSelected()){
+        } else if (rbtnAdmin.isSelected()) {
             idCargo = 2;
         } else {
             idCargo = 3;
         }
-        
+
         if (rbtnMasculino.isSelected()) {
             sexo = 1;
         } else {
             sexo = 0;
         }
-
-        int direccion = 2;
-        int idSucursal = 1;
 
         //Datos direccion
         String Comuna = txtcomuna.getText();
@@ -596,7 +593,7 @@ public class NuevoEmpleado extends javax.swing.JFrame {
         String respuesta = (String) cmbRegion.getSelectedItem();
         switch (respuesta) {
             case "Aisén del G. Carlos Ibáñez del Campo.":
-                region =" 1";
+                region = " 1";
                 break;
             case "Antofagasta":
                 region = "2";
@@ -659,24 +656,15 @@ public class NuevoEmpleado extends javax.swing.JFrame {
         try {
             boolean respu = direc.agregar(region, Comuna, pasaje, numero, numeroDepto);
             if (respu == true) {
-                System.out.println("nuevo empleado");
-                System.out.println("regionm"+region);
-                System.out.println("comuna"+Comuna);
-                System.out.println("pasaje"+pasaje);
-                System.out.println("numero"+numero);
-                direcDto = direc.buscar(region,Comuna, pasaje);
-                System.out.println("direccion id"+direcDto.idDire);
-                sucuid =new SucursalDao().buscar(sucursal);
-                System.out.println("sucursal id "+sucuid.iddirec);
-                resp = new EmpleadoDao().agregarEmpleado(direcDto.idDire,sucuid.iddirec, runE, Dv, sexo, nombreE, apellidoE, correoE, contrasena,idCargo);
-                if (respu==false) {
+                direcDto = direc.buscar(region, Comuna, pasaje);
+                sucuid = new SucursalDao().buscar(sucursal);
+                resp = new EmpleadoDao().agregarEmpleado(direcDto.idDire, sucuid.iddirec, runE, Dv, sexo, nombreE, apellidoE, correoE, contrasena, idCargo);
+                if (respu == false) {
                     JOptionPane.showMessageDialog(null, "Error al agregar usuario");
                 }
                 JOptionPane.showMessageDialog(null, "Se agrego un nuevo usuario");
 
             }
-
-            //     agregarEmpleado(int idDirecc,int idSucur,String runEmp,String dv,int sexo,String nombre,String apellido,String correo,String pass)
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar usuario");
         }

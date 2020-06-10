@@ -54,10 +54,7 @@ public class DireccionDao implements Crud {
             while(rs.next()){
                 direc.setComuna(rs.getString("comuna"));
                 direc.setNumero(rs.getString("numero"));
-                direc.setIdDire(rs.getInt("id"));        
-                System.out.println("dentro del while");
-                System.out.println("id "+direc.idDire);
-                System.out.println("comuna "+direc.comuna);
+                direc.setIdDire(rs.getInt("id"));     
             }
              } catch (Exception e) {
             System.out.println("error al buscar  una direccionr" + e.getMessage());

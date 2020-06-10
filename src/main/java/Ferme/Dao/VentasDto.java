@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import oracle.jdbc.OracleTypes;
 
 public class VentasDto implements Crud {
 
@@ -18,19 +19,18 @@ public class VentasDto implements Crud {
     @Override
     public List Listar() {
         ArrayList list = new ArrayList();
-        query = "select * from ventas";
+        query = "{call LISTARTODASVENTAS(?)}";
         try {
             con = Conexion.getConexion();
             call = con.prepareCall(query);
-//            call.registerOutParameter(1, OracleTypes.CURSOR);
+            call.registerOutParameter(1, OracleTypes.CURSOR);
+            call.execute();
+            rs = (ResultSet) call.getObject(1);
             
-            rs = call.executeQuery();
-
             while (rs.next()) {
+                
                 Ventas ven = new Ventas();
-                ven.setFormaPago(rs.getInt("idformapago"));             
-                System.out.println("forma pago"+ven.formaPago);
-
+                ven.setFormaPago(rs.getInt("idformapago"));
                 list.add(ven);
             }
         } catch (Exception e) {

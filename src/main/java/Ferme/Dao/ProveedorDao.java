@@ -11,10 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import oracle.jdbc.OracleTypes;
 
-/**
- *
- * @author wwwvi
- */
+
 public class ProveedorDao implements Crud {
 
     Proveedor prove = new Proveedor();

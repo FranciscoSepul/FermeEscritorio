@@ -80,35 +80,5 @@ public class ProductoDao implements Crud {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-//    public Producto BuscarProductoPorId(int idp){
-//         try {
-//            query = "{select * from producto where id =? }";
-//            con = Conexion.getConexion();
-//
-//            call = con.prepareCall(query);
-////            call.registerOutParameter(1, OracleTypes.CURSOR);
-//            call.setInt(1, idp);
-//            call.execute();
-//
-//            rs = (ResultSet) call.getObject(1);
-//
-//            while (rs.next()) {
-//                prod.setId(rs.getInt("id"));
-////                tdoc.setNombreTipoProducto(rs.getString("nombretipoproducto"));
-//////                suc.setNombre(rs.getString("nombre"));
-//////                suc.setNumFono(rs.getString("telefono"));
-//////                prod.setTipoProducto(tdoc);
-//////                prod.setSucursal(suc);
-//                prod.setNombre(rs.getString("nombre"));
-//                prod.setStock(rs.getInt("stock"));
-//                prod.setPrecioUni(rs.getInt("preciouni"));
-//                prod.setRutaDoc(rs.getString("rutadoc"));
-//
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("Error al buscar asdf" + e.getMessage());
-//        }
-//        return prod;
-//    }
 
 }
