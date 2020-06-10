@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Pages;
 
 import Ferme.Dao.EmpleadoDao;
@@ -15,10 +10,7 @@ import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
-/**
- *
- * @author wwwvi
- */
+
 public class GraficoDeVentas extends javax.swing.JFrame {
 
     Empleado emp = new Empleado();
@@ -365,7 +357,7 @@ public class GraficoDeVentas extends javax.swing.JFrame {
                 true,
                 false);
 
-        // Mostrar Grafico
+        // Mostrar Grafico en un nuevo frame 
         ChartFrame frame = new ChartFrame("JFreeChart", chart);
         frame.pack();
         frame.setVisible(true);

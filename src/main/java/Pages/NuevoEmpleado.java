@@ -16,6 +16,8 @@ import Ferme.Dao.DireccionDao;
 import Ferme.Dao.SucursalDao;
 import Ferme.Dto.Direccion;
 import Ferme.Dto.Sucursal;
+import java.awt.HeadlessException;
+import java.io.IOException;
 import java.util.List;
 
 public class NuevoEmpleado extends javax.swing.JFrame {
@@ -665,7 +667,7 @@ public class NuevoEmpleado extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Se agrego un nuevo usuario");
 
             }
-        } catch (Exception ex) {
+        } catch (HeadlessException | IOException ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar usuario");
         }
         if (resp != false) {

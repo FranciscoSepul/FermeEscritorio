@@ -1,14 +1,16 @@
 package Ferme.Dao;
 
-import Ferme.Dto.Direccion;
 import Ferme.Dto.Sucursal;
 import FermeEscritoriodb.Conexion;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SucursalDao implements Crud {
 
@@ -22,7 +24,11 @@ public class SucursalDao implements Crud {
     public List Listar() {
         ArrayList list = new ArrayList();
         query = "select * from sucursal";
-        con = Conexion.getConexion();
+        try {
+            con = Conexion.getConexion();
+        } catch (IOException ex) {
+            Logger.getLogger(SucursalDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             call = con.prepareCall(query);
             rs = call.executeQuery();
@@ -38,7 +44,7 @@ public class SucursalDao implements Crud {
 
         return list;
     }
-       public Sucursal buscar(String nombres){
+       public Sucursal buscar(String nombres) throws IOException{
         query = "select * from sucursal where nombres=?";
         try {
             con = Conexion.getConexion();
@@ -51,7 +57,7 @@ public class SucursalDao implements Crud {
             suc.setNumFono(rs.getString("telefono"));
             suc.setIddirec(rs.getInt("id"));
             }
-             } catch (Exception e) {
+             } catch (SQLException e) {
             System.out.println("error al agregar una direccionr" + e.getMessage());
              }
         return suc;

@@ -21,5 +21,4 @@ public class TipoProducto implements Serializable {
         this.nombreTipoProducto = nombreTipoProducto;
     }
 
-    
 }

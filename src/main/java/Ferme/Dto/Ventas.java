@@ -3,9 +3,9 @@ package Ferme.Dto;
 import java.io.Serializable;
 
 public class Ventas implements Serializable {
-      
+
     public Cliente cliente;
-    public DetalleVentas detalle ;
+    public DetalleVentas detalle;
     public Documentos docum;
     public Retiro retiro;
     public Empleado empleado;
@@ -91,5 +91,4 @@ public class Ventas implements Serializable {
         this.estado = estado;
     }
 
-    
 }

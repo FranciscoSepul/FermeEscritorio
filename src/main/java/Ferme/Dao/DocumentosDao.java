@@ -2,9 +2,12 @@ package Ferme.Dao;
 
 import FermeEscritoriodb.Conexion;
 import Ferme.Dto.*;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oracle.jdbc.OracleTypes;
 
 public class DocumentosDao implements Crud {
@@ -38,6 +41,8 @@ public class DocumentosDao implements Crud {
             }
         } catch (SQLException e) {
             System.out.println("error al listar" + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(DocumentosDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }

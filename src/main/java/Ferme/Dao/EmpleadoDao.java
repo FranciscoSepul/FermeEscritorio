@@ -2,12 +2,15 @@ package Ferme.Dao;
 
 import Ferme.Dto.*;
 import FermeEscritoriodb.Conexion;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oracle.jdbc.OracleTypes;
 
 public class EmpleadoDao implements Crud {
@@ -56,6 +59,8 @@ public class EmpleadoDao implements Crud {
             }
         } catch (SQLException e) {
             System.out.println("error al listar" + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -95,6 +100,8 @@ public class EmpleadoDao implements Crud {
             }
         } catch (SQLException e) {
             System.out.println("Error al buscar" + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return emp;
     }
@@ -134,6 +141,8 @@ public class EmpleadoDao implements Crud {
             }
         } catch (SQLException e) {
             System.out.println("Error al buscar" + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return emp;
     }
@@ -147,6 +156,8 @@ public class EmpleadoDao implements Crud {
             call.execute();
         } catch (SQLException e) {
             System.out.println("error al Habilitar" + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
@@ -161,6 +172,8 @@ public class EmpleadoDao implements Crud {
             call.execute();
         } catch (SQLException e) {
             System.out.println("error al eliminar" + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
@@ -191,6 +204,8 @@ public class EmpleadoDao implements Crud {
             }
         } catch (SQLException e) {
             System.out.println("Error al buscar" + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return emp;
     }
@@ -211,6 +226,8 @@ public class EmpleadoDao implements Crud {
         } catch (SQLException e) {
             System.out.println("Error al buscar" + e.getMessage());
             return false;
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
@@ -242,6 +259,8 @@ public class EmpleadoDao implements Crud {
         } catch (SQLException e) {
             System.out.println("Error al agregar " + e.getMessage());
             return false;
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
@@ -262,6 +281,8 @@ public class EmpleadoDao implements Crud {
         } catch (SQLException e) {
             System.out.println("error al modificar un empleado"+e.getMessage());
             return false;
+        } catch (IOException ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }

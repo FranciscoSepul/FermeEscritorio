@@ -2,11 +2,15 @@ package Ferme.Dao;
 
 import Ferme.Dto.Ventas;
 import FermeEscritoriodb.Conexion;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oracle.jdbc.OracleTypes;
 
 public class VentasDto implements Crud {
@@ -33,8 +37,10 @@ public class VentasDto implements Crud {
                 ven.setFormaPago(rs.getInt("idformapago"));
                 list.add(ven);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("error al listar" + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(VentasDto.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }

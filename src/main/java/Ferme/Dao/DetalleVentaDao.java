@@ -2,6 +2,7 @@ package Ferme.Dao;
 
 import Ferme.Dto.*;
 import FermeEscritoriodb.*;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DetalleVentaDao implements Crud {
 
@@ -19,7 +22,7 @@ public class DetalleVentaDao implements Crud {
     @Override
     public List Listar() {
         ArrayList list = new ArrayList();
-        String query = "Select * from detalleventa";
+        query = "Select * from detalleventa";
         try (PreparedStatement busc = Conexion.getConexion().prepareStatement(query)) {
             ResultSet rs = busc.executeQuery();
             while (rs.next()) {
@@ -54,6 +57,8 @@ public class DetalleVentaDao implements Crud {
         } catch (SQLException e) {
             System.out.println("Error al agregar" + e.getMessage());
             return false;
+        } catch (IOException ex) {
+            Logger.getLogger(DetalleVentaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }

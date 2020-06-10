@@ -4,12 +4,15 @@ import Ferme.Dto.Producto;
 import Ferme.Dto.Sucursal;
 import Ferme.Dto.TipoProducto;
 import FermeEscritoriodb.Conexion;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProductoDao implements Crud {
 
@@ -43,6 +46,8 @@ public class ProductoDao implements Crud {
             }
         } catch (SQLException e) {
             System.out.println("error producto dao " + e.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -58,6 +63,8 @@ public class ProductoDao implements Crud {
         } catch (SQLException e) {
             System.out.println("error producto dao " + e.getMessage());
             return false;
+        } catch (IOException ex) {
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
@@ -72,6 +79,8 @@ public class ProductoDao implements Crud {
         } catch (SQLException e) {
             System.out.println("error producto dao " + e.getMessage());
             return false;
+        } catch (IOException ex) {
+            Logger.getLogger(ProductoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
