@@ -45,7 +45,7 @@ public class DetalleVentaDao implements Crud {
 
     public boolean agregarDetalleVenta(int idp, String fecha, int cantidad, int total) {
         try {
-            query = "insert into detalleventa( idproducto, fechacompra, cantidad, total) values(?,?,?,?)";
+            query = "{call AGREGAR_DETALLE_VENTA(?,?,?,?)}";
             con = Conexion.getConexion();
             call = con.prepareCall(query);
             call.setInt(1, idp);

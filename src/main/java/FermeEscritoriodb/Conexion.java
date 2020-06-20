@@ -13,7 +13,7 @@ public class Conexion {
 
         try {
             String DriverClassName = "oracle.jdbc.driver.OracleDriver";
-            String driverUrl = "jdbc:oracle:thin:@localhost:1521:XE";
+            String driverUrl = "jdbc:oracle:thin:@fermebd.cay6gjof12jf.us-east-2.rds.amazonaws.com:1521:FERMEBD";
             Class.forName(DriverClassName);
             conexion = DriverManager.getConnection(driverUrl, user, pass);
         } catch (ClassNotFoundException | SQLException e) {
