@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 public class CompraProducto extends javax.swing.JFrame {
 
     List<Producto> prod;
+    Producto prodd = new Producto();
     DetalleVentas dtvent = new DetalleVentas();
     DetalleVentaDao dvdao = new DetalleVentaDao();
     Empleado emp = new Empleado();
@@ -32,6 +33,9 @@ public class CompraProducto extends javax.swing.JFrame {
         initComponents();
 
         emp = new EmpleadoDao().BuscarEmpleado(rut);
+        prodd = new ProductoDao().BuscarProducto(idProd);
+        
+        
     }
 
     private CompraProducto() {
@@ -90,8 +94,14 @@ public class CompraProducto extends javax.swing.JFrame {
 
     private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
         prod = new ProductoDao().Listar();
-        int id = 1;
-        int preciouni = prod.get(0).getPrecioUni();
+        int id = prodd.id;
+        int preciouni = 0;
+        System.out.println("id "+ id);
+        if (id==1) {
+            preciouni = prod.get(0).precioUni;
+        } else if (id==2) {
+            preciouni = prod.get(1).precioUni;
+        }
         int cantidad = (Integer) jCantidad.getValue();
         int total = cantidad * preciouni;
 

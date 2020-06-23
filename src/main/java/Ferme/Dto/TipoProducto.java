@@ -20,5 +20,9 @@ public class TipoProducto implements Serializable {
     public void setNombreTipoProducto(String nombreTipoProducto) {
         this.nombreTipoProducto = nombreTipoProducto;
     }
+    
+    
+
+    
 
 }

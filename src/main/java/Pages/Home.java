@@ -11,6 +11,7 @@ public class Home extends javax.swing.JFrame {
     int cont = 0;
     Empleado emp = new Empleado();
     List<Producto> prod;
+    int idp;
 
     public Home(String id) {
         initComponents();
@@ -90,13 +91,16 @@ public class Home extends javax.swing.JFrame {
         if (contab >= 1) {
             rsscalelabel.RSScaleLabel.setScaleLabel(loMasV1, prod.get(0).rutaDoc);
             DescripLo.setText(prod.get(0).nombre);
-            int idp = prod.get(0).getId(); //nuevo agregado
+            idp = prod.get(0).id; //nuevo agregado
+            System.out.println("este es el id del prod 1 " + prod.get(0).id);
 
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
         }
         if (contab >= 2) {
             rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(1).rutaDoc);
             DescripLo1.setText(prod.get(1).nombre);
+            idp = prod.get(1).id; //nuevo agregado
+            System.out.println("este es el id 2 " + prod.get(1).id);
 
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
         }
@@ -118,7 +122,6 @@ public class Home extends javax.swing.JFrame {
         }
 
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -527,7 +530,7 @@ public class Home extends javax.swing.JFrame {
     private void btnComprar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar1ActionPerformed
         String rut = emp.runEmpleado;
         int idProd = prod.get(0).id;
-
+        System.out.println("id" + idProd);
         CompraProducto lproductos = new CompraProducto(rut, idProd);
         lproductos.setVisible(true);
         this.setVisible(false);
@@ -536,7 +539,7 @@ public class Home extends javax.swing.JFrame {
     private void btnComprar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprar2ActionPerformed
         String rut = emp.runEmpleado;
         int idProd = prod.get(1).id;
-
+        System.out.println("id" + idProd);
         CompraProducto lproductos = new CompraProducto(rut, idProd);
         lproductos.setVisible(true);
         this.setVisible(false);
