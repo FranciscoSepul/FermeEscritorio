@@ -28,14 +28,14 @@ public class CompraProducto extends javax.swing.JFrame {
     Connection con = null;
     PreparedStatement pst = null;
     boolean resp = false;
+    boolean resp2 = false;
 
     public CompraProducto(String rut ,int idProd) {
         initComponents();
 
         emp = new EmpleadoDao().BuscarEmpleado(rut);
         prodd = new ProductoDao().BuscarProducto(idProd);
-        
-        
+           
     }
 
     private CompraProducto() {
@@ -96,6 +96,7 @@ public class CompraProducto extends javax.swing.JFrame {
         prod = new ProductoDao().Listar();
         int id = prodd.id;
         int preciouni = 0;
+        int stock= 0;
         System.out.println("id "+ id);
         if (id==1) {
             preciouni = prod.get(0).precioUni;
@@ -104,11 +105,18 @@ public class CompraProducto extends javax.swing.JFrame {
         }
         int cantidad = (Integer) jCantidad.getValue();
         int total = cantidad * preciouni;
+                if (id==1) {
+            stock = prod.get(0).stock;
+        } else if (id==2) {
+            stock = prod.get(1).stock;
+        }
+        int stockF = stock - cantidad;
 
         String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
         try {
             resp = new DetalleVentaDao().agregarDetalleVenta(id, fecha, cantidad, total);
+            resp2 = new DetalleVentaDao().actualizarStock(id, stockF);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar detalle venta");

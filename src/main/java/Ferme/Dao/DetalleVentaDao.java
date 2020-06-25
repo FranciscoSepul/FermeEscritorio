@@ -62,4 +62,21 @@ public class DetalleVentaDao implements Crud {
         }
         return true;
     }
+    
+    public boolean actualizarStock(int id, int stock) {
+        try {
+            query = "{call ACTUALIZAR_STOCK_PRODUCTO(?,?)}";
+            con = Conexion.getConexion();
+            call = con.prepareCall(query);
+            call.setInt(1, id);
+            call.setInt(2, stock);
+            call.execute();
+        } catch (SQLException e){   
+            System.out.println("Error al cambiar Stock" + e.getMessage());
+            return false;
+        } catch (IOException ex) {
+            Logger.getLogger(DetalleVentaDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return true;
+    }
 }

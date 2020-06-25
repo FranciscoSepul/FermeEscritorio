@@ -92,26 +92,26 @@ public class Home extends javax.swing.JFrame {
             rsscalelabel.RSScaleLabel.setScaleLabel(loMasV1, prod.get(0).rutaDoc);
             DescripLo.setText(prod.get(0).nombre);
             idp = prod.get(0).id; //nuevo agregado
-            System.out.println("este es el id del prod 1 " + prod.get(0).id);
+            
 
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
         }
         if (contab >= 2) {
             rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(1).rutaDoc);
             DescripLo1.setText(prod.get(1).nombre);
-            idp = prod.get(1).id; //nuevo agregado
-            System.out.println("este es el id 2 " + prod.get(1).id);
+            //idp = prod.get(1).id; //nuevo agregado
+       
 
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
         }
         if (contab >= 3) {
             System.out.println("entro al 2");
-            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV2, prod.get(2).rutaDoc);
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV3, prod.get(2).rutaDoc);
             DescripLo2.setText(prod.get(2).nombre);
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
         }
         if (contab >= 4) {
-            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV3, prod.get(3).rutaDoc);
+            rsscalelabel.RSScaleLabel.setScaleLabel(loMasV4, prod.get(3).rutaDoc);
             DescripLo3.setText(prod.get(3).nombre);
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
         }
@@ -120,6 +120,11 @@ public class Home extends javax.swing.JFrame {
 //        DescripLo4.setText(prod.get(4).nombre);
 //        txtPrecio.setText("$ " + prod.get(0).precioUni);
         }
+        
+        int stock = prod.get(0).stock;
+        int stock2 = prod.get(1).stock;
+        lblStock.setText("Stock: "+stock);
+        lblStock2.setText("Stock: "+stock2);
 
     }
 
@@ -162,10 +167,13 @@ public class Home extends javax.swing.JFrame {
         PrecioLo3 = new javax.swing.JLabel();
         btnComprar1 = new javax.swing.JButton();
         btnComprar2 = new javax.swing.JButton();
+        lblStock = new javax.swing.JLabel();
+        lblStock2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -365,12 +373,13 @@ public class Home extends javax.swing.JFrame {
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(PrecioLo3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(228, 228, 228)
+                                                .addGap(234, 234, 234)
                                                 .addComponent(PrecioLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(DescripLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(btnComprar2)
-                                                    .addComponent(DescripLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(lblStock2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(127, 127, 127)
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(PrecioLo2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -402,7 +411,9 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(127, 127, 127)
-                .addComponent(btnComprar1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnComprar1)
+                    .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -439,17 +450,21 @@ public class Home extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(DescripLo3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(PrecioLo2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addComponent(PrecioLo1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(PrecioLo, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PrecioLo3, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PrecioLo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PrecioLo3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStock2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnComprar1)
                     .addComponent(btnComprar2))
@@ -467,7 +482,7 @@ public class Home extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 17, Short.MAX_VALUE)
+                .addGap(0, 7, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -609,6 +624,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblSearch;
+    private javax.swing.JLabel lblStock;
+    private javax.swing.JLabel lblStock2;
     private javax.swing.JLabel loMasV1;
     private javax.swing.JLabel loMasV2;
     private javax.swing.JLabel loMasV3;
