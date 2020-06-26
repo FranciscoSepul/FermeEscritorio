@@ -5,9 +5,11 @@
  */
 package Pages;
 
+import Ferme.Dao.CorreoCompra;
 import Ferme.Dao.DetalleVentaDao;
 import Ferme.Dao.EmpleadoDao;
 import Ferme.Dao.ProductoDao;
+import Ferme.Dao.Smtp;
 import Ferme.Dto.DetalleVentas;
 import Ferme.Dto.Empleado;
 import Ferme.Dto.Producto;
@@ -93,6 +95,9 @@ public class CompraProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
+        Smtp smtp = new Smtp();
+        String correo = emp.correo;
+        
         prod = new ProductoDao().Listar();
         int id = prodd.id;
         int preciouni = 0;
@@ -111,12 +116,13 @@ public class CompraProducto extends javax.swing.JFrame {
             stock = prod.get(1).stock;
         }
         int stockF = stock - cantidad;
-
+        String cuerpo = new CorreoCompra().correoTotal(correo, total);
         String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-
+        String asunto = "Total Compra";
         try {
             resp = new DetalleVentaDao().agregarDetalleVenta(id, fecha, cantidad, total);
             resp2 = new DetalleVentaDao().actualizarStock(id, stockF);
+            smtp.enviarSmtp(correo, asunto, cuerpo);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar detalle venta");
