@@ -97,12 +97,19 @@ public class CompraProducto extends javax.swing.JFrame {
     private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
         Smtp smtp = new Smtp();
         String correo = emp.correo;
-        
+        String nombreProd = null;
         prod = new ProductoDao().Listar();
         int id = prodd.id;
         int preciouni = 0;
         int stock= 0;
         System.out.println("id "+ id);
+        if (id==1) {
+            nombreProd = prod.get(0).nombre;
+            System.out.println(""+nombreProd);
+        } else if (id==2) {
+            nombreProd = prod.get(1).nombre;
+            System.out.println(""+nombreProd);
+        }
         if (id==1) {
             preciouni = prod.get(0).precioUni;
         } else if (id==2) {
@@ -116,7 +123,7 @@ public class CompraProducto extends javax.swing.JFrame {
             stock = prod.get(1).stock;
         }
         int stockF = stock - cantidad;
-        String cuerpo = new CorreoCompra().correoTotal(correo, total);
+        String cuerpo = new CorreoCompra().correoTotal(correo, total, nombreProd);
         String fecha = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         String asunto = "Total Compra";
         try {

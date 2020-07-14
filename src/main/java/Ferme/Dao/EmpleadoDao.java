@@ -238,8 +238,7 @@ public class EmpleadoDao implements Crud {
             Codificador cod =new Codificador();
              String has=cod.sha256(pass);
             int estado=1;
-            int cambiop=0;
-            query = "{call AGREGAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?,?)}";
+            query = "{call AGREGAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?)}";
             con = Conexion.getConexion();
             
             call = con.prepareCall(query);
@@ -254,7 +253,6 @@ public class EmpleadoDao implements Crud {
             call.setString(9,apellido);
             call.setString(10,correo);
             call.setString(11,has);
-            call.setInt(12, cambiop);
             call.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error al agregar " + e.getMessage());

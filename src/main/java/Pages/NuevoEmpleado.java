@@ -569,8 +569,8 @@ public class NuevoEmpleado extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
 
-        boolean resp = false; //idcargo,iddireccion,idsucursal,estado,runempleado,"
-        int idCargo, sexo;  //+ "                         sexoe,digitoverif,nombree,apellido,correoemple,contrasena)
+        boolean resp = false; 
+        int idCargo, sexo;                         
 
         if (rbtnVendedor.isSelected()) {
             idCargo = 1;
