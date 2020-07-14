@@ -177,7 +177,7 @@ public class RecuperarPass extends javax.swing.JFrame {
             String asunto = "Recuperacion de Password";
             int cambioPass=1;
             String cuerpo =new CreacionCorreos().correoPass(pass, destina);
-            boolean Resp=empdao.cambiarPass(run, pass,cambioPass);
+            boolean Resp=empdao.cambiarPass(run, pass);
             if (Resp!=false) {
                 try {
                     smtp.enviarSmtp(destina, asunto, cuerpo);

@@ -125,7 +125,7 @@ public class CambioPass extends javax.swing.JFrame {
         if (passConfir == null ? passN != null : !passConfir.equals(passN)) {
             JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
         } else {
-            boolean Resp = empdao.cambiarPass(run, passN, cambioPass);
+            boolean Resp = empdao.cambiarPass(run, passN);
             if (Resp == true) {
                 Home hom = new Home(run);
                 hom.setVisible(true);
